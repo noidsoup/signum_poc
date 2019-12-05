@@ -11,17 +11,15 @@
     <div>
       {{ $n_insights := 0 }}
 
-
-      {{ if ge $section_count (add $n_insights 1) }}
-        {{/* Now, range through the next four after the initial $n_insights items. Nest the requirements, "after" then "first" on the outside */}}
-        {{ range (first 100 (after $n_insights $section))  }}
-          <p>
-            <a href="{{ .Permalink }}">
-                {{ .Title }}
-            </a>
-          </p>
-        {{ end }}
+      {{/* Now, range through the next four after the initial $n_insights items. Nest the requirements, "after" then "first" on the outside */}}
+      {{ range (first 100 (after $n_insights $section))  }}
+        <p>
+          <a href="{{ .Permalink }}">
+            {{ .Title }}
+          </a>
+        </p>
       {{ end }}
+
 
       </div>
   {{ end }}
