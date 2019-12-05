@@ -1,26 +1,19 @@
 {{ define "main" }}
-
-  {{/* Define a section to pull recent insights from. For Hugo 0.20 this will default to the section with the most number of pages. */}}
-  {{ $mainSections := .Site.Params.mainSections | default (slice "insight") }}
-  {{/* Create a variable with that section to use in multiple places. */}}
-  {{ $section := where .Site.RegularPages "Section" "in" $mainSections }}
-  {{/* Check to see if the section is defined for ranging through it */}}
-  {{ $section_count := len $section }}
-  {{ if ge $section_count 1 }}
-
-    <div>
-      {{ $n_insights := 0 }}
-
-      {{/* Now, range through the next four after the initial $n_insights items. Nest the requirements, "after" then "first" on the outside */}}
-      {{ range (first 100 (after $n_insights $section))  }}
-        <p>
-          <a href="{{ .Permalink }}">
-            {{ .Title }}
-          </a>
-        </p>
-      {{ end }}
-
-
-      </div>
-  {{ end }}
+<main>
+    <article>
+        <header>
+            <h1>{{.Title}}</h1>
+        </header>
+        <!-- "{{.Content}}" pulls from the markdown content of the corresponding _index.md -->
+        {{.Content}}
+    </article>
+    <ul>
+    <!-- Ranges through content/posts/*.md -->
+    {{ range .Pages }}
+        <li>
+            <a href="{{.Permalink}}">{{.Title}}</a>
+        </li>
+    {{ end }}
+    </ul>
+</main>
 {{ end }}
