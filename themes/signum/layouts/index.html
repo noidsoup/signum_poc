@@ -1,4 +1,39 @@
 {{ define "main" }}
-  <h1>Hello World</h1>
-  <p>This is a test</p>
+  <article class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray">
+    {{ .Content }}
+  </article>
+  {{/* Define a section to pull recent insights from. For Hugo 0.20 this will default to the section with the most number of pages. */}}
+  {{ $mainSections := .Site.Params.mainSections | default (slice "insight") }}
+  {{/* Create a variable with that section to use in multiple places. */}}
+  {{ $section := where .Site.RegularPages "Section" "in" $mainSections }}
+  {{/* Check to see if the section is defined for ranging through it */}}
+  {{ $section_count := len $section }}
+  {{ if ge $section_count 1 }}
+    {{/* Derive the section name  */}}
+    {{ $section_name := index (.Site.Params.mainSections) 0 }}
+
+    <div class="pa3 pa4-ns w-100 w-70-ns center">
+      {{/* Use $section_name to get the section title. Use "with" to only show it if it exists */}}
+       {{ with .Site.GetPage "section" $section_name }}
+          <h1 class="flex-none">
+            {{ $.Param "recent_copy" | default (i18n "recentTitle" .) }}
+          </h1>
+        {{ end }}
+
+      {{ $n_insights := 0 }}
+
+
+      {{ if ge $section_count (add $n_insights 1) }}
+        {{/* Now, range through the next four after the initial $n_insights items. Nest the requirements, "after" then "first" on the outside */}}
+        {{ range (first 100 (after $n_insights $section))  }}
+          <p>
+            <a href="{{ .Permalink }}">
+                {{ .Title }}
+            </a>
+          </p>
+        {{ end }}
+      {{ end }}
+
+      </div>
+  {{ end }}
 {{ end }}
