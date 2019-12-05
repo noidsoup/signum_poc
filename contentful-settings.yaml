@@ -1,0 +1,6 @@
+repeatableTypes:
+  # fetches all the entries of a content type and places them in a directory.
+  # Generated files will be named after their Entry ID in Contentful.
+  - id: insight
+    directory: /content/insights/
+    fileExtension: md

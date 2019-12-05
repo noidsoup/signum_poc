@@ -1,0 +1,23 @@
+{
+  "name": "signum_poc",
+  "version": "0.0.1",
+  "scripts": {
+    "prestart": "contentful-hugo",
+    "start": "hugo server",
+    "prebuild": "contentful-hugo",
+    "build": "hugo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noidsoup/signum_poc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noidsoup/signum_poc/issues"
+  },
+  "homepage": "https://github.com/noidsoup/signum_poc#readme",
+  "dependencies": {
+    "contentful-hugo": "^1.5.0"
+  }
+}
