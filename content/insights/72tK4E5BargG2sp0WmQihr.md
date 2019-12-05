@@ -1,8 +1,8 @@
 ---
-updated: "2019-12-05T05:40:16.240Z"
+updated: "2019-12-05T05:45:11.575Z"
 createdAt: "2019-12-05T04:38:37.863Z"
 date: "2019-12-05T04:38:37.863Z"
-title: "test entry three"
+title: "test entry four"
 slug: "test-entry"
 publishDate: "2019-12-04"
 author:
