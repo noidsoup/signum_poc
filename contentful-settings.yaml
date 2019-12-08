@@ -4,3 +4,12 @@ repeatableTypes:
   - id: insight
     directory: /content/insights/
     fileExtension: md
+
+  - id: page
+    directory: /content/pages/
+    fileExtension: md
+
+  - id: section
+    directory: /content/pages/sections/
+    fileExtension: md
+    isHeadless: true

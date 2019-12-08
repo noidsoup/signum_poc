@@ -1,0 +1,11 @@
+{{ $headless := .Site.GetPage "sections"  }}
+
+{{ $resource := printf "%s%s" .Params.HeroHeading.id "/*" }}
+
+{{ with $headless.Resources.Match $resource }}
+
+  {{ range . }}
+      <p>{{ .Title }}</p>
+  {{ end }}
+
+{{ end }}

@@ -1,0 +1,20 @@
+
+{{ $headless := .Site.GetPage "sections"  }}
+<h3>sections:</h3>
+{{ range .Params.content }}
+  {{ $resource := printf "%s%s" .id "/*" }}
+
+  {{ with $headless.Resources.Match $resource }}
+
+    {{ range . }}
+        <p>{{ .Title }}</p>
+    {{ end }}
+
+  {{ end }}
+
+{{ end }}
+
+
+
+
+

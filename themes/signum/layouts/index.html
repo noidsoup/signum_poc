@@ -1,13 +1,14 @@
 {{ define "main" }}
 <main>
-    <article>
-        <header>
-            <h1>{{.Title}}</h1>
-        </header>
-        {{.Content}}
-    </article>
+{{/*      {{ with .Site.GetPage "5gihPSZqCQm7Jth29gJCBp.md" }}
+        {{ partial "page/hero.html" . }}
+        <h1>{{.Title}}</h1>
+        <p>{{.Description}}</p>
+        <p>{{ partial "page/content.html" . }}</p>
+    {{ end }}  */}}
     <ul>
     <!-- Ranges through content/*.md -->
+    <h1>{{.Title}}</h1>
     {{ range .Pages }}
         <li>
             <a href="{{.Permalink}}">{{.Title}}</a>
