@@ -1,0 +1,10 @@
+{{- $partial := print .This.data.contentType ".html" -}}
+<!-- check if the partial exists -->
+{{- $partialCheck := print "themes/signum/layouts/partials/" $partial -}}
+{{- if fileExists $partialCheck -}}
+    <!-- call partial if it exists -->
+    {{- partial $partial (dict "This" . "Entry" .This.data ) -}}
+{{- else -}}
+    <!-- call the node-not-found partial if it doesn't exist -->
+    {{- partial "rich-text/node-not-found.html" (dict "Template" .nodeType "Directory" "standard-blocks") -}}
+{{- end -}}

@@ -13,3 +13,8 @@ repeatableTypes:
     directory: /content/pages/sections/
     fileExtension: md
     isHeadless: true
+
+  - id: button
+    directory: /content/pages/buttons/
+    fileExtension: md
+    isHeadless: true

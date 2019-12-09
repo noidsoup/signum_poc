@@ -1,4 +1,6 @@
 {{ $headless := .Site.GetPage "sections"  }}
+{{/*
+{{ partial "head.html" . }}  */}}
 
 {{ $resource := printf "%s%s" .Params.HeroHeading.id "/*" }}
 
@@ -6,6 +8,16 @@
 
   {{ range . }}
       <p>{{ .Title }}</p>
+
+      <h4>column1Content</h4>
+      {{ partial "rich-text.html" (dict "This" .Params.column1Content "Site" $.Site) }}
+      <h4>column2Content</h4>
+      {{ partial "rich-text.html" (dict "This" .Params.column2Content "Site" $.Site) }}
+      <h4>column3Content</h4>
+      {{ partial "rich-text.html" (dict "This" .Params.column3Content "Site" $.Site) }}
+      <h4>column4Content</h4>
+      {{ partial "rich-text.html" (dict "This" .Params.column4Content "Site" $.Site) }}
+
   {{ end }}
 
 {{ end }}

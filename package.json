@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "prestart": "contentful-hugo",
-    "start": "hugo server --watch --verbose --buildDrafts --cleanDestinationDir --disableFastRender",
+    "start": "hugo server --watch --verbose --buildDrafts --cleanDestinationDir",
     "prebuild": "contentful-hugo",
     "build": "hugo"
   },
