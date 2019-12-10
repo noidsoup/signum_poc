@@ -1,1 +1,16 @@
-<script src="/js/main.js"></script>
+<head>
+	<title>{{ .Title }}</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	{{ $style := resources.Get "styles/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+	<link rel="stylesheet" href="{{ $style.Permalink }}">
+
+	{{ range .AlternativeOutputFormats -}}
+	{{ printf `<link rel="%s" type="%s+%s" href="%s" title="%s" />` .Rel .MediaType.Type .MediaType.Suffix .Permalink $.Site.Title | safeHTML }}
+	{{ end -}}
+
+	<script src="/js/main.js"></script>
+
+</head>

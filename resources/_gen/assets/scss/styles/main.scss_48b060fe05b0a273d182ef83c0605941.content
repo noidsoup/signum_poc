@@ -1,1 +1,1 @@
-@import 'test.scss';
+body{background-color:red}
