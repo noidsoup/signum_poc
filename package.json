@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/noidsoup/signum_poc#readme",
   "dependencies": {
-    "contentful-hugo": "^1.5.0"
+    "autoprefixer": "^9.7.3",
+    "bootstrap": "^4.4.1",
+    "contentful-hugo": "^1.5.0",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0",
+    "postcss-cli": "^6.1.3"
   }
 }

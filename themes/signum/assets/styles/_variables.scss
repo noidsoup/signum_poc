@@ -1,0 +1,170 @@
+// Variables
+//
+// Reference: https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss
+
+//
+// Colors
+// ==================================================
+$white: #ffffff;
+$cream: #F7F5F0;
+$bone: #EFEBE2;
+$linen: #E7E3D9;
+$gold: #EFB670;
+$rose: #FC7D8D;
+$sea: #0DA0A2;
+$sky: #93CFDC;
+$night: #2C3E5B;
+
+// Bootstrap color system
+
+$white: #fff;
+$gray-100: #eeeeee;
+$gray-200: #dddddd;
+$gray-300: #cccccc;
+$gray-400: #D8D8D8;
+$gray-500: #979797;
+$gray-600: #888888;
+$gray-700: #777777;
+$gray-800: #6D6E71;
+$gray-900: #222222;
+
+$black: #000;
+
+$grays: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$grays: map-merge(("100": $gray-100, "200": $gray-200, "300": $gray-300, "400": $gray-400, "500": $gray-500, "600": $gray-600, "700": $gray-700, "800": $gray-800, "900": $gray-900), $grays);
+
+$blue: $sky;
+$pink: $rose;
+$red: $rose;
+$orange: $gold;
+$yellow: $gold;
+$green: $sea;
+$teal: lighten($sea, 20%);
+$cyan: $sky;
+
+$colors: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: map-merge(("blue": $blue, "purple": purple, "pink": $pink, "red": $red, "orange": $orange, "yellow": $yellow, "green": $green, "teal": $teal, "cyan": $cyan, "white": $white, "gray": $gray-100, "gray-dark": $gray-800), $colors);
+
+$primary: $sea;
+$secondary: $linen;
+$success: $sea;
+$info: $sky;
+$warning: $gold;
+$danger: $rose;
+$light: $cream;
+$dark: $night;
+
+$theme-colors: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(("primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark), $theme-colors);
+
+//
+// Spacing
+// ==================================================
+$spacer: 1rem;
+$spacers: (
+	0 : 0,
+	1 : ($spacer * .25),
+	2 : ($spacer * .5),
+	3 : ($spacer * .625),
+	4 : $spacer,
+	5 : ($spacer * 1.25),
+	6 : ($spacer * 1.5),
+	7 : ($spacer * 1.875),
+	8 : ($spacer * 2.5),
+	9 : ($spacer * 3.75),
+	10: ($spacer * 5),
+	11: ($spacer * 7.5),
+);
+
+//
+// Options
+// ==================================================
+$enable-caret: false;
+$enable-rounded: true;
+$enable-shadows: true;
+
+//
+// Components
+// ==================================================
+$box-shadow: 0 0 1rem 0 rgba($black, .1);
+
+//
+// Body
+// ==================================================
+$body-bg: $light;
+$body-color: $gray-700;
+
+//
+// Typography
+// ==================================================
+$font-family-sans-serif: "Roboto", sans-serif;
+$font-family-serif: "Abril Fatface", serif;
+
+$link-color: inherit;
+$link-hover-color: $primary;
+
+$h1-font-size: 3.75rem;
+$h2-font-size: 2.75rem;
+$h3-font-size: 1.25rem;
+$h4-font-size: 1.125rem;
+$h5-font-size: 0.75rem;
+$h6-font-size: 0.8125rem;
+
+$headings-font-family: $font-family-serif;
+$headings-color: $gray-900;
+$headings-font-weight: normal;
+$headings-margin-bottom: 0.625rem;
+
+$lead-font-size: 1.25rem;
+$lead-font-weight: normal;
+
+$small-font-size: 0.625rem;
+
+//
+// Buttons & Forms
+// ==================================================
+$input-btn-font-size: 0.9375rem;
+$input-btn-padding-y: 0.5625rem;
+$input-btn-padding-x: 1.25rem;
+
+//
+// Buttons
+// ==================================================
+$btn-border-radius: 0.125rem;
+$btn-border-width: 0.125rem;
+$btn-box-shadow: none;
+$btn-font-weight: 600;
+$btn-font-family: $font-family-sans-serif;
+
+//
+// Inputs
+// ==================================================
+$input-font-family: $font-family-sans-serif;
+$input-border-radius: 0.125rem;
+$input-box-shadow: none;
+$input-border-width: 0;
+
+//
+// Cards
+// ==================================================
+$card-spacer-y: 1.875rem;
+$card-spacer-x: 1.875rem;
+$card-border-width: 0;
+$card-border-radius: 0.25rem;
+
+//
+// Dropdowns
+// ==================================================
+$dropdown-box-shadow: $box-shadow;
+$dropdown-border-radius: 0.25rem;
+$dropdown-border-width: 0;
+$dropdown-min-width: 22.5rem;
+$dropdown-padding-y: 0;
+$dropdown-padding-x: 1.25rem;
+$dropdown-font-size: 0.9375rem;
+$dropdown-link-color: $gray-800;
+$dropdown-link-hover-color: $green;
+$dropdown-link-hover-bg: transparent;
