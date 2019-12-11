@@ -16,17 +16,23 @@
 			}
 
 			.blog-meta {
-				> span,
-				> a {
-					color         : $gray-900;
-					font-size     : 0.8125rem;
-					font-weight   : 600;
-					letter-spacing: 0.5px;
-					text-transform: uppercase;
+				> a,
+				> span {
+					color    : $gray-700;
+					font-size: 0.9375rem;
 
 					&.blog-meta-divider {
 						padding-right: 0.375rem;
 						padding-left : 0.375rem;
+					}
+				}
+
+				> span {
+					&:not(:last-of-type) {
+						&::after {
+							content     : '•';
+							padding-left: 0.25rem;
+						}
 					}
 				}
 
@@ -69,6 +75,7 @@
 				background-size    : cover;
 				width              : 125px;
 				height             : 125px;
+				background-color   : $cream;
 
 				@include media-breakpoint-down(md) {
 					margin: 0 auto 1.25rem;
@@ -77,6 +84,27 @@
 
 			h4 {
 				font-family: $headings-font-family;
+			}
+
+			.blog-author-bio {
+				font-weight: 500;
+				font-size  : 0.9375rem;
+				color      : $primary;
+
+				i {
+					font-size   : 0.875rem;
+					padding-left: 0.25rem;
+					transition  : $transition-base;
+				}
+
+				&:hover {
+					color          : darken($primary, 10%);
+					text-decoration: none;
+
+					i {
+						transform: translateX(50%);
+					}
+				}
 			}
 		}
 
@@ -90,8 +118,20 @@
 			}
 
 			a {
-				display     : inline-block;
-				margin-right: 0.5rem;
+				display         : inline-block;
+				margin-right    : 0.5rem;
+				color           : $white;
+				background-color: $primary;
+				width           : 2rem;
+				height          : 2rem;
+				border-radius   : 100%;
+				text-align      : center;
+				font-size       : 1.125rem;
+
+				i {
+					position: relative;
+					top     : 0.1875rem;
+				}
 
 				&:hover {
 					opacity: 0.8;
@@ -100,6 +140,16 @@
 		}
 
 		.blog-content {
+			.blog-hero {
+				background-color   : $cream;
+				background-size    : cover;
+				background-position: center center;
+				background-repeat  : no-repeat;
+				height             : 18.75rem;
+				width              : 100%;
+				margin-bottom      : 1.875rem;
+			}
+
 			img {
 				margin-bottom: 1.875rem;
 				border-radius: $border-radius;

@@ -207,7 +207,7 @@ blockquote {
 }
 
 .badge {
-	color         : $white;
+	color         : $white !important;
 	text-transform: uppercase;
 	font-weight   : bold;
 	font-size     : 0.8125rem;
