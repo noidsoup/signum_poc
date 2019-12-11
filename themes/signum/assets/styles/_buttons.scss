@@ -1,0 +1,44 @@
+.btn {
+	//border: none;
+
+	&:hover {
+		box-shadow: $box-shadow;
+	}
+
+	&.btn-lg {
+		border-radius: 3px;
+		font-size    : 1.375rem;
+		font-weight  : 500;
+		padding      : 0.9375rem 1.875rem;
+	}
+}
+
+.btn-circle {
+	display         : flex;
+	flex-grow       : 0;
+	flex-shrink     : 0;
+	align-items     : center;
+	justify-content : center;
+	cursor          : pointer;
+	box-shadow      : $box-shadow;
+	border-radius   : 100%;
+	background-color: $white;
+	width           : 2.5rem;
+	height          : 2.5rem;
+	color           : $gray-700;
+
+	i {
+		transition: $transition-base;
+	}
+
+	&:active,
+	&:hover {
+		box-shadow      : none;
+		background-color: $primary;
+		color           : $white;
+
+		i {
+			color: $white;
+		}
+	}
+}

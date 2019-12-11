@@ -1,0 +1,43 @@
+.table {
+	th {
+		&:first-child {
+			width: 25%;
+		}
+	}
+
+	thead {
+		th {
+			border-top    : none;
+			border-bottom : 1px solid $gray-100;
+			padding       : 0 1.875rem 1.875rem;
+			text-transform: uppercase;
+			font-size     : 0.75rem;
+			letter-spacing: 1px;
+
+			a {
+				&:hover {
+					text-decoration: none;
+				}
+
+				&.active {
+					color: $primary;
+				}
+			}
+
+		}
+	}
+
+	tbody {
+		td,
+		th {
+			border-bottom: 1px solid $gray-100;
+			padding      : 1.25rem 1.875rem;
+			font-size    : 0.9375rem;
+			text-align   : left;
+		}
+
+		th {
+			font-weight: bold;
+		}
+	}
+}

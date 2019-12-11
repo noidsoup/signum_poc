@@ -1,0 +1,95 @@
+.card {
+	box-shadow: $box-shadow;
+
+	.card-title {
+		font-family   : $headings-font-family;
+		font-size     : 1.5rem;
+		text-transform: none;
+		display       : block;
+		color         : $gray-900;
+	}
+
+	a.card-title {
+		&:hover {
+			text-decoration: none;
+			color          : $link-hover-color;
+		}
+	}
+
+	&.card-lg {
+		.card-title {
+			font-size: 2.5rem;
+
+			@include media-breakpoint-down(md) {
+				font-size: 1.5rem;
+			}
+		}
+	}
+
+	&.testimonial-card {
+		.card-body {
+			padding: 2.5rem;
+
+			.row {
+				align-items: center;
+			}
+
+			.testimonial-hr {
+				border-top   : 2px solid $gray-100;
+				margin-top   : 2.5rem;
+				margin-bottom: 2.5rem;
+			}
+
+			.testimonial-cta {
+				text-align: center;
+				padding   : 0 2.5rem;
+			}
+
+			.testimonial-quote {
+				text-align : center;
+				padding    : 0 2.5rem;
+				border-left: 2px solid $gray-100;
+
+				@include media-breakpoint-down(md) {
+					border-left  : none;
+					padding-left : 0.9375rem;
+					padding-right: 0.9375rem;
+				}
+			}
+		}
+	}
+
+	&.green-card {
+		background-color: $sea;
+		color           : $white;
+
+		p {
+			color: $white;
+		}
+
+		.blockquote-footer {
+			color: $white;
+		}
+	}
+
+	&.insight-card {
+		.card-img-bg {
+			background-size        : cover;
+			background-position    : center center;
+			background-repeat      : no-repeat;
+			display                : flex;
+			align-items            : flex-end;
+			flex                   : 1;
+			border-top-left-radius : inherit;
+			border-top-right-radius: inherit;
+			padding                : 1rem 1.25rem;
+		}
+
+		.card-body {
+			flex: 0 0 auto;
+		}
+
+	}
+
+	// Chart card: See _charts.scss
+}

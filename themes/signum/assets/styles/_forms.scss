@@ -1,0 +1,8 @@
+.custom-control {
+	.custom-control-label {
+		&::before {
+			border          : 1px solid $gray-800;
+			background-color: $white;
+		}
+	}
+}

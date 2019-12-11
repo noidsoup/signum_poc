@@ -1,0 +1,108 @@
+.footer {
+	padding-top   : 7.5rem;
+	padding-bottom: 1.875rem;
+
+	@include media-breakpoint-down(md) {
+		padding-top: 1.875rem;
+	}
+
+	.footer-top {
+		padding-bottom: 3.75rem;
+		margin-bottom : 3.75rem;
+		border-bottom : 0.125rem solid $bone;
+
+		.footer-info {
+			.signum-logo {
+				margin-bottom: 0.625rem;
+			}
+
+			p {
+				font-size    : 0.8125rem;
+				padding-right: 5rem;
+				margin-bottom: 0;
+
+				@include media-breakpoint-down(md) {
+					padding-right: 0;
+					margin-bottom: 1.875rem;
+				}
+			}
+		}
+
+		.footer-input {
+			p.small {
+				margin-bottom: 0;
+			}
+
+			.signum-subscribe-container {
+				.signum-input {
+					flex: 1;
+				}
+			}
+		}
+	}
+
+	.footer-links {
+		padding-bottom: 3.75rem;
+		margin-bottom : 3.75rem;
+		border-bottom : 0.125rem solid $light;
+
+		h5 {
+			margin-top: 2.5rem;
+		}
+
+		ul {
+			margin     : 0;
+			font-size  : 0.9375rem;
+			line-height: 1.7;
+		}
+	}
+
+	.footer-baseline {
+		font-size: 0.9375rem;
+
+		@include media-breakpoint-down(lg) {
+			text-align: center;
+		}
+
+		ul {
+			li {
+				&:not(:last-child) {
+					margin-right: 1.25rem;
+				}
+
+				@include media-breakpoint-down(xs) {
+					&.global {
+						display: none;
+					}
+				}
+			}
+
+			&:not(.footer-baseline-social) {
+				li {
+					@include media-breakpoint-down(lg) {
+						margin-right: 0.625rem;
+						margin-left : 0.625rem;
+
+						&:not(:last-child) {
+							margin-right: 0.625rem;
+							margin-left : 0.625rem;
+						}
+
+						&:first-child {
+							width : 100%;
+							margin: 0 auto 0.25rem;
+						}
+					}
+				}
+			}
+		}
+
+		.footer-baseline-social {
+			text-align: right;
+
+			@include media-breakpoint-down(lg) {
+				text-align: center;
+			}
+		}
+	}
+}

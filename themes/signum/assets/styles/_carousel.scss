@@ -1,0 +1,124 @@
+.carousel {
+	position: relative;
+
+	.carousel-status,
+	.control-dots {
+		display: none;
+	}
+
+	&.carousel-slider {
+		overflow: visible !important;
+	}
+
+	.control-arrow {
+		position        : absolute !important;
+		z-index         : 99 !important;
+		top             : 40% !important;
+		height          : 3.75rem !important;
+		width           : 3.75rem !important;
+		border-radius   : 2.75rem !important;
+		font-size       : 0.875rem !important;
+		background-color: #fff !important;
+		padding         : 0 !important;
+		transition      : $transition-base;
+		opacity         : 1 !important;
+		box-shadow      : 0 2px 15px 0 rgba(0,0,0,.1);
+
+		&::before {
+			font-family: 'icomoon';
+			margin     : 0 !important;
+			border     : none !important;
+			transition : $transition-base;
+			color      : $linen;
+			font-size  : 1.5rem;
+			position   : absolute;
+			top        : 12px;
+		}
+
+		&:hover {
+			background-color: $white !important;
+
+			&::before {
+				color: $primary;
+			}
+		}
+
+		&:active {
+			background-color: $primary !important;
+
+			&::before {
+				color: $white;
+			}
+		}
+
+		&.control-prev {
+			left: 0.5rem !important;
+
+			&::before {
+				content: '\e915' !important;
+				left   : 15px;
+			}
+		}
+
+		&.control-next {
+			right: 0.5rem !important;
+
+			&::before {
+				content: '\e914' !important;
+				right  : 15px;
+			}
+		}
+
+		&.control-disabled {
+			opacity       : 0.2 !important;
+			display       : block !important;
+			pointer-events: none;
+		}
+	}
+
+	.slider-wrapper.axis-horizontal .slider .slide {
+		background-color: transparent;
+
+		.legend {
+			display: none;
+		}
+	}
+
+	.slide {
+		display: flex;
+
+		.card {
+			text-align  : left;
+			margin-left : 1rem;
+			margin-right: 1rem;
+			flex        : 1;
+
+			.card-img-bg {
+				height: 19rem;
+				flex  : 0 0 auto;
+			}
+
+			.card-body {
+				flex: 1;
+
+				.card-title {
+					display           : -webkit-box;
+					line-clamp        : 3;
+					-webkit-line-clamp: 3;
+					text-overflow     : ellipsis;
+					-webkit-box-orient: vertical;
+					overflow          : hidden;
+				}
+
+				.arrow-link {
+					margin-top: auto;
+
+					img {
+						width         : 10px !important;
+						vertical-align: unset !important;
+					}
+				}
+			}
+		}
+	}
+}
