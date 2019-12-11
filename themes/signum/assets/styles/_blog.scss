@@ -16,17 +16,23 @@
 			}
 
 			.blog-meta {
-				> span,
-				> a {
-					color         : $gray-900;
-					font-size     : 0.8125rem;
-					font-weight   : 600;
-					letter-spacing: 0.5px;
-					text-transform: uppercase;
+				> a,
+				> span {
+					color    : $gray-700;
+					font-size: 0.8125rem;
 
 					&.blog-meta-divider {
 						padding-right: 0.375rem;
 						padding-left : 0.375rem;
+					}
+				}
+
+				> span {
+					&:not(:last-of-type) {
+						&::after {
+							content     : '•';
+							padding-left: 0.25rem;
+						}
 					}
 				}
 

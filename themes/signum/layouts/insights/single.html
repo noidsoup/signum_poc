@@ -1,63 +1,65 @@
 {{ define "main" }}
-<div class="blog-single bg-white">
-	<div class="blog-layout container">
+<body class="blog">
+	<div class="blog-single bg-white">
+		<div class="blog-layout container">
 
-		<div class="row">
-			<div class="col">
-				<div class="blog-header">
-					<h1>{{ .Title }}</h1>
-					<div class="blog-meta">
-						<span>Insights</span>
-						<span>January 1st 1970</span>
-						<a href="#" class="badge badge-pill badge-warning">Category</a>
+			<div class="row">
+				<div class="col">
+					<div class="blog-header">
+						<h1>{{ .Title }}</h1>
+						<div class="blog-meta">
+							<span>Insights</span>
+							<span>January 1st 1970</span>
+							<a href="#" class="badge badge-pill badge-warning">Category</a>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-lg-3 col-12 order-lg-0 order-1">
-				<div class="blog-author">
-					<div class="blog-author-photo" style="background-image: url('')"></div>
-					<h4>Author Name</h4>
-					<p>Author bio</p>
-					<a href="#" target="_blank">Full bio &rarr;</a>
+			<div class="row">
+				<div class="col-lg-3 col-12 order-lg-0 order-1">
+					<div class="blog-author">
+						<div class="blog-author-photo" style="background-image: url('')"></div>
+						<h4>Author Name</h4>
+						<p>Author bio</p>
+						<a href="#" target="_blank">Full bio &rarr;</a>
+					</div>
+					<div class="blog-share">
+						<h4>Share this insight</h4>
+						<ul class="list-inline">
+							<li><a href="#">Facebook</a></li>
+							<li><a href="#">Twitter</a></li>
+							<li><a href="#">LinkedIn</a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="blog-share">
-					<h4>Share this insight</h4>
-					<ul class="list-inline">
-						<li><a href="#">Facebook</a></li>
-						<li><a href="#">Twitter</a></li>
-						<li><a href="#">LinkedIn</a></li>
-					</ul>
+				<div class="col-lg-9 col-12 order-lg-1 order-0">
+					<div class="blog-content">
+						<div class="blog-hero rounded" style="background-image: url('')"></div>
+						<p>Post content goes here</p>
+					</div>
 				</div>
 			</div>
-			<div class="col-lg-9 col-12 order-lg-1 order-0">
-				<div class="blog-content">
-					<img class="blog-hero rounded" src="" />
-					<p>Post content goes here</p>
-				</div>
-			</div>
+
 		</div>
 
+		<div class="subscription-section bg-dark py-8 py-lg-11">
+			<div class="insights-wrapper container">
+				<div class="justify-content-md-center text-center row">
+					<div class="pb-8 pb-lg-10 col-md-6">
+						<h3 class="mb-7">You might also like these insights</h3>
+						<form class="signum-subscribe-container form-inline justify-content-center">
+							<input class="signum-input form-control" placeholder="Get market signals in your inbox" value="">
+							<button type="button" class="ml-0 ml-lg-3 btn btn-primary">Subscribe</button>
+							<p class="small text-white">By subscribing, you agree to our <a href="#">privacy policy</a>.</p>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div>
+				Card carousel goes here
+			</div>
+		</div>
 	</div>
-
-	<div class="subscription-section bg-dark py-8 py-lg-11">
-		<div class="insights-wrapper container">
-			<div class="justify-content-md-center text-center row">
-				<div class="pb-8 pb-lg-10 col-md-6">
-					<h3 class="mb-7">You might also like these insights</h3>
-					<form class="signum-subscribe-container form-inline justify-content-center">
-						<input class="signum-input form-control" placeholder="Get market signals in your inbox" value="">
-						<button type="button" class="ml-0 ml-lg-3 btn btn-primary">Subscribe</button>
-						<p class="small text-white">By subscribing, you agree to our <a href="#">privacy policy</a>.</p>
-					</form>
-				</div>
-			</div>
-		</div>
-		<div>
-			Card carousel goes here
-		</div>
-
-</div>
+</body>
 {{ end }}
