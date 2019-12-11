@@ -7,6 +7,8 @@
 	{{ $style := resources.Get "styles/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 	<link rel="stylesheet" href="{{ $style.Permalink }}">
 
+	<script src="https://kit.fontawesome.com/b0c5210a04.js" crossorigin="anonymous"></script>
+
 	{{ range .AlternativeOutputFormats -}}
 	{{ printf `<link rel="%s" type="%s+%s" href="%s" title="%s" />` .Rel .MediaType.Type .MediaType.Suffix .Permalink $.Site.Title | safeHTML }}
 	{{ end -}}
