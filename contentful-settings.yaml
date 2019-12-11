@@ -1,10 +1,22 @@
 repeatableTypes:
   # fetches all the entries of a content type and places them in a directory.
   # Generated files will be named after their Entry ID in Contentful.
+
+  # insights.
   - id: insight
     directory: /content/insights/
     fileExtension: md
 
+  - id: author
+    directory: /content/insights/authors/
+    isHeadless: true
+    fileExtension: md
+
+  - id: insightCategory
+    directory: /content/insights/categories/
+    fileExtension: md
+
+  # pages.
   - id: page
     directory: /content/pages/
     fileExtension: md
@@ -16,5 +28,26 @@ repeatableTypes:
 
   - id: button
     directory: /content/pages/buttons/
+    fileExtension: md
+    isHeadless: true
+
+  # misc content.
+  - id: chartCard
+    directory: /content/chartCards/
+    fileExtension: md
+    isHeadless: true
+
+  - id: chartExplorer
+    directory: /content/chartExplorers/
+    fileExtension: md
+    isHeadless: true
+
+  - id: linkCard
+    directory: /content/linkCards/
+    fileExtension: md
+    isHeadless: true
+
+  - id: testimonialCard
+    directory: /content/testimonialCards/
     fileExtension: md
     isHeadless: true
