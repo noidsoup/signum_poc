@@ -1,0 +1,26 @@
+---
+updated: "2019-12-03T23:44:45.601Z"
+createdAt: "2019-12-03T23:01:37.021Z"
+date: "2019-12-03T23:01:37.021Z"
+title: "Execute with quality"
+slug: "execute-with-quality"
+description: "Improve fill rates with real-time forecasts of lit and hidden liquidity. Reliably capture better prices with real-time predictions of price movements."
+heroHeading:
+  id: "3NsFmn4B1QmzBo7pRI7vz2"
+  contentType: "section"
+content:
+  - id: "5c4Oi1MULvizOWt3qJaSy8"
+    contentType: "section"
+  - id: "2jarlcbIhypCwVy6bAzklH"
+    contentType: "section"
+  - id: "5vCXzyd38drLur0psnBxOG"
+    contentType: "section"
+  - id: "kpySS2qdjESDB3Pall96f"
+    contentType: "section"
+  - id: "6T1nuA2Y4EDl2smadyuPKJ"
+    contentType: "section"
+  - id: "6KCJvrf7E378Z15taK8fOb"
+    contentType: "section"
+  - id: "4zBHEGZkP9FfAsGpajyxiv"
+    contentType: "section"
+---
