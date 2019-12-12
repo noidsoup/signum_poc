@@ -51,3 +51,28 @@ repeatableTypes:
     directory: /content/testimonialCards/
     fileExtension: md
     isHeadless: true
+
+  - id: icon
+    directory: /content/icons/
+    fileExtension: md
+    isHeadless: true
+
+  - id: faq
+    directory: /content/faqs/
+    fileExtension: md
+    isHeadless: true
+
+  - id: navbar
+    directory: /content/navbar/
+    fileExtension: md
+    isHeadless: true
+
+  - id: footer
+    directory: /content/footer/
+    fileExtension: md
+    isHeadless: true
+
+  - id: menu
+    directory: /content/menus/
+    fileExtension: md
+    isHeadless: true

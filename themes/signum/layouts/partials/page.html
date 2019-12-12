@@ -1,0 +1,4 @@
+
+{{ with .Site.GetPage .Entry.id }}
+<a href="/find-new-alpha" class="dropdown-item">{{.Title}}<span class="ml-2 badge badge-pill badge-info"></span></a>
+{{ end }}

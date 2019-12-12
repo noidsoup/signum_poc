@@ -1,0 +1,17 @@
+<div class="dropdown nav-item">
+  <a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">{{.Title}}</a>
+  <div class="dropdown-menu" aria-labelledby="">
+    <a href="/find-new-alpha" class="dropdown-cap dropdown-item">
+      <div class="dropdown-cap-text">
+        <h4>{{.Title}}</h4>
+        <p>{{.Params.Subtitle}}</p>
+      </div>
+    </a>
+    <span>
+      <div class="dropdown-header" role="heading">{{.Params.content_plaintext}}</div>
+      {{ partial "rich-text.html" (dict "This" .Params.content "Site" $.Site) }}
+    {{/*    <a href="/find-new-alpha" class="dropdown-item">Find new alpha<span class="ml-2 badge badge-pill badge-info"></span></a>
+      <a href="/execute-with-quality" class="dropdown-item">Execute with quality<span class="ml-2 badge badge-pill badge-info"></span></a>  */}}
+    </span>
+  </div>
+</div>

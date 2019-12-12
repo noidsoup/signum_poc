@@ -1,84 +1,102 @@
 <div class="header-div">
 	<div class="header container">
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<a href="/" class="navbar-brand">
-				<img src="//images.ctfassets.net/54f19fqt6zdm/4UjO7eJ40ra7i68Q2fuhwX/fdafbc3024cfb34c3699e364d26ee8b1/exegy-signum-logo_wordmark_2C_teal_grey.svg">
-			</a>
-			<button aria-controls="basic-navbar-nav" type="button" aria-label="Toggle navigation" class="navbar-toggler">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			{{ $navbar := .Site.GetPage "navbar"  }}
+			{{ with $navbar.Resources }}
+				{{ range . }}
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<a href="/" class="navbar-brand">
+							<img src="{{.Params.logo.url}}">
+						</a>
+						<button aria-controls="basic-navbar-nav" type="button" aria-label="Toggle navigation" class="navbar-toggler">
+							<span class="navbar-toggler-icon"></span>
+						</button>
 
-			<div class="navbar-collapse collapse" id="basic-navbar-nav">
-				<div class="navbar-nav">
-					<div class="dropdown nav-item">
-						<a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">Solutions</a>
-						<div class="dropdown-menu" aria-labelledby="">
-							<a href="/find-new-alpha" class="dropdown-cap dropdown-item">
-								<div class="dropdown-cap-text">
-									<h4>Solutions</h4>
-									<p>For serious, results-driven traders</p>
+						<div class="navbar-collapse collapse" id="basic-navbar-nav">
+							<div class="navbar-nav">
+								{{ $menus := .Site.GetPage "menus"  }}
+								{{range .Params.menus}}
+									{{ $resource := printf "%s%s" .id "/*" }}
+									{{ with $menus.Resources.Match $resource }}
+
+										{{ range . }}
+											{{ partial "menu.html" . }}
+										{{ end }}
+
+									{{ end }}
+
+								{{end}}
+
+							{{/*  	<div class="dropdown nav-item">
+									<a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">Solutions</a>
+									<div class="dropdown-menu" aria-labelledby="">
+										<a href="/find-new-alpha" class="dropdown-cap dropdown-item">
+											<div class="dropdown-cap-text">
+												<h4>Solutions</h4>
+												<p>For serious, results-driven traders</p>
+											</div>
+										</a>
+										<span>
+											<div class="dropdown-header" role="heading">By outcome</div>
+											<a href="/find-new-alpha" class="dropdown-item">Find new alpha<span class="ml-2 badge badge-pill badge-info"></span></a>
+											<a href="/execute-with-quality" class="dropdown-item">Execute with quality<span class="ml-2 badge badge-pill badge-info"></span></a>
+										</span>
+									</div>
 								</div>
-							</a>
-							<span>
-								<div class="dropdown-header" role="heading">By outcome</div>
-								<a href="/find-new-alpha" class="dropdown-item">Find new alpha<span class="ml-2 badge badge-pill badge-info"></span></a>
-								<a href="/execute-with-quality" class="dropdown-item">Execute with quality<span class="ml-2 badge badge-pill badge-info"></span></a>
-							</span>
-						</div>
-					</div>
-					<div class="dropdown nav-item">
-						<a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">Signals</a>
-						<div class="dropdown-menu" aria-labelledby=""><a href="/quote-vector" class="dropdown-cap dropdown-item">
-								<div class="dropdown-cap-text">
-									<h4>Signals</h4>
-									<p>Actionable predictions with every tick</p>
+								<div class="dropdown nav-item">
+									<a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">Signals</a>
+									<div class="dropdown-menu" aria-labelledby=""><a href="/quote-vector" class="dropdown-cap dropdown-item">
+											<div class="dropdown-cap-text">
+												<h4>Signals</h4>
+												<p>Actionable predictions with every tick</p>
+											</div>
+										</a>
+										<span>
+											<div class="dropdown-header" role="heading">Trading signal products</div>
+											<a href="/quote-vector" class="dropdown-item">Quote Vector <span class="ml-2 badge badge-pill badge-info"></span></a>
+											<a href="/quote-fuse" class="dropdown-item">Quote Fuse<span class="ml-2 badge badge-pill badge-info"></span></a>
+											<a href="/liquidity-lamp" class="dropdown-item">Liquidity Lamp<span class="ml-2 badge badge-pill badge-info"></span></a>
+										</span>
+									</div>
 								</div>
-							</a>
-							<span>
-								<div class="dropdown-header" role="heading">Trading signal products</div>
-								<a href="/quote-vector" class="dropdown-item">Quote Vector <span class="ml-2 badge badge-pill badge-info"></span></a>
-								<a href="/quote-fuse" class="dropdown-item">Quote Fuse<span class="ml-2 badge badge-pill badge-info"></span></a>
-								<a href="/liquidity-lamp" class="dropdown-item">Liquidity Lamp<span class="ml-2 badge badge-pill badge-info"></span></a>
-							</span>
-						</div>
-					</div>
-					<div class="dropdown nav-item"><a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">Insights</a>
-						<div class="dropdown-menu" aria-labelledby="">
-							<a href="/articles/latest" class="dropdown-cap dropdown-item">
-								<div class="dropdown-cap-text">
-									<h4>Insights</h4>
-									<p>Illuminating instruction</p>
+								<div class="dropdown nav-item"><a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">Insights</a>
+									<div class="dropdown-menu" aria-labelledby="">
+										<a href="/articles/latest" class="dropdown-cap dropdown-item">
+											<div class="dropdown-cap-text">
+												<h4>Insights</h4>
+												<p>Illuminating instruction</p>
+											</div>
+										</a>
+										<span>
+											<div class="dropdown-header" role="heading">By category</div>
+											<a href="/articles/daily%20unicorn" class="dropdown-item">Daily Unicorn <span class="ml-2 badge badge-pill badge-info"></span></a>
+											<a href="/articles/signum%20cents" class="dropdown-item">Signum Cents <span class="ml-2 badge badge-pill badge-info"></span></a>
+											<a href="/articles/CEO's%20Corner" class="dropdown-item">CEO's Corner <span class="ml-2 badge badge-pill badge-info"></span></a>
+											<a href="/whitepapers-signup" class="dropdown-item">Whitepapers <span class="ml-2 badge badge-pill badge-info"></span></a>
+										</span>
+										<span>
+											<div class="dropdown-header" role="heading"></div>
+											<a href="/whitepapers-signup" class="dropdown-item">
+												<button type="button" class="btn btn-primary" style="width: 100%;">Subscribe for free </button>
+												<span class="ml-2 badge badge-pill badge-info"></span>
+											</a>
+										</span>
+									</div>
 								</div>
-							</a>
-							<span>
-								<div class="dropdown-header" role="heading">By category</div>
-								<a href="/articles/daily%20unicorn" class="dropdown-item">Daily Unicorn <span class="ml-2 badge badge-pill badge-info"></span></a>
-								<a href="/articles/signum%20cents" class="dropdown-item">Signum Cents <span class="ml-2 badge badge-pill badge-info"></span></a>
-								<a href="/articles/CEO's%20Corner" class="dropdown-item">CEO's Corner <span class="ml-2 badge badge-pill badge-info"></span></a>
-								<a href="/whitepapers-signup" class="dropdown-item">Whitepapers <span class="ml-2 badge badge-pill badge-info"></span></a>
-							</span>
-							<span>
-								<div class="dropdown-header" role="heading"></div>
-								<a href="/whitepapers-signup" class="dropdown-item">
-									<button type="button" class="btn btn-primary" style="width: 100%;">Subscribe for free </button>
-									<span class="ml-2 badge badge-pill badge-info"></span>
-								</a>
-							</span>
+								<div class="dropdown nav-item"><a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">FAQs</a>
+									<div class="dropdown-menu" aria-labelledby="">
+										<a href="/faq" class="dropdown-cap dropdown-item">
+											<div class="dropdown-cap-text">
+												<h4>FAQs</h4>
+												<p></p>
+											</div>
+										</a>
+									</div>
+								</div>  */}}
+								<a href="/demo-signup" class="navbar-button btn btn-primary">Demo data</a>
+							</div>
 						</div>
-					</div>
-					<div class="dropdown nav-item"><a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">FAQs</a>
-						<div class="dropdown-menu" aria-labelledby="">
-							<a href="/faq" class="dropdown-cap dropdown-item">
-								<div class="dropdown-cap-text">
-									<h4>FAQs</h4>
-									<p></p>
-								</div>
-							</a>
-						</div>
-					</div>
-					<a href="/demo-signup" class="navbar-button btn btn-primary">Demo data</a>
-				</div>
-			</div>
-		</nav>
+					</nav>
+				{{ end }}
+			{{ end }}
 	</div>
 </div>
