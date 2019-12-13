@@ -17,16 +17,12 @@
 								{{range .Params.menus}}
 									{{ $resource := printf "%s%s" .id "/*" }}
 									{{ with $menus.Resources.Match $resource }}
-
 										{{ range . }}
 											{{ partial "menu.html" . }}
 										{{ end }}
-
 									{{ end }}
-
 								{{end}}
-
-							{{/*  	<div class="dropdown nav-item">
+<!-- 							<div class="dropdown nav-item">
 									<a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">Solutions</a>
 									<div class="dropdown-menu" aria-labelledby="">
 										<a href="/find-new-alpha" class="dropdown-cap dropdown-item">
@@ -91,7 +87,7 @@
 											</div>
 										</a>
 									</div>
-								</div>  */}}
+								</div> -->
 								<a href="/demo-signup" class="navbar-button btn btn-primary">Demo data</a>
 							</div>
 						</div>

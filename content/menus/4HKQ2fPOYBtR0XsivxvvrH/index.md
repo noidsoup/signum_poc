@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-11T04:29:58.184Z"
+updated: "2019-12-13T00:12:39.708Z"
 createdAt: "2019-12-11T04:28:57.301Z"
 date: "2019-12-11T04:28:57.301Z"
 title: "Solutions"

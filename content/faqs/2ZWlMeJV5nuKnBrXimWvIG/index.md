@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-11T04:39:58.014Z"
+updated: "2019-12-13T03:08:18.856Z"
 createdAt: "2019-12-11T04:39:58.014Z"
 date: "2019-12-11T04:39:58.014Z"
 question: "Can I evaluate Signum in real-time?"
@@ -25,4 +25,5 @@ answer:
         nodeType: "text"
     nodeType: "paragraph"
 answer_plaintext: "Yes! Please contact us to discuss connectivity options ranging from Internet connectivity to data center cross connection to deployment of an Exegy appliance in your test environment."
+slug: "can-i-evaluate-signum-real-time"
 ---

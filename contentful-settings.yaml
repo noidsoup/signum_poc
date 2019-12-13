@@ -13,21 +13,21 @@ repeatableTypes:
     fileExtension: md
 
   - id: insightCategory
-    directory: /content/insights/categories/
+    directory: /content/category/
     fileExtension: md
 
   # pages.
   - id: page
-    directory: /content/pages/
+    directory: /content/
     fileExtension: md
 
   - id: section
-    directory: /content/pages/sections/
+    directory: /content/sections/
     fileExtension: md
     isHeadless: true
 
   - id: button
-    directory: /content/pages/buttons/
+    directory: /content/buttons/
     fileExtension: md
     isHeadless: true
 
