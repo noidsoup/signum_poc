@@ -9,6 +9,15 @@
     </a>
     <span>
       {{ partial "rich-text.html" (dict "This" .Params.content "Site" $.Site "Menu" true) }}
+      {{ if eq .Params.title "Insights" }}
+        <span>
+          <div class="dropdown-header" role="heading"></div>
+          <a href="/whitepapers-signup" class="dropdown-item">
+            <button type="button" class="btn btn-primary" style="width: 100%;">Subscribe for free </button>
+            <span class="ml-2 badge badge-pill badge-info"></span>
+          </a>
+        </span>
+      {{ end }}
     </span>
   </div>
 </div>
