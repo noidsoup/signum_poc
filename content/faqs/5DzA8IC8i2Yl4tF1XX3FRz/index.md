@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-11T04:39:03.095Z"
+updated: "2019-12-13T04:19:09.147Z"
 createdAt: "2019-12-11T04:39:03.095Z"
 date: "2019-12-11T04:39:03.095Z"
 question: "Can I download sample data for a demo?"
@@ -25,4 +25,5 @@ answer:
         nodeType: "text"
     nodeType: "paragraph"
 answer_plaintext: "Absolutely! We have 10 day samples of our signals in comma-separated values (CSV) format for easy evaluation. Just click below, provide us with your contact info, and we will get the data to you via download or cloud transfer. "
+slug: "can-i-download-sample-data-for-a-demo"
 ---
