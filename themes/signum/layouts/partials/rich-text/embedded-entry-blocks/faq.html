@@ -3,7 +3,7 @@
 {{ if .Menu }}
   {{ with $headless.Resources.Match $resource }}
     {{ range . }}
-      <a href="/faqs/#{{.Params.Slug}}" class="dropdown-item">{{.Params.Question}}<span class="ml-2 badge badge-pill badge-info"></span></a>
+      <a onclick="jump()" href="/faqs/#{{.Params.Slug}}" class="dropdown-item">{{.Params.Question}}<span class="ml-2 badge badge-pill badge-info"></span></a>
     {{ end }}
   {{ end }}
 {{ else }}

@@ -1,5 +1,5 @@
 {{ define "main" }}
-
+{{ $url := printf "%s" .URL | absLangURL }}
 <body class="blog">
 	<div class="blog-single bg-white">
 		<div class="blog-layout container">
@@ -11,25 +11,19 @@
 						<div class="blog-meta">
 							<span>Insights</span>
               <span>{{ .PublishDate.Format "January 2, 2006" }}</span>
-
-							<a href="#" class="badge badge-pill badge-warning">Category</a>
+							<a href="#" class="badge badge-pill badge-warning">{{ partial "categoryPill.html" (dict "This" . "Site" $.Site "Id" .Params.category.id) }}</a>
 						</div>
 					</div>
 				</div>
 			</div>
-
 			<div class="row">
 				<div class="col-lg-3 col-12 order-lg-0 order-1">
-					<div class="blog-author">
-						<div class="blog-author-photo" style="background-image: url('')"></div>
-						<h3>Author Name</h3>
-						<p>Author bio</p>
-						<a class="blog-author-bio" href="#" target="_blank">Full bio <i class="fas fa-arrow-right"></i></a>
-					</div>
+					{{ partial "author.html" (dict "This" . "Site" $.Site "Id" .Params.author.id) }}
 					<div class="blog-share">
 						<h3>Share this insight</h3>
-						<a href="#"><i class="fab fa-facebook-f"></i></a>
-						<a href="#"><i class="fab fa-twitter"></i></a>
+						<a href="http://www.facebook.com/sharer.php?u={{ $url }}"><i class="fab fa-facebook-f"></i></a>
+
+						<a href="http://twitter.com/share?text={{ .Title }}&url={{ $url }}"><i class="fab fa-twitter"></i></a>
 						<a href="#"><i class="fab fa-linkedin-in"></i></a>
 						</ul>
 					</div>
