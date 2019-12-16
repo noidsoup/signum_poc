@@ -10,7 +10,8 @@
 						<h1>{{ .Title }}</h1>
 						<div class="blog-meta">
 							<span>Insights</span>
-							<span>{{ .PublishDate.Format "January 1, 2006" }}</span>
+							<span>{{ .PublishDate.Format "January 2, 2006" }}</span>
+
 							<a href="#" class="badge badge-pill badge-COLOR_NAME_GOES_HERE">Category</a>
 						</div>
 					</div>
@@ -35,8 +36,8 @@
 				</div>
 				<div class="col-lg-9 col-12 order-lg-1 order-0">
 					<div class="blog-content">
-						<div class="blog-hero rounded" style="background-image: url('')"></div>
-						<p>Post content goes here</p>
+						<div class="blog-hero rounded" style="background-image: url('{{.Params.image.url}}')"></div>
+						{{ partial "rich-text.html" (dict "This" .Params.content "Site" $.Site) }}
 					</div>
 				</div>
 			</div>
