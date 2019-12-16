@@ -12,5 +12,9 @@ CONTENTFUL_TOKEN = {Your Contentful API token}
 
 ## Install dependencies and run
 
-`npm i`
-`npm run`
+```
+npm i
+```
+```
+npm start
+```
