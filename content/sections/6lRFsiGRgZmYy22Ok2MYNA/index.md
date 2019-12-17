@@ -1,11 +1,12 @@
 ---
 headless: true
-updated: "2019-12-03T23:29:46.188Z"
+updated: "2019-12-17T20:26:54.929Z"
 createdAt: "2019-12-03T23:29:46.188Z"
 date: "2019-12-03T23:29:46.188Z"
 title: "Consistency is key"
 centerAlignText: false
 biggerParagraphText: false
+removePadding: "Remove top padding"
 columns: "One"
 column1Content:
   - data: {}

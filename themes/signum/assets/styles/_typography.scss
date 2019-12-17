@@ -61,7 +61,7 @@ u {
 		width           : 100%;
 		position        : absolute;
 		bottom          : 0;
-		background-color: $warning;
+		background-color: rgba($warning, .9);
 		z-index         : -1;
 	}
 }
@@ -76,6 +76,16 @@ u {
 	p {
 		font-size  : 1.25rem;
 		font-weight: normal;
+	}
+}
+
+h1,
+h2 {
+	u {
+		&::before {
+			height: 1.25rem !important;
+			bottom: 0.25rem !important;
+		}
 	}
 }
 

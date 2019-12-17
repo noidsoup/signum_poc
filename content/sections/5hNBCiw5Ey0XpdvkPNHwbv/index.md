@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-17T02:55:42.223Z"
+updated: "2019-12-17T20:25:31.979Z"
 createdAt: "2019-12-03T23:05:10.414Z"
 date: "2019-12-03T23:05:10.414Z"
 title: "Stop Reacting – Start Predicting"
@@ -8,6 +8,7 @@ centerAlignText: true
 biggerParagraphText: true
 removePadding: "Remove bottom padding"
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

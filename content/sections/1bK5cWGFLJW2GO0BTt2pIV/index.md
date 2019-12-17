@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-17T03:30:02.893Z"
+updated: "2019-12-17T03:30:39.549Z"
 createdAt: "2019-12-04T16:50:10.402Z"
 date: "2019-12-04T16:50:10.402Z"
 title: "Homepage hero"

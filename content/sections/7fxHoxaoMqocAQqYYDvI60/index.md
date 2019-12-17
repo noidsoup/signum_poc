@@ -1,12 +1,11 @@
 ---
 headless: true
-updated: "2019-12-17T02:52:31.873Z"
+updated: "2019-12-17T20:54:20.616Z"
 createdAt: "2019-12-03T23:33:34.305Z"
 date: "2019-12-03T23:33:34.305Z"
 title: "Leverage insights from the shadows"
 centerAlignText: true
 biggerParagraphText: true
-removePadding: "Remove bottom padding"
 columns: "One"
 narrowColumn: true
 column1Content:

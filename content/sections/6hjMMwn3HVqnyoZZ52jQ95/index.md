@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-17T02:59:39.256Z"
+updated: "2019-12-17T20:55:39.669Z"
 createdAt: "2019-12-03T23:36:41.318Z"
 date: "2019-12-03T23:36:41.318Z"
 title: "Try out our torch"
@@ -28,12 +28,12 @@ column1Content:
         content:
           - data: {}
             marks: []
-            value: "Get X-ray vision for your algos with Signum"
+            value: ""
             nodeType: "text"
         nodeType: "hyperlink"
       - data: {}
         marks: []
-        value: ""
+        value: "Get X-ray vision for your algos with Signum."
         nodeType: "text"
     nodeType: "paragraph"
   - data:
@@ -48,12 +48,5 @@ column1Content:
         value: ""
         nodeType: "text"
     nodeType: "paragraph"
-  - data: {}
-    content:
-      - data: {}
-        marks: []
-        value: "."
-        nodeType: "text"
-    nodeType: "paragraph"
-column1Content_plaintext: "Try out our torch Can you really afford to not learn more? Register to access free Liquidity Lamp sample data and whitepapers. Go on, be a superhero. Get X-ray vision for your algos with Signum ."
+column1Content_plaintext: "Try out our torch Can you really afford to not learn more? Register to access free Liquidity Lamp sample data and whitepapers. Go on, be a superhero. Get X-ray vision for your algos with Signum. "
 ---

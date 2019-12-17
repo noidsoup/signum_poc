@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-03T23:22:26.507Z"
+updated: "2019-12-17T20:26:11.017Z"
 createdAt: "2019-12-03T23:22:08.355Z"
 date: "2019-12-03T23:22:08.355Z"
 title: "Sweeping is dumb – execute smarter"
@@ -8,6 +8,7 @@ centerAlignText: true
 biggerParagraphText: true
 removePadding: "Remove bottom padding"
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:
