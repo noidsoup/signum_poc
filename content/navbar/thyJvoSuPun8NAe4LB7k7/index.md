@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-16T22:41:16.742Z"
+updated: "2019-12-17T22:25:02.051Z"
 createdAt: "2019-12-11T04:41:35.826Z"
 date: "2019-12-11T04:41:35.826Z"
 title: "Global Navbar"
@@ -19,4 +19,7 @@ menus:
     contentType: "menu"
   - id: "3h45OheCUVhsY88luO9ErB"
     contentType: "menu"
+button:
+  id: "3ntXTw66TzV5X4r3HEu0x8"
+  contentType: "button"
 ---
