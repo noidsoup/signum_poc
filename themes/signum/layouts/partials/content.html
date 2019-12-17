@@ -1,20 +1,38 @@
-
 {{ $headless := .Site.GetPage "sections"  }}
-<h3>sections:</h3>
 {{ range .Params.content }}
-  {{ $resource := printf "%s%s" .id "/*" }}
+	{{ $resource := printf "%s%s" .id "/*" }}
 
-  {{ with $headless.Resources.Match $resource }}
+	{{ with $headless.Resources.Match $resource }}
 
-    {{ range . }}
-        {{ partial "rich-text.html" (dict "This" .Params.column1Content "Site" $.Site) }}
-    {{ end }}
+		{{ range . }}
+			<div class="bg-white py-8 py-lg-11">
+				<div class="container">
+					<div class="justify-content-md-center row">
+						{{ with .Params.column1Content }}
+							<div class="col">
+								{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+							</div>
+						{{ end }}
+						{{ with .Params.column2Content }}
+							<div class="col">
+								{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+							</div>
+						{{ end }}
+						{{ with .Params.column3Content }}
+							<div class="col">
+								{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+							</div>
+						{{ end }}
+						{{ with .Params.column4Content }}
+							<div class="col">
+								{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+							</div>
+						{{ end }}
+					</div>
+				</div>
+			</div>
+		{{ end }}
 
-  {{ end }}
+	{{ end }}
 
 {{ end }}
-
-
-
-
-

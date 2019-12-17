@@ -3,19 +3,35 @@
 {{ $resource := printf "%s%s" .Params.HeroHeading.id "/*" }}
 
 {{ with $headless.Resources.Match $resource }}
+	{{ range . }}
 
-  {{ range . }}
-      <p>{{ .Title }}</p>
-
-      <h4>column1Content</h4>
-      {{ partial "rich-text.html" (dict "This" .Params.column1Content "Site" $.Site) }}
-      <h4>column2Content</h4>
-      {{ partial "rich-text.html" (dict "This" .Params.column2Content "Site" $.Site) }}
-      <h4>column3Content</h4>
-      {{ partial "rich-text.html" (dict "This" .Params.column3Content "Site" $.Site) }}
-      <h4>column4Content</h4>
-      {{ partial "rich-text.html" (dict "This" .Params.column4Content "Site" $.Site) }}
-
-  {{ end }}
+		<!-- This is a Section, but it doesn't have a white BG like other sections -->
+		<div class="py-8 py-lg-11">
+			<div class="container">
+				<div class="justify-content-md-center row">
+					{{ with .Params.column1Content }}
+						<div class="col">
+							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+						</div>
+					{{ end }}
+					{{ with .Params.column2Content }}
+						<div class="col">
+							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+						</div>
+					{{ end }}
+					{{ with .Params.column3Content }}
+						<div class="col">
+							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+						</div>
+					{{ end }}
+					{{ with .Params.column4Content }}
+						<div class="col">
+							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+						</div>
+					{{ end }}
+				</div>
+			</div>
+		</div>
+	{{ end }}
 
 {{ end }}

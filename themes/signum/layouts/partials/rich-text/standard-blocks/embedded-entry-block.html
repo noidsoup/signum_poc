@@ -2,10 +2,10 @@
 <!-- check if the partial exists -->
 {{- $partialCheck := print "themes/signum/layouts/partials/" $partial -}}
 {{- if fileExists $partialCheck -}}
-    <!-- call partial if it exists -->
-    {{- partial $partial (dict "This" . "Entry" .This.data "Site" $.Site "Menu" .Menu ) -}}
+<!-- call partial if it exists -->
+{{- partial $partial (dict "This" . "Entry" .This.data "Site" $.Site "Menu" .Menu ) -}}
 {{- else -}}
-    <!-- call the node-not-found partial if it doesn't exist -->
-    <p>partial does not exist {{$partialCheck}}</p>
-    <!-- {{- partial "rich-text/node-not-found.html" (dict "Template" .nodeType "Directory" "standard-blocks") -}} -->
+<!-- call the node-not-found partial if it doesn't exist -->
+<p>partial does not exist {{$partialCheck}}</p>
+<!-- {{- partial "rich-text/node-not-found.html" (dict "Template" .nodeType "Directory" "standard-blocks") -}} -->
 {{- end -}}

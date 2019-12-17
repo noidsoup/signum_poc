@@ -1,8 +1,6 @@
 {{ define "main" }}
 <main>
-<!--   {{ partial "hero.html" . }} -->
-  <h1>{{.Title}}</h1>
-  <p>{{.Description}}</p>
-  <p>{{ partial "content.html" . }}</p>
+	{{ partial "hero.html" . }}
+	<p>{{ partial "content.html" . }}</p>
 </main>
 {{ end }}
