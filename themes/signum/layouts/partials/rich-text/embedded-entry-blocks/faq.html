@@ -9,8 +9,14 @@
 {{ else }}
 	{{ with $headless.Resources.Match $resource }}
 		{{ range . }}
-			<h5 id="{{.Params.slug}}">{{.Params.Question}}</h5>
-			{{ partial "rich-text.html" (dict "This" .Params.answer "Site" $.Site) }}
+			<div class="faq-item" id="{{.Params.slug}}">
+				<a href="#{{.Params.slug}}-answer" data-toggle="collapse" class="faq-question collapsed">
+					<h3>{{.Params.Question}}</h3>
+				</a>
+				<div class="faq-answer collapse" id="{{.Params.slug}}-answer">
+					{{ partial "rich-text.html" (dict "This" .Params.answer "Site" $.Site) }}
+				</div>
+			</div>
 		{{ end }}
 	{{ end }}
 {{ end }}

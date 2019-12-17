@@ -22,6 +22,11 @@
 		}
 
 		.dropdown-item {
+			&:active {
+				background-color: transparent;
+				color           : $primary;
+			}
+
 			&.dropdown-cap {
 				display         : flex;
 				align-items     : center;
