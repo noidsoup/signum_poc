@@ -12,7 +12,12 @@
 						<div class="blog-meta">
 							<span>Insights</span>
 							<span>{{ .PublishDate.Format "January 2, 2006" }}</span>
+<<<<<<< HEAD
 							{{ partial "categoryPill.html" (dict "This" . "Site" $.Site "Id" .Params.category.id) }}
+=======
+
+							<a href="#" class="badge badge-pill">{{ .Category }}</a>
+>>>>>>> master
 						</div>
 					</div>
 				</div>
