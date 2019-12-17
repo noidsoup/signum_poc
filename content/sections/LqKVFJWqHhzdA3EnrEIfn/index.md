@@ -1,11 +1,12 @@
 ---
 headless: true
-updated: "2019-12-03T22:22:04.047Z"
+updated: "2019-12-17T01:48:30.340Z"
 createdAt: "2019-12-03T22:22:04.047Z"
 date: "2019-12-03T22:22:04.047Z"
-title: "New Alpha features"
+title: "Find New Alpha features"
 centerAlignText: true
 biggerParagraphText: false
+removePadding: "Remove both"
 columns: "Three"
 column1Content:
   - data:

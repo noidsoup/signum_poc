@@ -5,10 +5,10 @@
 	{{ with $headless.Resources.Match $resource }}
 
 		{{ range . }}
-			<div class="bg-white py-8 py-lg-11">
-				<div class="container">
-					<div class="justify-content-md-center row">
-						{{ with .Params.column1Content }}
+			<div class="bg-white {{if eq .Params.removePadding "Remove top padding"}} pb-8 pb-lg-11 {{ else if eq .Params.removePadding "Remove bottom padding" }} pt-8 pt-lg-11 {{ else if eq .Params.removePadding "Remove both" }} py-0 {{ else }} py-8 py-lg-11{{ end }}">
+				<div class="container {{if .Params.biggerParagraphText}}lead{{ end }}">
+					<div class="justify-content-md-center row {{if .Params.centerAlignText}}text-center{{ end }}">
+						{{ with .Params.column1Content}}
 							<div class="col">
 								{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
 							</div>

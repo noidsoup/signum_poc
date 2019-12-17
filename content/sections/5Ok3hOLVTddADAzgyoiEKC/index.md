@@ -1,9 +1,9 @@
 ---
 headless: true
-updated: "2019-12-03T22:18:43.895Z"
+updated: "2019-12-17T01:45:22.321Z"
 createdAt: "2019-12-03T22:16:19.151Z"
 date: "2019-12-03T22:16:19.151Z"
-title: "Stop Reacting – Start Predicting"
+title: "Stop Reacting – Start Predicting (New Alpha page)"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
