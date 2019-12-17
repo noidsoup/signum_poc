@@ -16,8 +16,8 @@
 			}
 
 			.blog-meta {
-				> a,
-				> span {
+				> span,
+				> a {
 					color    : $gray-700;
 					font-size: 0.9375rem;
 
@@ -184,6 +184,12 @@
 				li {
 					margin-bottom: 0.25rem;
 					position     : relative;
+
+					p {
+						&:last-child {
+							margin-bottom: 0;
+						}
+					}
 				}
 			}
 
