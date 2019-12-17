@@ -1,10 +1,11 @@
 ---
 headless: true
-updated: "2019-12-11T04:40:38.158Z"
+updated: "2019-12-17T23:07:11.181Z"
 createdAt: "2019-12-11T04:40:38.158Z"
 date: "2019-12-11T04:40:38.158Z"
 title: "FAQs"
 subtitle: "Get Signum-savvy"
+headingLink: "/faqs"
 content:
   - data:
       id: "6hlTrEn2wGpuTgWuf7Y5Vs"

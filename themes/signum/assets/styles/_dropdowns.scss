@@ -27,6 +27,7 @@
 				align-items     : center;
 				background-color: $bone;
 				padding         : 1.25rem;
+				margin-bottom   : 1rem;
 
 				img {
 					width       : 3.75rem;
@@ -51,10 +52,18 @@
 			}
 		}
 
-		p {
-			&:last-child {
+		.btn {
+			margin: $dropdown-item-padding-y $dropdown-item-padding-x;
+			width : calc(100% - (2 * #{$dropdown-item-padding-x}));
+
+			&:last-of-type {
+				margin-top   : 2 * $dropdown-item-padding-y;
 				margin-bottom: 0;
 			}
+		}
+
+		p {
+			margin-bottom: 0;
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-17T21:34:00.345Z"
+updated: "2019-12-17T22:58:23.440Z"
 createdAt: "2019-12-04T16:51:07.937Z"
 date: "2019-12-04T16:51:07.937Z"
 title: "More Alpha. Better Fills. Less Risk."
@@ -34,16 +34,16 @@ column1Content:
         value: ". Imagine receiving in microseconds "
         nodeType: "text"
       - data:
-          uri: "/demo-signup"
+          uri: "https://exegy.com/"
         content:
           - data: {}
             marks: []
-            value: "real-time market data "
+            value: "real-time market data"
             nodeType: "text"
         nodeType: "hyperlink"
       - data: {}
         marks: []
-        value: "that includes predictions of price movements, forecasts of trade concentrations, and revelations of hidden liquidity. How much better would you trade? Let us show you."
+        value: " that includes predictions of price movements, forecasts of trade concentrations, and revelations of hidden liquidity. How much better would you trade? Let us show you."
         nodeType: "text"
     nodeType: "paragraph"
   - data: {}

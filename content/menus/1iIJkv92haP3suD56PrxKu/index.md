@@ -1,10 +1,11 @@
 ---
 headless: true
-updated: "2019-12-11T04:31:18.888Z"
+updated: "2019-12-17T23:06:39.133Z"
 createdAt: "2019-12-11T04:31:18.888Z"
 date: "2019-12-11T04:31:18.888Z"
 title: "Signals"
 subtitle: "Actionable predictions with every tick"
+headingLink: "/quote-vector"
 content:
   - data: {}
     content:

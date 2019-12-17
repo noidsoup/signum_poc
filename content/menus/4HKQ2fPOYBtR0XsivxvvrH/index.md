@@ -1,10 +1,11 @@
 ---
 headless: true
-updated: "2019-12-13T00:12:39.708Z"
+updated: "2019-12-17T23:06:25.652Z"
 createdAt: "2019-12-11T04:28:57.301Z"
 date: "2019-12-11T04:28:57.301Z"
 title: "Solutions"
 subtitle: "For serious, results-driven traders"
+headingLink: "/find-new-alpha"
 content:
   - data: {}
     content:

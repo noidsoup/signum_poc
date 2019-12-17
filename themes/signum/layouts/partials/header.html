@@ -21,7 +21,11 @@
 								{{ end }}
 							{{ end }}
 						{{end}}
-						<a href="/demo-signup" class="navbar-button btn btn-primary">Demo data</a>
+
+						{{ $button := .Site.GetPage "buttons"  }}
+						{{range .Params.button}}
+							Button!
+						{{end}}
 					</div>
 				</div>
 			</nav>

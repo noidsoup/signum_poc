@@ -1,23 +1,39 @@
 <div class="dropdown nav-item">
-  <a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">{{.Title}}</a>
-  <div class="dropdown-menu" aria-labelledby="">
-    <a href="" class="dropdown-cap dropdown-item">
-      <div class="dropdown-cap-text">
-        <h4>{{.Title}}</h4>
-        <p>{{.Params.Subtitle}}</p>
-      </div>
-    </a>
-    <span>
-      {{ partial "rich-text.html" (dict "This" .Params.content "Site" $.Site "Menu" true) }}
+	<a aria-haspopup="true" aria-expanded="false" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button">{{.Title}}</a>
+	<div class="dropdown-menu" aria-labelledby="">
+		{{ $headingLink := .Params.headingLink}}
+		{{ $title := .Title}}
+		{{ $subtitle := .Params.subtitle}}
+		{{with $headingLink}}
+			<a href="{{$headingLink}}" class="dropdown-cap dropdown-item">
+				<div class="dropdown-cap-text">
+					<h4>{{$title}}</h4>
+					<p>{{$subtitle}}</p>
+				</div>
+			</a>
+		{{ else }}
+			<div class="dropdown-cap dropdown-item">
+				<div class="dropdown-cap-text">
+					<h4>{{$title}}</h4>
+					<p>{{$subtitle}}</p>
+				</div>
+			</div>
+		{{ end }}
+		<span>
+			{{ partial "rich-text.html" (dict "This" .Params.content "Site" $.Site "Menu" true) }}
+
+			{{- /*
       {{ if eq .Params.title "Insights" }}
-        <span>
-          <div class="dropdown-header" role="heading"></div>
-          <a href="/whitepapers-signup" class="dropdown-item">
-            <button type="button" class="btn btn-primary" style="width: 100%;">Subscribe for free </button>
-            <span class="ml-2 badge badge-pill badge-info"></span>
-          </a>
-        </span>
-      {{ end }}
-    </span>
-  </div>
+			<span>
+				<div class="dropdown-header" role="heading"></div>
+				<a href="/whitepapers-signup" class="dropdown-item">
+					<button type="button" class="btn btn-primary" style="width: 100%;">Subscribe for free </button>
+					<span class="ml-2 badge badge-pill badge-info"></span>
+				</a>
+			</span>
+			{{ end }}
+			*/ -}}
+
+		</span>
+	</div>
 </div>

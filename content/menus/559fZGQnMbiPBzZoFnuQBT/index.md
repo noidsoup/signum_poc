@@ -1,10 +1,11 @@
 ---
 headless: true
-updated: "2019-12-16T22:08:53.448Z"
+updated: "2019-12-17T23:07:00.500Z"
 createdAt: "2019-12-11T04:32:05.102Z"
 date: "2019-12-11T04:32:05.102Z"
 title: "Insights"
 subtitle: "Illuminating instruction"
+headingLink: "/insights"
 content:
   - data: {}
     content:
