@@ -5,6 +5,7 @@
 {{ with $headless.Resources.Match $resource }}
 	{{ range . }}
 		{{$narrowColumn := .Params.narrowColumn }}
+
 		<!-- This is a Section, but it doesn't have a white BG like other sections -->
 		<div class="{{if eq .Params.removePadding "Remove top padding"}} pb-8 pb-lg-11 {{ else if eq .Params.removePadding "Remove bottom padding" }} pt-8 pt-lg-11 {{ else if eq .Params.removePadding "Remove both" }} py-0 {{ else }} py-8 py-lg-11{{ end }}">
 			<div class="container {{if .Params.biggerParagraphText}}lead{{ end }}">

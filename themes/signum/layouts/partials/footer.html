@@ -1,115 +1,120 @@
-<div class="footer container">
-	<div class="footer-top row">
-		<div class="footer-top-info col-lg-6"><img src="/exegy-logo.svg">
-			<p>
-				Signum is powered by Exegy, the market leader in the normalization and distribution of real-time market data to a diverse set of elite firms in the financial services industry.
-				<strong><a href="https://www.exegy.com" class="text-nowrap">Learn more about us</a></strong>.
-			</p>
+{{ $navbar := .Site.GetPage "footer"  }}
+{{ with $navbar.Resources }}
+	{{ range . }}
+		<div class="footer container">
+			<div class="footer-top row">
+				<div class="footer-top-info col-lg-6"><img src="/exegy-logo.svg">
+					<p>
+						Signum is powered by Exegy, the market leader in the normalization and distribution of real-time market data to a diverse set of elite firms in the financial services industry.
+						<strong><a href="https://www.exegy.com" class="text-nowrap">Learn more about us</a></strong>.
+					</p>
+				</div>
+				<div class="footer-top-input col-lg-6">
+					<p class="lead">Get market signals in your inbox</p>
+					<form class="subscribe-form">
+						<input class="signum-input form-control" placeholder="name@company.com" value="">
+						<button type="button" class="ml-0 ml-lg-3 btn btn-primary">Subscribe</button>
+						<p class="small">By subscribing, you agree to our <a href="#">privacy policy</a>.</p>
+					</form>
+				</div>
+			</div>
+			<div class="footer-links row">
+				<div class="col-lg-3 col-6">
+					<h3>About</h3>
+					<p>Learn more about Signum and our parent company, Exegy.</p>
+					<h5>Company</h5>
+					<ul class="list-unstyled">
+						<li><a href="https://www.exegy.com">About us</a></li>
+						<li><a href="https://www.exegy.com">Leadership</a></li>
+						<li><a href="https://www.exegy.com">Contact us</a></li>
+					</ul>
+					<h5>Office</h5>
+					<ul class="list-unstyled">
+						<li>St. Louis: <a href="tel:13142183600" class="text-nowrap">+1.314.218.3600</a></li>
+						<li>London: <a href="tel:4402038905757" class="text-nowrap">+44.(0).20.3890.5757</a></li>
+						<li>New York: <a href="tel:16468762555" class="text-nowrap">+1.646.876.2555</a></li>
+						<li>Hong Kong: <a href="tel:13142183600" class="text-nowrap">+1.314.218.3600</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-3 col-6">
+					<h3>Insights</h3>
+					<p>Get the daily insights you need to make data-driven decisions.</p>
+					<h5>By category</h5>
+					<ul class="list-unstyled">
+						<li><a href="javascript:void(0)">Daily unicorn</a></li>
+						<li><a href="javascript:void(0)">Cover your assets</a></li>
+						<li><a href="javascript:void(0)">Dig into the data</a></li>
+						<li><a href="javascript:void(0)">Whitepapers</a></li>
+						<li><a href="javascript:void(0)">Podcast</a></li>
+					</ul>
+					<h5>Recent</h5>
+					<ul class="list-unstyled">
+						<li><a href="javascript:void(0)">INTC Reserve Order Volumes and Tariff Tiffs</a></li>
+						<li><a href="javascript:void(0)">We prefer “gainage” over slippage - leveraging predictions for price improvement</a></li>
+						<li><a href="javascript:void(0)">Real-time Predictions of Quote Price Movements - Quote Vector and Quote Fuse</a></li>
+						<li><a href="javascript:void(0)">Opening the door to over $2 billion increase in market making revenue</a></li>
+						<li><a href="javascript:void(0)">All recent articles</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-3 col-6">
+					<h4 class="mt-7 mt-lg-0">Solutions</h4>
+					<p>Whatever your size or problem, Signum has a solution.</p>
+					<h5>By outcome</h5>
+					<ul class="list-unstyled">
+						<li><a href="/find-new-alpha">Find new alpha</a></li>
+						<li><a href="/execute-with-quality">Execute with quality</a></li>
+					</ul>
+					<h5>By institution</h5>
+					<ul class="list-unstyled">
+						<li><a href="/quote-vector">Market makers</a></li>
+						<li><a href="/quote-fuse">Agency brokers</a></li>
+						<li><a href="/liquidity-lamp">Algo traders</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-3 col-6">
+					<h4 class="mt-7 mt-lg-0">Signals</h4>
+					<p>Alternative data solutions have never been more important.</p>
+					<h5>Trading signal products</h5>
+					<ul class="list-unstyled">
+						<li><a href="/liquidity-lamp">Liquidity Lamp</a></li>
+						<li><a href="/quote-fuse">Quote Fuse</a></li>
+						<li><a href="/quote-vector">Quote Vector</a></li>
+					</ul>
+					<h5>FAQs about our data</h5>
+					<ul class="list-unstyled">
+						<li><a href="/faq">Where do you source your data?</a></li>
+						<li><a href="/faq">How reliable is your data?</a></li>
+						<li><a href="/faq">Do you offer historical data?</a></li>
+						<li><a href="/faq">Can I get access to a data sample?</a></li>
+						<li><a href="/faq">How much does Signum cost?</a></li>
+						<li><a href="/faq">All frequently asked questions</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-baseline row">
+				<div class="col-xl-8">
+					<ul class="list-inline">
+						<li class="list-inline-item">© 2019 Exegy Inc. All rights reserved. </li>
+						<li class="list-inline-item"><a href="javascript:void(0)">Terms of use</a></li>
+						<li class="list-inline-item"><a href="javascript:void(0)">Privacy policy</a></li>
+						<li class="list-inline-item global"><a href="javascript:void(0)">Global privacy compliance</a></li>
+					</ul>
+				</div>
+				<div class="col">
+					<ul class="list-inline footer-baseline-social">
+						<li class="list-inline-item"><a href="https://www.facebook.com/ExegyMarketData"><img src="/facebook.svg"></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/exegymarketdata?lang=en"><img src="/twitter.svg"></a></li>
+						<li class="list-inline-item"><a href="https://www.linkedin.com/company/exegy"><img src="/linkedin.svg"></a></li>
+						<li class="list-inline-item"><a href="https://medium.com"><img src="/medium.svg"></a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		<div class="footer-top-input col-lg-6">
-			<p class="lead">Get market signals in your inbox</p>
-			<form class="subscribe-form">
-				<input class="signum-input form-control" placeholder="name@company.com" value="">
-				<button type="button" class="ml-0 ml-lg-3 btn btn-primary">Subscribe</button>
-				<p class="small">By subscribing, you agree to our <a href="#">privacy policy</a>.</p>
-			</form>
-		</div>
-	</div>
-	<div class="footer-links row">
-		<div class="col-lg-3 col-6">
-			<h3>About</h3>
-			<p>Learn more about Signum and our parent company, Exegy.</p>
-			<h5>Company</h5>
-			<ul class="list-unstyled">
-				<li><a href="https://www.exegy.com">About us</a></li>
-				<li><a href="https://www.exegy.com">Leadership</a></li>
-				<li><a href="https://www.exegy.com">Contact us</a></li>
-			</ul>
-			<h5>Office</h5>
-			<ul class="list-unstyled">
-				<li>St. Louis: <a href="tel:13142183600" class="text-nowrap">+1.314.218.3600</a></li>
-				<li>London: <a href="tel:4402038905757" class="text-nowrap">+44.(0).20.3890.5757</a></li>
-				<li>New York: <a href="tel:16468762555" class="text-nowrap">+1.646.876.2555</a></li>
-				<li>Hong Kong: <a href="tel:13142183600" class="text-nowrap">+1.314.218.3600</a></li>
-			</ul>
-		</div>
-		<div class="col-lg-3 col-6">
-			<h3>Insights</h3>
-			<p>Get the daily insights you need to make data-driven decisions.</p>
-			<h5>By category</h5>
-			<ul class="list-unstyled">
-				<li><a href="javascript:void(0)">Daily unicorn</a></li>
-				<li><a href="javascript:void(0)">Cover your assets</a></li>
-				<li><a href="javascript:void(0)">Dig into the data</a></li>
-				<li><a href="javascript:void(0)">Whitepapers</a></li>
-				<li><a href="javascript:void(0)">Podcast</a></li>
-			</ul>
-			<h5>Recent</h5>
-			<ul class="list-unstyled">
-				<li><a href="javascript:void(0)">INTC Reserve Order Volumes and Tariff Tiffs</a></li>
-				<li><a href="javascript:void(0)">We prefer “gainage” over slippage - leveraging predictions for price improvement</a></li>
-				<li><a href="javascript:void(0)">Real-time Predictions of Quote Price Movements - Quote Vector and Quote Fuse</a></li>
-				<li><a href="javascript:void(0)">Opening the door to over $2 billion increase in market making revenue</a></li>
-				<li><a href="javascript:void(0)">All recent articles</a></li>
-			</ul>
-		</div>
-		<div class="col-lg-3 col-6">
-			<h4 class="mt-7 mt-lg-0">Solutions</h4>
-			<p>Whatever your size or problem, Signum has a solution.</p>
-			<h5>By outcome</h5>
-			<ul class="list-unstyled">
-				<li><a href="/find-new-alpha">Find new alpha</a></li>
-				<li><a href="/execute-with-quality">Execute with quality</a></li>
-			</ul>
-			<h5>By institution</h5>
-			<ul class="list-unstyled">
-				<li><a href="/quote-vector">Market makers</a></li>
-				<li><a href="/quote-fuse">Agency brokers</a></li>
-				<li><a href="/liquidity-lamp">Algo traders</a></li>
-			</ul>
-		</div>
-		<div class="col-lg-3 col-6">
-			<h4 class="mt-7 mt-lg-0">Signals</h4>
-			<p>Alternative data solutions have never been more important.</p>
-			<h5>Trading signal products</h5>
-			<ul class="list-unstyled">
-				<li><a href="/liquidity-lamp">Liquidity Lamp</a></li>
-				<li><a href="/quote-fuse">Quote Fuse</a></li>
-				<li><a href="/quote-vector">Quote Vector</a></li>
-			</ul>
-			<h5>FAQs about our data</h5>
-			<ul class="list-unstyled">
-				<li><a href="/faq">Where do you source your data?</a></li>
-				<li><a href="/faq">How reliable is your data?</a></li>
-				<li><a href="/faq">Do you offer historical data?</a></li>
-				<li><a href="/faq">Can I get access to a data sample?</a></li>
-				<li><a href="/faq">How much does Signum cost?</a></li>
-				<li><a href="/faq">All frequently asked questions</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="footer-baseline row">
-		<div class="col-xl-8">
-			<ul class="list-inline">
-				<li class="list-inline-item">© 2019 Exegy Inc. All rights reserved. </li>
-				<li class="list-inline-item"><a href="javascript:void(0)">Terms of use</a></li>
-				<li class="list-inline-item"><a href="javascript:void(0)">Privacy policy</a></li>
-				<li class="list-inline-item global"><a href="javascript:void(0)">Global privacy compliance</a></li>
-			</ul>
-		</div>
-		<div class="col">
-			<ul class="list-inline footer-baseline-social">
-				<li class="list-inline-item"><a href="https://www.facebook.com/ExegyMarketData"><img src="/facebook.svg"></a></li>
-				<li class="list-inline-item"><a href="https://twitter.com/exegymarketdata?lang=en"><img src="/twitter.svg"></a></li>
-				<li class="list-inline-item"><a href="https://www.linkedin.com/company/exegy"><img src="/linkedin.svg"></a></li>
-				<li class="list-inline-item"><a href="https://medium.com"><img src="/medium.svg"></a></li>
-			</ul>
-		</div>
-	</div>
-</div>
 
 
-<script src="/js/jquery.js"></script>
-<script src="/js/popper.js"></script>
-<script src="/js/bootstrap.js"></script>
-<script src="/js/main.js"></script>
+		<script src="/js/jquery.js"></script>
+		<script src="/js/popper.js"></script>
+		<script src="/js/bootstrap.js"></script>
+		<script src="/js/main.js"></script>
+		{{ end }}
+	{{ end }}

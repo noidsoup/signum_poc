@@ -1,3 +1,11 @@
+singleTypes:
+  # fetches only the most recently updated entry in a particular content type
+  # Generated file will be named after the fileName setting
+  - id: homepage
+    directory: /content/
+    fileName: _index
+    fileExtension: md
+
 repeatableTypes:
   # fetches all the entries of a content type and places them in a directory.
   # Generated files will be named after their Entry ID in Contentful.
