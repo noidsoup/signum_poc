@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-16T23:40:06.765Z"
+updated: "2019-12-17T03:30:02.893Z"
 createdAt: "2019-12-04T16:50:10.402Z"
 date: "2019-12-04T16:50:10.402Z"
 title: "Homepage hero"
 centerAlignText: false
 biggerParagraphText: true
 columns: "Two"
+narrowColumn: true
 column1Content:
   - data: {}
     content:
