@@ -1,17 +1,16 @@
 {{ $headless := .Site.GetPage "faqs"  }}
 {{ $resource := printf "%s%s" .Entry.id "/*" }}
 {{ if .Menu }}
-  {{ with $headless.Resources.Match $resource }}
-    {{ range . }}
-      <a onclick="jump()" href="/faqs/#{{.Params.Slug}}" class="dropdown-item">{{.Params.Question}}<span class="ml-2 badge badge-pill badge-info"></span></a>
-    {{ end }}
-  {{ end }}
+	{{ with $headless.Resources.Match $resource }}
+		{{ range . }}
+			<a onclick="jump()" href="/faqs/#{{.Params.Slug}}" class="dropdown-item">{{.Params.Question}}<span class="ml-2 badge badge-pill badge-info"></span></a>
+		{{ end }}
+	{{ end }}
 {{ else }}
-  {{ with $headless.Resources.Match $resource }}
-    {{ range . }}
-     <h5 id="{{.Params.slug}}">{{.Params.Question}}</h5>
-     {{ partial "rich-text.html" (dict "This" .Params.answer "Site" $.Site) }}
-    {{ end }}
-  {{ end }}
+	{{ with $headless.Resources.Match $resource }}
+		{{ range . }}
+			<h5 id="{{.Params.slug}}">{{.Params.Question}}</h5>
+			{{ partial "rich-text.html" (dict "This" .Params.answer "Site" $.Site) }}
+		{{ end }}
+	{{ end }}
 {{ end }}
-
