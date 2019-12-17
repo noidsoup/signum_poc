@@ -1,11 +1,18 @@
 {{ define "main" }}
-<main class="container">
-		{{ range .Pages }}
-		<li>
-			<a href="{{.Permalink}}">{{.Title}}</a>
-		</li>
-		{{ end }}
-	{{ partial "hero.html" . }}
-	<p>{{ partial "content.html" . }}</p>
-</main>
+
+<body class="home">
+	{{- /*
+	{{ range .Pages }}
+	<li>
+		<a href="{{.Permalink}}">{{.Title}}</a>
+	</li>
+	{{ end }}
+	*/ -}}
+
+	<div class="home-hero">
+		{{ partial "hero.html" . }}
+	</div>
+
+	{{ partial "content.html" . }}
+</body>
 {{ end }}

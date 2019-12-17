@@ -1,1 +1,17 @@
-<p>Link Card Entry</p>
+{{ $headless := .Site.GetPage "linkCards"  }}
+{{ $resource := printf "%s%s" .Entry.id "/*" }}
+{{ with $headless.Resources.Match $resource }}
+	{{ range . }}
+		<a href="{{ .Params.Link }}" class="card link-card">
+			<img class="card-img" src="{{ .Params.Image.Url }}">
+			<div class="card-body">
+				<h3>{{ .Params.Title }}</h3>
+				<p>{{ .Params.Description }}</p>
+				<span class="arrow-link">
+					<span class="call-to-action">{{ .Params.LinkLabel }}</span>
+					<i class="far fa-arrow-right"></i>
+				</span>
+			</div>
+		</a>
+	{{ end }}
+{{ end }}

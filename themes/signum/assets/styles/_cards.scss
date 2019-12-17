@@ -26,6 +26,40 @@
 		}
 	}
 
+	&.link-card {
+		padding       : 1.875rem;
+		display       : flex;
+		flex-direction: row;
+		align-items   : flex-start;
+
+		&:not(:last-child) {
+			margin-bottom: 1.25rem;
+		}
+
+		.card-img {
+			width       : 3.75rem;
+			margin-right: 1.25rem;
+		}
+
+		.card-body {
+			padding: 0;
+
+			h4 {
+				margin-bottom: 0.5rem;
+			}
+
+			p {
+				margin-bottom: 0.5rem;
+				font-size    : 0.9375rem;
+			}
+		}
+
+		&:hover {
+			text-decoration: none;
+			color          : $gray-800;
+		}
+	}
+
 	&.testimonial-card {
 		.card-body {
 			padding: 2.5rem;

@@ -1,0 +1,20 @@
+.home {
+	.home-hero {
+		.row {
+			align-items: center;
+
+			.col {
+				&:first-child {
+					@extend .col-lg-7;
+					@extend .pr-lg-10;
+
+					@include media-breakpoint-down(lg) {
+						flex-basis    : 100%;
+						padding-right : 0;
+						padding-bottom: 3rem;
+					}
+				}
+			}
+		}
+	}
+}

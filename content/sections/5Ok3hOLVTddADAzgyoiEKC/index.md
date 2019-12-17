@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-17T02:11:01.231Z"
+updated: "2019-12-17T21:41:04.196Z"
 createdAt: "2019-12-03T22:16:19.151Z"
 date: "2019-12-03T22:16:19.151Z"
 title: "Stop Reacting – Start Predicting (New Alpha page)"

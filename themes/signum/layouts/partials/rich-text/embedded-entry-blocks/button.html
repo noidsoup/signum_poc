@@ -1,17 +1,17 @@
-{{ with .Site.GetPage .Entry.id }}
-	{{ $label := .Params.label }}
-	{{ $link := .Params.link }}
-	{{ $color := .Params.type }}
-	{{ $size := .Params.size }}
-	{{ $block := .Params.fullWidthButton }}
-
-	{{ with .Params.link}}
-		<a href="{{$link}}" class="btn btn-{{$color}} btn-{{$size}} {{if $block}}btn-block{{ end }}">
-			{{ $label }}
-		</a>
-	{{ else }}
-		<button class="btn btn-{{$color}} btn-{{$size}} {{if $block}}btn-block{{ end }}">
-			{{ $label }}
-		</button>
+{{ $headless := .Site.GetPage "buttons"  }}
+{{ $resource := printf "%s%s" .Entry.id "/*" }}
+{{ with $headless.Resources.Match $resource }}
+	{{ range . }}
+		{{ $label := .Params.label }}
+		{{ $link := .Params.link }}
+		{{ $color := .Params.type }}
+		{{ $size := .Params.size }}
+		{{ $block := .Params.fullWidthButton }}
+		{{ with .Params.link}}
+			<a href="{{$link}}" class="btn btn-{{$color}} btn-{{$size}} {{if $block}}btn-block{{ end }}">
+				{{ $label }}
+			</a>
+		{{ else }}
+		{{ end }}
 	{{ end }}
 {{ end }}

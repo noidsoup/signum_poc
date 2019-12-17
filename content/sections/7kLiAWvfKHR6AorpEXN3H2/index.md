@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-17T00:40:22.874Z"
+updated: "2019-12-17T21:40:00.709Z"
 createdAt: "2019-12-03T23:43:58.063Z"
 date: "2019-12-03T23:43:58.063Z"
 title: "Find new alpha"
@@ -23,5 +23,12 @@ column1Content:
         value: "Consistently trade more profitably with real-time predictions of price movements, forecasts of trade concentrations, and revelations of hidden order types."
         nodeType: "text"
     nodeType: "paragraph"
-column1Content_plaintext: "Find new alpha Consistently trade more profitably with real-time predictions of price movements, forecasts of trade concentrations, and revelations of hidden order types."
+  - data: {}
+    content:
+      - data: {}
+        marks: []
+        value: ""
+        nodeType: "text"
+    nodeType: "paragraph"
+column1Content_plaintext: "Find new alpha Consistently trade more profitably with real-time predictions of price movements, forecasts of trade concentrations, and revelations of hidden order types. "
 ---
