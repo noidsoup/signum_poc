@@ -1,11 +1,12 @@
 ---
 headless: true
-updated: "2019-12-03T23:29:08.984Z"
+updated: "2019-12-17T02:46:42.714Z"
 createdAt: "2019-12-03T23:19:56.301Z"
 date: "2019-12-03T23:19:56.301Z"
 title: "Crowding the fill"
 centerAlignText: false
 biggerParagraphText: false
+removePadding: "Remove both"
 columns: "One"
 column1Content:
   - data: {}

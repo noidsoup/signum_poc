@@ -1,5 +1,5 @@
 ---
-updated: "2019-12-03T23:44:45.601Z"
+updated: "2019-12-17T02:32:44.143Z"
 createdAt: "2019-12-03T23:01:37.021Z"
 date: "2019-12-03T23:01:37.021Z"
 title: "Execute with quality"
@@ -15,7 +15,11 @@ content:
     contentType: "section"
   - id: "5vCXzyd38drLur0psnBxOG"
     contentType: "section"
+  - id: "4ocw398Rm6kltaVcVgYBtg"
+    contentType: "section"
   - id: "kpySS2qdjESDB3Pall96f"
+    contentType: "section"
+  - id: "3OurtRceHhlcq3FTRJwHa5"
     contentType: "section"
   - id: "6T1nuA2Y4EDl2smadyuPKJ"
     contentType: "section"

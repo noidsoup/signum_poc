@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-03T23:00:04.407Z"
+updated: "2019-12-17T02:31:27.732Z"
 createdAt: "2019-12-03T23:00:04.407Z"
 date: "2019-12-03T23:00:04.407Z"
 title: "Identify over 3 million hidden orders per day"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:
@@ -34,11 +35,6 @@ column1Content:
         value: ""
         nodeType: "text"
     nodeType: "paragraph"
-  - data:
-      id: "2FECnS22VVCpP2C8oRPEFR"
-      contentType: "chartCard"
-    content: []
-    nodeType: "embedded-entry-block"
   - data: {}
     content:
       - data: {}

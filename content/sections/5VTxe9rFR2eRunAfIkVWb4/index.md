@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-03T23:45:47.804Z"
+updated: "2019-12-17T02:46:13.876Z"
 createdAt: "2019-12-03T23:45:47.804Z"
 date: "2019-12-03T23:45:47.804Z"
 title: "Timing is everything"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

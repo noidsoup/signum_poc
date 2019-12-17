@@ -1,11 +1,12 @@
 ---
 headless: true
-updated: "2019-12-03T23:06:12.189Z"
+updated: "2019-12-17T02:44:04.563Z"
 createdAt: "2019-12-03T23:06:12.189Z"
 date: "2019-12-03T23:06:12.189Z"
 title: "Quote Vector Features"
 centerAlignText: true
 biggerParagraphText: false
+removePadding: "Remove both"
 columns: "Two"
 column1Content:
   - data:

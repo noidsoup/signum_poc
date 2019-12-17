@@ -1,11 +1,12 @@
 ---
 headless: true
-updated: "2019-12-03T23:34:23.242Z"
+updated: "2019-12-17T02:52:38.042Z"
 createdAt: "2019-12-03T23:34:23.242Z"
 date: "2019-12-03T23:34:23.242Z"
 title: "Liquidity Lamp Features"
 centerAlignText: true
 biggerParagraphText: false
+removePadding: "Remove both"
 columns: "Three"
 column1Content:
   - data:

@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-17T02:15:38.873Z"
+updated: "2019-12-17T02:27:50.445Z"
 createdAt: "2019-12-03T22:37:07.480Z"
 date: "2019-12-03T22:37:07.480Z"
 title: "Identify over 3 million hidden orders per day"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

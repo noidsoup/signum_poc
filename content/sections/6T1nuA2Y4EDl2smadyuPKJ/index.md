@@ -1,12 +1,14 @@
 ---
 headless: true
-updated: "2019-12-03T23:00:28.558Z"
+updated: "2019-12-17T02:33:39.404Z"
 createdAt: "2019-12-03T23:00:28.558Z"
 date: "2019-12-03T23:00:28.558Z"
 title: "Signum changes everything"
 centerAlignText: true
 biggerParagraphText: true
+removePadding: "Remove bottom padding"
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

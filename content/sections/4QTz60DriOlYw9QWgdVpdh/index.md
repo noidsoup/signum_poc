@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-03T23:15:11.601Z"
+updated: "2019-12-17T02:44:58.729Z"
 createdAt: "2019-12-03T23:15:11.601Z"
 date: "2019-12-03T23:15:11.601Z"
 title: "Quote Vector CTA"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

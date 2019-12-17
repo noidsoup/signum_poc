@@ -1,12 +1,14 @@
 ---
 headless: true
-updated: "2019-12-03T23:31:19.697Z"
+updated: "2019-12-17T02:31:11.786Z"
 createdAt: "2019-12-03T22:59:19.619Z"
 date: "2019-12-03T22:59:19.619Z"
 title: "Forecast up to 70% of intraday flow"
 centerAlignText: true
 biggerParagraphText: true
+removePadding: "Remove bottom padding"
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:
@@ -34,11 +36,6 @@ column1Content:
         value: ""
         nodeType: "text"
     nodeType: "paragraph"
-  - data:
-      id: "1LDhNdeK4yD103lk2P143M"
-      contentType: "chartCard"
-    content: []
-    nodeType: "embedded-entry-block"
   - data: {}
     content:
       - data: {}

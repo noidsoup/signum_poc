@@ -1,11 +1,12 @@
 ---
 headless: true
-updated: "2019-12-03T23:03:10.517Z"
+updated: "2019-12-17T02:28:59.240Z"
 createdAt: "2019-12-03T22:57:59.285Z"
 date: "2019-12-03T22:57:59.285Z"
 title: "Execute with Quality Features"
 centerAlignText: true
 biggerParagraphText: false
+removePadding: "Remove both"
 columns: "Three"
 column1Content:
   - data:

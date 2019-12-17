@@ -1,11 +1,12 @@
 ---
 headless: true
-updated: "2019-12-03T23:04:22.570Z"
+updated: "2019-12-17T02:55:31.918Z"
 createdAt: "2019-12-03T23:04:22.570Z"
 date: "2019-12-03T23:04:22.570Z"
 title: "Daily Net Price Improvement for US Equities"
 centerAlignText: false
 biggerParagraphText: false
+removePadding: "Remove both"
 columns: "One"
 column1Content:
   - data: {}

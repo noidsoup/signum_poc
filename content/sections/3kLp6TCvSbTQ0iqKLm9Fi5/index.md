@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-03T23:32:25.036Z"
+updated: "2019-12-17T02:52:10.345Z"
 createdAt: "2019-12-03T23:32:25.036Z"
 date: "2019-12-03T23:32:25.036Z"
 title: "Reserve orders are trade magnets"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

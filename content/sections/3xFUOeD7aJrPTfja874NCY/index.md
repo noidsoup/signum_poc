@@ -1,11 +1,12 @@
 ---
 headless: true
-updated: "2019-12-03T23:33:09.351Z"
+updated: "2019-12-17T02:52:18.391Z"
 createdAt: "2019-12-03T23:33:09.351Z"
 date: "2019-12-03T23:33:09.351Z"
 title: "Today’s top 10 names by concentration ratio"
 centerAlignText: false
 biggerParagraphText: false
+removePadding: "Remove both"
 columns: "One"
 column1Content:
   - data: {}

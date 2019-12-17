@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-03T22:57:01.821Z"
+updated: "2019-12-17T02:28:38.551Z"
 createdAt: "2019-12-03T22:57:01.821Z"
 date: "2019-12-03T22:57:01.821Z"
 title: "Achieve better fills with less risk"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

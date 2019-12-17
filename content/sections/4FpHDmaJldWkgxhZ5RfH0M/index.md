@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-03T23:46:23.316Z"
+updated: "2019-12-17T02:51:54.180Z"
 createdAt: "2019-12-03T23:46:23.316Z"
 date: "2019-12-03T23:46:23.316Z"
 title: "Enlighten your algos"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

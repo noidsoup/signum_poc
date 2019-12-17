@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-03T23:02:44.087Z"
+updated: "2019-12-17T02:43:18.341Z"
 createdAt: "2019-12-03T23:02:44.087Z"
 date: "2019-12-03T23:02:44.087Z"
 title: "Achieve over $2 Billion in annual price improvements"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-03T23:30:28.539Z"
+updated: "2019-12-17T02:51:34.815Z"
 createdAt: "2019-12-03T23:30:28.539Z"
 date: "2019-12-03T23:30:28.539Z"
 title: "Quote Fuse CTA"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-03T23:18:34.520Z"
+updated: "2019-12-17T02:46:21.653Z"
 createdAt: "2019-12-03T23:18:34.520Z"
 date: "2019-12-03T23:18:34.520Z"
 title: "Forecast 70% of intraday flow"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

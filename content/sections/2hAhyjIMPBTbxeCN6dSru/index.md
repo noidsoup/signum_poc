@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-03T23:45:14.557Z"
+updated: "2019-12-17T02:42:47.158Z"
 createdAt: "2019-12-03T23:45:14.557Z"
 date: "2019-12-03T23:45:14.557Z"
 title: "Price prediction power"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:

@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-03T23:28:32.595Z"
+updated: "2019-12-17T02:51:08.594Z"
 createdAt: "2019-12-03T23:26:04.481Z"
 date: "2019-12-03T23:26:04.481Z"
 title: "Dial in your desired accuracy"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:
