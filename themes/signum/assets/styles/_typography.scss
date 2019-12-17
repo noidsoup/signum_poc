@@ -33,6 +33,10 @@ h6 {
 
 p {
 	font-size: 0.9375rem;
+
+	&:blank {
+		display: none;
+	}
 }
 
 a {

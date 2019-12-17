@@ -1,0 +1,26 @@
+---
+updated: "2019-12-17T02:51:38.443Z"
+createdAt: "2019-12-03T23:21:29.709Z"
+date: "2019-12-03T23:21:29.709Z"
+title: "Quote Fuse"
+slug: "quote-fuse"
+description: "Knowing whether a price is stable or about to change is powerful. Optimize your fills and squelch your risk with Quote Fuse’s real-time predictions of quote price stability."
+heroHeading:
+  id: "5VTxe9rFR2eRunAfIkVWb4"
+  contentType: "section"
+content:
+  - id: "6671P9ePTlpEXxDclTAM96"
+    contentType: "section"
+  - id: "4QUosbf7D7b6NBcoteBvyv"
+    contentType: "section"
+  - id: "7GrzjRLEbOP75ba0jygHxk"
+    contentType: "section"
+  - id: "6Kr0All4xv0LkcuSv2URYP"
+    contentType: "section"
+  - id: "29Wm6PeAqmMjGQCMX56NWx"
+    contentType: "section"
+  - id: "6lRFsiGRgZmYy22Ok2MYNA"
+    contentType: "section"
+  - id: "1VHI4O59zPYWwOZUO9k3Vq"
+    contentType: "section"
+---
