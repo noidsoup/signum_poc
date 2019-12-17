@@ -4,6 +4,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- Social meta tags -->
+	<meta property="og:title" content="{{.Params.title}}">
+	<meta property="og:description" content="{{.Params.description}}">
+	<meta property="og:image" content="{{.Params.image.url}}">
+	{{ $url := printf "%s" .URL | absLangURL }}
+	<meta property="og:url" content="{{ $url }}">
+	<meta name="twitter:card" content="summary_large_image">
+
 	{{ $style := resources.Get "styles/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 	<link rel="stylesheet" href="{{ $style.Permalink }}">
 

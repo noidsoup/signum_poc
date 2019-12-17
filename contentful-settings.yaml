@@ -13,21 +13,21 @@ repeatableTypes:
     fileExtension: md
 
   - id: insightCategory
-    directory: /content/insights/categories/
+    directory: /content/category/
     fileExtension: md
 
   # pages.
   - id: page
-    directory: /content/pages/
+    directory: /content/
     fileExtension: md
 
   - id: section
-    directory: /content/pages/sections/
+    directory: /content/sections/
     fileExtension: md
     isHeadless: true
 
   - id: button
-    directory: /content/pages/buttons/
+    directory: /content/buttons/
     fileExtension: md
     isHeadless: true
 
@@ -49,5 +49,30 @@ repeatableTypes:
 
   - id: testimonialCard
     directory: /content/testimonialCards/
+    fileExtension: md
+    isHeadless: true
+
+  - id: icon
+    directory: /content/icons/
+    fileExtension: md
+    isHeadless: true
+
+  - id: faq
+    directory: /content/faqs/
+    fileExtension: md
+    isHeadless: true
+
+  - id: navbar
+    directory: /content/navbar/
+    fileExtension: md
+    isHeadless: true
+
+  - id: footer
+    directory: /content/footer/
+    fileExtension: md
+    isHeadless: true
+
+  - id: menu
+    directory: /content/menus/
     fileExtension: md
     isHeadless: true

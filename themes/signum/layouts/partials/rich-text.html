@@ -1,4 +1,5 @@
 {{- $Site := .Site -}}
+{{- $Menu := .Menu -}}
 {{- range .This -}}
     <!-- set which partial we want to call depending on node type
     (ex. paragraph, header-1, hyperlink, embedded-entry-block, etc...) -->
@@ -7,7 +8,7 @@
     {{- $partialCheck := print "themes/signum/layouts/partials/" $partial -}}
     {{- if fileExists $partialCheck -}}
         <!-- call partial if it exists -->
-        {{- partial $partial (dict "This" . "Site" $Site ) -}}
+        {{- partial $partial (dict "This" . "Site" $Site "Menu" $Menu) -}}
     {{- else -}}
         <!-- call the node-not-found partial if it doesn't exist -->
         {{- partial "rich-text/node-not-found.html" (dict "Template" .nodeType "Directory" "standard-blocks") -}}

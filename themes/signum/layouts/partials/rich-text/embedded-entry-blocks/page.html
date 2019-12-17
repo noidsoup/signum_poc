@@ -1,0 +1,3 @@
+{{ with .Site.GetPage .Entry.id }}
+  <a href="/{{.Params.Slug}}" class="dropdown-item">{{.Title}}<span class="ml-2 badge badge-pill badge-info"></span></a>
+{{ end }}

@@ -2,4 +2,3 @@ baseURL = "https://thirsty-beaver-482f3a.netlify.com/"
 languageCode = "en-us"
 title = "Hugo+Contentful proof of concept"
 theme = "signum"
-

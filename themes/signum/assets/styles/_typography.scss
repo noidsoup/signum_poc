@@ -39,6 +39,42 @@ a {
 	transition: $transition-base;
 }
 
+/* Fancy underlines */
+u {
+	text-decoration: none;
+	position       : relative;
+	z-index        : 1;
+	font-weight    : bold;
+	color          : $gray-900;
+
+	strong {
+		font-weight: bold;
+	}
+
+	&::before {
+		content         : '';
+		height          : 5px;
+		width           : 100%;
+		position        : absolute;
+		bottom          : 0;
+		background-color: $warning;
+		z-index         : -1;
+	}
+}
+
+.lead {
+	u {
+		&::before {
+			height: 9px;
+		}
+	}
+
+	p {
+		font-size  : 1.25rem;
+		font-weight: normal;
+	}
+}
+
 ::selection {
 	background-color: rgba($gold, .6);
 }

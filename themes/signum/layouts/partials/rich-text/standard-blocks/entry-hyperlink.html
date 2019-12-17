@@ -1,0 +1,2 @@
+{{$d := partial "rich-text/node-checker.html" (dict "This" .This "Site" .Site)}}
+<a href="/faqs" class="{{ if .Menu }}dropdown-item{{ end }}" id="{{ $d | plainify | urlize }}">{{ $d }}</a>

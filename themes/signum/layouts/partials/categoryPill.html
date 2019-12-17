@@ -1,0 +1,5 @@
+{{ with .Site.GetPage .Id }}
+<a href="/insights/{{.Params.Slug}}" class="badge badge-pill" style='background-color:{{.Params.Color}}'>
+	{{.Title}}
+</a>
+{{ end }}

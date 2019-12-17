@@ -86,6 +86,12 @@
 				font-family: $headings-font-family;
 			}
 
+			p {
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
 			.blog-author-bio {
 				font-weight: 500;
 				font-size  : 0.9375rem;
