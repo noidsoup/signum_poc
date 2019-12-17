@@ -1,11 +1,12 @@
 ---
 headless: true
-updated: "2019-12-17T02:52:54.441Z"
+updated: "2019-12-17T02:59:25.959Z"
 createdAt: "2019-12-03T23:34:39.265Z"
 date: "2019-12-03T23:34:39.265Z"
 title: "Locate localized liquidity"
 centerAlignText: true
 biggerParagraphText: true
+removePadding: "Remove bottom padding"
 columns: "One"
 narrowColumn: true
 column1Content:
