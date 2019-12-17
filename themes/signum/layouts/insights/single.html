@@ -1,5 +1,6 @@
 {{ define "main" }}
 {{ $url := printf "%s" .URL | absLangURL }}
+
 <body class="blog">
 	<div class="blog-single bg-white">
 		<div class="blog-layout container">
@@ -10,8 +11,8 @@
 						<h1>{{ .Title }}</h1>
 						<div class="blog-meta">
 							<span>Insights</span>
-              <span>{{ .PublishDate.Format "January 2, 2006" }}</span>
-							<a href="#" class="badge badge-pill badge-warning">{{ partial "categoryPill.html" (dict "This" . "Site" $.Site "Id" .Params.category.id) }}</a>
+							<span>{{ .PublishDate.Format "January 2, 2006" }}</span>
+							{{ partial "categoryPill.html" (dict "This" . "Site" $.Site "Id" .Params.category.id) }}
 						</div>
 					</div>
 				</div>
