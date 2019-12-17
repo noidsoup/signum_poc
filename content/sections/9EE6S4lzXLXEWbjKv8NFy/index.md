@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-11T04:49:34.436Z"
+updated: "2019-12-17T21:07:17.738Z"
 createdAt: "2019-12-03T23:54:31.219Z"
 date: "2019-12-03T23:54:31.219Z"
 title: "FAQ Questions"
 centerAlignText: false
 biggerParagraphText: false
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:
