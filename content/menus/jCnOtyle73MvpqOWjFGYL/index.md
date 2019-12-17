@@ -1,16 +1,16 @@
 ---
 headless: true
-updated: "2019-12-16T22:08:53.448Z"
-createdAt: "2019-12-11T04:32:05.102Z"
-date: "2019-12-11T04:32:05.102Z"
+updated: "2019-12-16T22:52:42.150Z"
+createdAt: "2019-12-16T22:52:42.150Z"
+date: "2019-12-16T22:52:42.150Z"
 title: "Insights"
-subtitle: "Illuminating instruction"
+subtitle: "Get the daily insights you need to make data-driven decisions."
 content:
   - data: {}
     content:
       - data: {}
         marks: []
-        value: "By category"
+        value: "By Category"
         nodeType: "text"
     nodeType: "heading-5"
   - data:
@@ -33,17 +33,19 @@ content:
       contentType: "insightCategory"
     content: []
     nodeType: "embedded-entry-block"
-  - data:
-      id: "4OzFjaTUFRFKm8ZKPS9TVl"
-      contentType: "button"
-    content: []
-    nodeType: "embedded-entry-block"
   - data: {}
     content:
       - data: {}
         marks: []
-        value: ""
+        value: "Recent"
+        nodeType: "text"
+    nodeType: "heading-5"
+  - data: {}
+    content:
+      - data: {}
+        marks: []
+        value: "@nick! Uh-oh, what do we do here?"
         nodeType: "text"
     nodeType: "paragraph"
-content_plaintext: "By category "
+content_plaintext: "By Category Recent @nick! Uh-oh, what do we do here?"
 ---

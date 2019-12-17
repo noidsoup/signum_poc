@@ -16,8 +16,8 @@
 			}
 
 			.blog-meta {
-				> a,
-				> span {
+				> span,
+				> a {
 					color    : $gray-700;
 					font-size: 0.9375rem;
 
@@ -84,6 +84,12 @@
 
 			h4 {
 				font-family: $headings-font-family;
+			}
+
+			p {
+				&:last-child {
+					margin-bottom: 0;
+				}
 			}
 
 			.blog-author-bio {

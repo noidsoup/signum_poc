@@ -1,12 +1,16 @@
 <div class="blog-author">
-  {{ $headless := .Site.GetPage "authors"  }}
-  {{ $resource := printf "%s%s" .Id "/*" }}
-  {{ with $headless.Resources.Match $resource }}
-    {{ range . }}
-      <div class="blog-author-photo" style="background-image: url({{.Params.photo.url}})"></div>
-      <h3>{{.Params.name}}</h3>
-      <p>{{.Params.bio}}</p>
-      <a class="blog-author-bio" href="#" target="_blank">Full bio <i class="fas fa-arrow-right"></i></a>
-    {{ end }}
-  {{ end }}
+	{{ $headless := .Site.GetPage "authors"  }}
+	{{ $resource := printf "%s%s" .Id "/*" }}
+	{{ with $headless.Resources.Match $resource }}
+		{{ range . }}
+			<div class="blog-author-photo" style="background-image: url({{.Params.photo.url}})"></div>
+			<h3>{{.Params.name}}</h3>
+			<p>{{.Params.bio}}</p>
+			{{ with .Params.bioLink }}
+				<a class="blog-author-bio" href="{{.}}" target="_blank">
+					Full bio <i class="fas fa-arrow-right"></i>
+				</a>
+			{{ end }}
+		{{ end }}
+	{{ end }}
 </div>
