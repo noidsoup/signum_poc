@@ -18,7 +18,10 @@
 				</div>
 			</div>
 			<div class="footer-links row">
-				<div class="col-lg-3 col-6">
+{{/*  				{{range .Params.menus}}
+					{{ partial "footer-menu.html" (dict "This" . "Site" $.Site "Id" .id ) }}
+				{{end}}  */}}
+  			<div class="col-lg-3 col-6">
 					<h3>About</h3>
 					<p>Learn more about Signum and our parent company, Exegy.</p>
 					<h5>Company</h5>
@@ -93,7 +96,7 @@
 			<div class="footer-baseline row">
 				<div class="col-xl-8">
 					<ul class="list-inline">
-						<li class="list-inline-item">© 2019 Exegy Inc. All rights reserved. </li>
+						<li class="list-inline-item">{{.Params.Colophon}}</li>
 						<li class="list-inline-item"><a href="javascript:void(0)">Terms of use</a></li>
 						<li class="list-inline-item"><a href="javascript:void(0)">Privacy policy</a></li>
 						<li class="list-inline-item global"><a href="javascript:void(0)">Global privacy compliance</a></li>

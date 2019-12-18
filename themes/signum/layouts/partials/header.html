@@ -17,15 +17,13 @@
 							{{ $resource := printf "%s%s" .id "/*" }}
 							{{ with $menus.Resources.Match $resource }}
 								{{ range . }}
-									{{ partial "menu.html" . }}
+									{{ partial "header-menu.html" . }}
 								{{ end }}
 							{{ end }}
 						{{end}}
 
-						{{ $button := .Site.GetPage "buttons"  }}
-						{{range .Params.button}}
-							Button!
-						{{end}}
+						{{ partial "rich-text/embedded-entry-blocks/button.html" (dict "This" . "Site" $.Site "Id" .Params.button.id) }}
+
 					</div>
 				</div>
 			</nav>
