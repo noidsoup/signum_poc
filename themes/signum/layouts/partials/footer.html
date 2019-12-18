@@ -2,21 +2,12 @@
 {{ with $navbar.Resources }}
 	{{ range . }}
 		<div class="footer container">
-			<div class="footer-top row">
-				<div class="footer-top-info col-lg-6">
-					{{range .Params.sections}}
-						{{ partial "section.html" (dict "This" . "Site" $.Site "Id" .id) }}
-					{{end}}
-				</div>
-				<div class="footer-top-input col-lg-6">
-					<p class="lead">Get market signals in your inbox</p>
-					<form class="subscribe-form">
-						<input class="signum-input form-control" placeholder="name@company.com" value="">
-						<button type="button" class="ml-0 ml-lg-3 btn btn-primary">Subscribe</button>
-						<p class="small">By subscribing, you agree to our <a href="#">privacy policy</a>.</p>
-					</form>
-				</div>
+			<div class="footer-top">
+				{{range .Params.sections}}
+					{{ partial "section.html" (dict "This" . "Site" $.Site "Id" .id) }}
+				{{end}}
 			</div>
+
 			<div class="footer-links row">
 {{/*  				{{range .Params.menus}}
 					{{ partial "footer-menu.html" (dict "This" . "Site" $.Site "Id" .id ) }}
