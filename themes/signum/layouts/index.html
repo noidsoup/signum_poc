@@ -16,6 +16,7 @@
 
 	{{ partial "content.html" . }}
 
-{{/*  	{{ partial "section.html" (dict "This" . "Site" $.Site "Id" .Params.blogHeading.id ) }}  */}}
+	<div class="bg-white">{{ partial "section.html" (dict "This" . "Site" $.Site "Id" .Params.blogHeading.id "White" true ) }}</div>
+
 </body>
 {{ end }}
