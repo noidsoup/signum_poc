@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-16T22:55:02.900Z"
+updated: "2019-12-18T19:16:15.513Z"
 createdAt: "2019-12-16T22:44:22.170Z"
 date: "2019-12-16T22:44:22.170Z"
 title: "About"
@@ -20,7 +20,7 @@ content:
         value: ""
         nodeType: "text"
       - data:
-          uri: "About us"
+          uri: "https://www.exegy.com/company/about-us"
         content:
           - data: {}
             marks: []

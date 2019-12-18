@@ -17,4 +17,19 @@
 			}
 		}
 	}
+
+	.home-insights {
+		background-color: $dark;
+		color           : $white;
+
+		h2 {
+			color: $warning;
+		}
+
+		p {
+			a {
+				text-decoration: underline;
+			}
+		}
+	}
 }

@@ -1,0 +1,5 @@
+.col {
+	@include media-breakpoint-down(md) {
+		flex-basis: 100%;
+	}
+}

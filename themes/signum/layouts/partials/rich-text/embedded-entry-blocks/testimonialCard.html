@@ -1,1 +1,24 @@
-testimonial card
+{{ $headless := .Site.GetPage "testimonialCards"  }}
+{{ $resource := printf "%s%s" .Id "/*" }}
+{{ with $headless.Resources.Match $resource }}
+	{{ range . }}
+	<div class="testimonial-card green-card card">
+		<div class="card-body">
+			<div class="row">
+				<div class="testimonial-cta mb-4 mb-lg-0 col-lg-4">
+					{{ partial "rich-text/embedded-entry-blocks/button.html" (dict "This" . "Site" $.Site "Id" .Params.button.id) }}
+					{{ with .Params.buttonSubtext }}
+						<p class="mb-lg-0"><small>{{ . }}</small></p>
+					{{ end }}
+				</div>
+				<div class="testimonial-quote col">
+					<blockquote>
+						<p>{{ .Params.Quote }}</p>
+						<footer class="blockquote-footer">{{ .Params.QuoteAuthor }}</footer>
+					</blockquote>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{ end }}
+{{ end }}

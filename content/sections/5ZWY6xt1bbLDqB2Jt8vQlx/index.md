@@ -1,12 +1,13 @@
 ---
 headless: true
-updated: "2019-12-16T23:45:50.257Z"
+updated: "2019-12-18T19:40:03.514Z"
 createdAt: "2019-12-16T23:45:50.257Z"
 date: "2019-12-16T23:45:50.257Z"
 title: "Inside the Quote"
 centerAlignText: true
 biggerParagraphText: true
 columns: "One"
+narrowColumn: true
 column1Content:
   - data: {}
     content:
