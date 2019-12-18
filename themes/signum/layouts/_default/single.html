@@ -1,6 +1,7 @@
 {{ define "main" }}
 <main>
-	{{ partial "hero.html" . }}
+	{{ $heroId := .Params.HeroHeading.id}}
+	{{ partial "section.html" (dict "This" . "Site" $.Site "Id" $heroId) }}
 	{{ partial "content.html" . }}
 </main>
 {{ end }}

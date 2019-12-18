@@ -10,7 +10,8 @@
 	*/ -}}
 
 	<div class="home-hero">
-		{{ partial "hero.html" . }}
+		{{ $heroId := .Params.HeroHeading.id}}
+		{{ partial "section.html" (dict "This" . "Site" $.Site "Id" $heroId) }}
 	</div>
 
 	{{ partial "content.html" . }}

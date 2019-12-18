@@ -3,11 +3,10 @@
 	{{ range . }}
 		<div class="footer container">
 			<div class="footer-top row">
-				<div class="footer-top-info col-lg-6"><img src="/exegy-logo.svg">
-					<p>
-						Signum is powered by Exegy, the market leader in the normalization and distribution of real-time market data to a diverse set of elite firms in the financial services industry.
-						<strong><a href="https://www.exegy.com" class="text-nowrap">Learn more about us</a></strong>.
-					</p>
+				<div class="footer-top-info col-lg-6">
+					{{range .Params.sections}}
+						{{ partial "section.html" (dict "This" . "Site" $.Site "Id" .id) }}
+					{{end}}
 				</div>
 				<div class="footer-top-input col-lg-6">
 					<p class="lead">Get market signals in your inbox</p>
