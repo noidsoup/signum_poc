@@ -110,14 +110,15 @@
 					}
 				}
 			}
-		}
 
-		.navbar-button {
-			margin-left: 1.125rem;
+			> .btn {
+				margin-left: 1.125rem;
 
-			@include media-breakpoint-down(md) {
-				margin-right: 1rem;
+				@include media-breakpoint-down(md) {
+					margin-right: 1rem;
+				}
 			}
 		}
+
 	}
 }
