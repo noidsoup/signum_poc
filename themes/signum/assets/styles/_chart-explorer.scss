@@ -1,0 +1,163 @@
+/* Chart Explorer tabbed wrapper */
+.chart-explorer {
+	a {
+		text-decoration: none;
+
+		span {
+			color: $sea;
+		}
+	}
+
+	.highlight {
+		color      : $gray-900;
+		font-weight: bold;
+		z-index    : 0;
+
+		&:before {
+			height: 0.6rem;
+			top   : 0.95rem;
+		}
+	}
+
+	.nav {
+		border-bottom: none;
+
+		.nav-item {
+			.nav-link {
+				transition      : $transition-base;
+				padding         : 1.25rem;
+				display         : block;
+				text-align      : center;
+				border-radius   : $border-radius;
+				cursor          : pointer;
+				position        : relative;
+				background-color: $white !important;
+				border-radius   : 0.25rem 0.25rem 0 0;
+				border          : 1px solid $gray-100;
+				border-bottom   : none;
+				background-color: $cream !important;
+				margin-bottom   : 0;
+
+				&.active {
+					z-index         : 2;
+					background-color: $white !important;
+				}
+
+				@include media-breakpoint-down(sm) {
+					text-align: left;
+				}
+
+				img {
+					height       : 5rem;
+					width        : 5rem;
+					margin-bottom: 2.5rem;
+					opacity      : 0.5;
+					transition   : $transition-base;
+
+					@include media-breakpoint-down(sm) {
+						float        : left;
+						margin-right : 1.5rem;
+						margin-bottom: 1rem;
+					}
+				}
+
+				i {
+					display   : inline-block;
+					position  : relative;
+					transition: $transition-base;
+					opacity   : 0;
+				}
+
+				p {
+					margin   : 0;
+					font-size: 1rem;
+
+					@include media-breakpoint-down(lg) {
+						font-size: 0.9375rem;
+					}
+
+					@include media-breakpoint-down(sm) {
+						display  : inline;
+						font-size: 1rem;
+					}
+
+					&.small {
+						font-size: 0.875rem;
+
+						@include media-breakpoint-down(lg) {
+							font-size: 0.8125rem;
+						}
+
+						@include media-breakpoint-down(sm) {
+							font-size: 1rem;
+						}
+					}
+				}
+
+				.highlight {
+					font-size: 2.5rem;
+
+					@include media-breakpoint-down(md) {
+						font-size: 1.5rem;
+					}
+
+					@include media-breakpoint-down(sm) {
+						font-size: 1rem;
+						display  : inline-block;
+						margin   : 0 0.25rem;
+					}
+
+					&:before {
+						top   : auto;
+						bottom: 0.25rem;
+					}
+				}
+
+				&:hover {
+					text-decoration: none;
+					color          : $gray-800;
+
+					img {
+						opacity: 1;
+					}
+
+					i {
+						opacity  : 1;
+						transform: translateY(.5rem);
+
+						@include media-breakpoint-down(sm) {
+							position : absolute;
+							top      : 1.5rem;
+							right    : 2rem;
+							transform: none;
+						}
+					}
+				}
+
+				&.active {
+					background-color: transparent;
+
+					img {
+						opacity: 1;
+					}
+
+					i {
+						opacity  : 1;
+						transform: translateY(.5rem);
+
+						@include media-breakpoint-down(sm) {
+							position : absolute;
+							top      : 1.5rem;
+							right    : 2rem;
+							transform: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.chart-card {
+		text-align: left;
+	}
+}

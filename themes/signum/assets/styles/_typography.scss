@@ -126,12 +126,13 @@ h2 {
 
 blockquote {
 	&::before {
-		content    : '\e90a';
-		font-family: 'icomoon';
+		content    : '\f10d';
+		font-family: "Font Awesome 5 Pro";
 		font-size  : 2.5rem;
 		color      : $gold;
 		display    : inline-block;
 		margin     : 0 auto 1.25rem;
+		font-weight: bold;
 	}
 
 	p {
