@@ -2,7 +2,7 @@
  * Smooth scroll on a new page
  * http://stackoverflow.com/questions/9652944/jquery-scroll-to-id-from-different-page
  ***********************/
-var jump=function(e)
+/* var jump=function(e)
 {
 	if (e){
 	   e.preventDefault();
@@ -18,4 +18,12 @@ var jump=function(e)
 	{
 	   location.hash = target;
 	});
-}
+} */
+
+$('.scrollTo').click(function(e){
+	$('html, body').animate({
+			scrollTop: $( e.currentTarget.hash ).offset().top
+	}, 800);
+	location.hash = e.currentTarget.hash;
+	return false;
+});

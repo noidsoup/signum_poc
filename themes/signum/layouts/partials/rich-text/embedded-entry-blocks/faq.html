@@ -3,17 +3,19 @@
 {{ if .Menu }}
 	{{ with $headless.Resources.Match $resource }}
 		{{ range . }}
-			<a onclick="jump()" href="/faqs/#{{.Params.Slug}}" class="dropdown-item">{{.Params.Question}}<span class="ml-2 badge badge-pill badge-info"></span></a>
+			{{ $anchorLink := .Params.question | urlize }}
+			<a href="/faqs/#{{$anchorLink}}" class="dropdown-item scrollTo">{{.Params.Question}}<span class="ml-2 badge badge-pill badge-info"></span></a>
 		{{ end }}
 	{{ end }}
 {{ else }}
 	{{ with $headless.Resources.Match $resource }}
 		{{ range . }}
-			<div class="faq-item" id="{{.Params.slug}}">
-				<a href="#{{.Params.slug}}-answer" data-toggle="collapse" class="faq-question collapsed">
+			{{ $anchorLink := .Params.question | urlize }}
+			<div class="faq-item" id="{{$anchorLink}}">
+				<a href="#{{$anchorLink}}-answer" data-toggle="collapse" class="faq-question collapsed">
 					<h3>{{.Params.Question}}</h3>
 				</a>
-				<div class="faq-answer collapse" id="{{.Params.slug}}-answer">
+				<div class="faq-answer collapse" id="{{$anchorLink}}-answer">
 					{{ partial "rich-text.html" (dict "This" .Params.answer "Site" $.Site) }}
 				</div>
 			</div>
