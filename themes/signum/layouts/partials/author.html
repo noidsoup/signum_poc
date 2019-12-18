@@ -5,9 +5,9 @@
 		{{ range . }}
 			<div class="blog-author-photo" style="background-image: url({{.Params.photo.url}})"></div>
 			<h3>{{.Params.name}}</h3>
-			<p>{{.Params.bio}}</p>
+			<p class="blog-author-bio">{{.Params.bio}}</p>
 			{{ with .Params.bioLink }}
-				<a class="blog-author-bio" href="{{.}}" target="_blank">
+				<a class="blog-author-bio-link" href="{{.}}" target="_blank">
 					Full bio <i class="fas fa-arrow-right"></i>
 				</a>
 			{{ end }}

@@ -1,19 +1,89 @@
 {{ define "main" }}
-<main>
 
-  {{ $categorySlug := index (last 1 (split (delimit (split .URL "/") "," "") ",")) 0 }}
+<body class="category">
 
-  {{ range where .Site.Pages "Type" "insights" }}
+	<div class="py-8 py-lg-11">
+		<div class="container lead">
+			<div class="justify-content-md-center row text-center">
+				<div class="col col-lg-8">
+					<h1>{{.Title}}</h1>
+					<p>{{ .Params.Description }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    {{ $categoryId := string .Params.category.id}}
-    {{ $name := .Title}}
+	{{ $categorySlug := index (last 1 (split (delimit (split .URL "/") "," "") ",")) 0 }}
 
-    {{ with .Site.GetPage $categoryId }}
-      {{ if eq .Params.Slug $categorySlug }}
-      <p>{{$name}}</p>
-      {{ end }}
-    {{ end }}
+	<div class="bg-white py-8 py-lg-11">
+		<div class="container">
 
-  {{ end }}
-</main>
+			<div class="blog-feature pb-8 pb-lg-11 row">
+				<div class="col-lg-8">
+					<a class="blog-feature-image rounded" style="background-image: url()"></a>
+				</div>
+				<div class="col-lg-4">
+					<h3>Title of first post</h3>
+					<p>Description</p>
+					<div class="blog-author">
+						<div class="blog-author-photo" style="background-image: url()"></div>
+						<h3>Author Name</h3>
+						<p>Dec 6</p>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="blog-list">
+						{{ range where .Site.Pages "Type" "insights" }}
+							{{ $categoryId := string .Params.category.id}}
+							{{ $name := .Title}}
+							{{ $slug := .Params.slug}}
+							{{ $description := .Params.description}}
+							{{ $img := .Params.image.url}}
+
+							{{ with .Site.GetPage $categoryId }}
+								{{ if eq .Params.Slug $categorySlug }}
+									<div class="blog-list-item">
+										<a href="/insights/{{$slug}}" class="blog-list-item-image rounded" style="background-image: url({{$img}})"></a>
+										<h3><a href="/insights/{{$slug}}">{{$name}}</a></h3>
+										<p>{{ $description }}</p>
+										<div class="blog-author">
+											<div class="blog-author-photo" style="background-image: url()"></div>
+											<h3>Author Name</h3>
+										</div>
+										<div class="blog-list-date">Dec 6</div>
+									</div>
+								{{ end }}
+							{{ end }}
+
+						{{ end }}
+					</div>
+				</div>
+
+				<div class="col-lg-4 pt-8 pt-lg-0 pl-lg-8">
+					<p class="mb-0">Signum Insights: Get the daily insights you need to make data-driven decisions.</p>
+
+					<h5 class="mt-8">Categories</h5>
+
+					<ul class="list-unstyled">
+						<li><a href="#">Category</a></li>
+						<li><a href="#">Category</a></li>
+						<li><a href="#">Category</a></li>
+					</ul>
+
+					<h5 class="mt-8">Elsewhere</h5>
+					<code>Social links... where will we get those from? Footer?</code>
+
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+
+</body>
 {{ end }}

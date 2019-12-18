@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-17T23:07:00.500Z"
+updated: "2019-12-18T22:41:45.604Z"
 createdAt: "2019-12-11T04:32:05.102Z"
 date: "2019-12-11T04:32:05.102Z"
 title: "Insights"
@@ -26,11 +26,6 @@ content:
     nodeType: "embedded-entry-block"
   - data:
       id: "2JvkWmmnimgbzjC3bZkPOk"
-      contentType: "insightCategory"
-    content: []
-    nodeType: "embedded-entry-block"
-  - data:
-      id: "2vLVI3PklUjUxU8UdJa0Rk"
       contentType: "insightCategory"
     content: []
     nodeType: "embedded-entry-block"
