@@ -1,1 +1,19 @@
-category page
+{{ define "main" }}
+<main>
+
+  {{ $categorySlug := index (last 1 (split (delimit (split .URL "/") "," "") ",")) 0 }}
+
+  {{ range where .Site.Pages "Type" "insights" }}
+
+    {{ $categoryId := string .Params.category.id}}
+    {{ $name := .Title}}
+
+    {{ with .Site.GetPage $categoryId }}
+      {{ if eq .Params.Slug $categorySlug }}
+      <p>{{$name}}</p>
+      {{ end }}
+    {{ end }}
+
+  {{ end }}
+</main>
+{{ end }}
