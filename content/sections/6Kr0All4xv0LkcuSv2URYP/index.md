@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-17T02:46:52.229Z"
+updated: "2019-12-19T20:05:58.100Z"
 createdAt: "2019-12-03T23:25:46.187Z"
 date: "2019-12-03T23:25:46.187Z"
 title: "Quote Fuse Features"
