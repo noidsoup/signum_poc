@@ -7,30 +7,30 @@
 			<ul class="nav nav-tabs pt-8 px-6 align-items-end row">
 
 				<!-- Tab 1 -->
+				{{ with .Params.tab1Content }}
 				<li class="col-md-4 col-12 nav-item">
 					<a class="nav-link active">
-						{{ with .Params.tab1Content }}
-							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
-						{{ end }}
+						{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
 						<i class="far fa-arrow-down"></i>
 					</a>
 				</li>
+				{{ end }}
+				{{ with .Params.tab2Content }}
 				<li class="col-md-4 col-12 nav-item">
 					<a class="nav-link">
-						{{ with .Params.tab2Content }}
-							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
-						{{ end }}
+						{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
 						<i class="far fa-arrow-down"></i>
 					</a>
 				</li>
+				{{ end }}
+				{{ with .Params.tab3Content }}
 				<li class="col-md-4 col-12 nav-item">
 					<a class="nav-link">
-						{{ with .Params.tab3Content }}
-							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
-						{{ end }}
+						{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
 						<i class="far fa-arrow-down"></i>
 					</a>
 				</li>
+				{{ end }}
 			</ul>
 			<div class="chart-card testimonial-card card">
 				<div class="card-body">

@@ -1,0 +1,18 @@
+{{ $headless := .Site.GetPage "chartCards"  }}
+{{ $resource := printf "%s%s" .Entry.id "/*" }}
+
+{{ with $headless.Resources.Match $resource }}
+	{{ range . }}
+		<div class="chart-card px-lg-8 card">
+			<div class="card-body">
+				<div class="card-title h5">Net Price Improvement for Market Makers</div>
+				<div class="chart-wrapper">
+
+				</div>
+				<ul class="chart-legend">
+					<li><span class="bg-green"></span> Theoretical Net Gains (at 50% Threshold)</li>
+				</ul>
+			</div>
+		</div>
+	{{ end }}
+{{ end }}

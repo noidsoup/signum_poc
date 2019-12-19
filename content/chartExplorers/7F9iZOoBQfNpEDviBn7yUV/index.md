@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-17T23:00:04.223Z"
+updated: "2019-12-19T19:25:56.802Z"
 createdAt: "2019-12-04T17:38:22.691Z"
 date: "2019-12-04T17:38:22.691Z"
 title: "Homepage Chart Explorer"
