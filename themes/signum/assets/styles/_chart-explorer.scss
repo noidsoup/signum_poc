@@ -70,31 +70,32 @@
 
 				p {
 					margin   : 0;
-					font-size: 1rem;
+					font-size: 0.875rem;
 
 					@include media-breakpoint-down(lg) {
-						font-size: 0.9375rem;
+						font-size: 0.8125rem;
 					}
 
 					@include media-breakpoint-down(sm) {
-						display  : inline;
 						font-size: 1rem;
 					}
 
-					&.small {
-						font-size: 0.875rem;
+					&:first-of-type {
+						font-size: 1rem;
 
 						@include media-breakpoint-down(lg) {
-							font-size: 0.8125rem;
+							font-size: 0.9375rem;
 						}
 
 						@include media-breakpoint-down(sm) {
+							display  : inline;
 							font-size: 1rem;
 						}
 					}
 				}
 
-				.highlight {
+				.highlight,
+				u {
 					font-size: 2.5rem;
 
 					@include media-breakpoint-down(md) {
@@ -109,6 +110,7 @@
 
 					&:before {
 						top   : auto;
+						height: 0.6rem;
 						bottom: 0.25rem;
 					}
 				}
