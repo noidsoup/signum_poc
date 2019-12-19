@@ -11,28 +11,29 @@
 	}
 
 	.control-arrow {
-		position        : absolute !important;
-		z-index         : 99 !important;
-		top             : 40% !important;
-		height          : 3.75rem !important;
-		width           : 3.75rem !important;
-		border-radius   : 2.75rem !important;
-		font-size       : 0.875rem !important;
-		background-color: #fff !important;
-		padding         : 0 !important;
+		position        : absolute;
+		z-index         : 9;
+		top             : 40%;
+		height          : 3.75rem;
+		width           : 3.75rem;
+		border-radius   : 2.75rem;
+		display         : flex;
+		align-items     : center;
+		justify-content : center;
+		font-size       : 0.875rem;
+		background-color: $white;
+		padding         : 0;
 		transition      : $transition-base;
-		opacity         : 1 !important;
+		opacity         : 1;
 		box-shadow      : 0 2px 15px 0 rgba(0,0,0,.1);
+		border          : 1px solid $gray-400;
 
 		&::before {
-			font-family: 'icomoon';
-			margin     : 0 !important;
-			border     : none !important;
+			font-family: 'Font Awesome 5 Pro';
 			transition : $transition-base;
 			color      : $linen;
-			font-size  : 1.5rem;
-			position   : absolute;
-			top        : 12px;
+			font-size  : 2.5rem;
+			position   : relative;
 		}
 
 		&:hover {
@@ -41,6 +42,11 @@
 			&::before {
 				color: $primary;
 			}
+		}
+
+		&:focus {
+			outline   : none;
+			box-shadow: none;
 		}
 
 		&:active {
@@ -55,8 +61,8 @@
 			left: 0.5rem !important;
 
 			&::before {
-				content: '\e915' !important;
-				left   : 15px;
+				content: '\f104' !important;
+				right  : 0.125rem;
 			}
 		}
 
@@ -64,8 +70,8 @@
 			right: 0.5rem !important;
 
 			&::before {
-				content: '\e914' !important;
-				right  : 15px;
+				content: '\f105' !important;
+				left   : 0.125rem;
 			}
 		}
 
@@ -76,18 +82,10 @@
 		}
 	}
 
-	.slider-wrapper.axis-horizontal .slider .slide {
-		background-color: transparent;
-
-		.legend {
-			display: none;
-		}
-	}
-
-	.slide {
+	.slick-slide {
 		display: flex;
 
-		.card {
+		&.card {
 			text-align  : left;
 			margin-left : 1rem;
 			margin-right: 1rem;

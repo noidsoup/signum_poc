@@ -7,6 +7,11 @@
 	}
 }
 
+.form-control {
+	flex  : 1;
+	height: 46px;
+}
+
 .form-text {
 	font-size: 0.75rem !important;
 	color    : $gray-500;

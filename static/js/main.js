@@ -27,3 +27,13 @@ $('.scrollTo').click(function(e){
 	location.hash = e.currentTarget.hash;
 	return false;
 });
+
+/***********************
+ * Slick Slider
+ * https://kenwheeler.github.io/slick/
+ ***********************/
+$('.carousel-slider').slick({
+	prevArrow: '<button type="button" class="control-arrow control-prev"></button>',
+	nextArrow: '<button type="button" class="control-arrow control-next"></button>',
+	slidesToShow: 3,
+});

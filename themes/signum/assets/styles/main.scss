@@ -1,8 +1,13 @@
+// Third-party CSS
+@import './node_modules/slick-carousel/slick/slick.scss';
 
+// Bootstrap variables
 @import '_variables.scss';
 
+// Bootstrap
 @import "./node_modules/bootstrap/scss/bootstrap";
 
+// Our custom CSS
 @import '_blog.scss';
 @import '_buttons.scss';
 @import '_cards.scss';
