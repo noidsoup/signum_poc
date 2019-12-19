@@ -50,6 +50,11 @@ repeatableTypes:
     fileExtension: md
     isHeadless: true
 
+  - id: html
+    directory: /content/html/
+    fileExtension: md
+    isHeadless: true
+
   - id: linkCard
     directory: /content/linkCards/
     fileExtension: md

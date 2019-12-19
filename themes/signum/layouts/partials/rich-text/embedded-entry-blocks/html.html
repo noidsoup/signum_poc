@@ -1,0 +1,7 @@
+{{ $headless := .Site.GetPage "html"  }}
+{{ $resource := printf "%s%s" .Entry.id "/*" }}
+{{ with $headless.Resources.Match $resource }}
+	{{ range . }}
+    {{ .Params.rawhtml | safeHTML }}
+	{{ end }}
+{{ end }}
