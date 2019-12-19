@@ -72,8 +72,8 @@
 			}
 
 			.blog-meta {
-				> a,
-				> span {
+				> span,
+				> a {
 					color    : $gray-700;
 					font-size: 0.9375rem;
 
@@ -363,5 +363,11 @@
 		.blog-author-bio-link {
 			display: none;
 		}
+	}
+
+	.blog-list-date {
+		margin-bottom: 0;
+		font-size    : 0.875rem;
+		line-height  : 1.3;
 	}
 }
