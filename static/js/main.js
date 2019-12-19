@@ -1,4 +1,4 @@
-$(document).ready( function() {
+$( document ).ready( function () {
 
 	/***********************
 	 * Smooth scroll on a new page
@@ -22,31 +22,30 @@ $(document).ready( function() {
 		});
 	} */
 
-	$('.scrollTo').click(function(e){
-		$('html, body').animate({
-				scrollTop: $( e.currentTarget.hash ).offset().top
-		}, 800);
+	$( '.scrollTo' ).click( function ( e ) {
+		$( 'html, body' ).animate( {
+			scrollTop: $( e.currentTarget.hash ).offset().top
+		}, 800 );
 		location.hash = e.currentTarget.hash;
 		return false;
-	});
+	} );
 
 	/***********************
 	 * Slick Slider
 	 * https://kenwheeler.github.io/slick/
 	 ***********************/
-	$('.carousel-slider').slick({
+	$( '.carousel-slider' ).slick( {
 		prevArrow: '<button type="button" class="control-arrow control-prev"></button>',
 		nextArrow: '<button type="button" class="control-arrow control-next"></button>',
-		slidesToShow: 3,
-	});
-
+		slidesToShow: 3
+	} );
 
 	/***********************
-	 * Open an FAQ when you jump to it
+	 * Open a FAQ when you jump to it
 	 ***********************/
 	var hash = location.hash;
-	if (hash) {
-		$(hash).find('.faq-answer').collapse('show');
+	if ( hash ) {
+		$( hash ).find( '.faq-answer' ).collapse( 'show' );
 	}
 
 	/***********************
@@ -65,11 +64,14 @@ $(document).ready( function() {
 			yAxes: [
 				{
 					ticks: {
-						beginAtZero: true
+						beginAtZero: true,
+						callback: value => {
+							return ( '$' + value.toString().replace( /(\d)(?=(\d{3})+(?!\d))/g, '$1,' ) );
+						},
 					},
 					gridLines: {
 						drawBorder: false
-					}
+					},
 				}
 			],
 			xAxes: [
@@ -78,8 +80,65 @@ $(document).ready( function() {
 						display: false
 					}
 				}
-			]
-		}
+			],
+		},
+		tooltips: {
+			callbacks: {
+				label: function ( tooltipItem, data ) {
+					let tooltipValue = data.datasets[ tooltipItem.datasetIndex ].data[ tooltipItem.index ];
+					return ( 'Theoretical Net Gains: ' + '$' + tooltipValue.toString().replace( /(\d)(?=(\d{3})+(?!\d))/g, '$1,' ) );
+				}
+			}
+		},
+	};
+
+	/* Stacked bar chart options */
+	const stackedChartOptions = {
+		maintainAspectRatio: false,
+		legend: {
+			display: false
+		},
+		scales: {
+			yAxes: [
+				{
+					ticks: {
+						beginAtZero: true,
+						callback: value => {
+							return value.toString().replace( /(\d)(?=(\d{3})+(?!\d))/g, '$1,' );
+						},
+					},
+					gridLines: {
+						drawBorder: false
+					},
+				}
+			],
+			xAxes: [
+				{
+					stacked: true,
+					gridLines: {
+						display: false
+					},
+				}
+			],
+		},
+		tooltips: {
+			callbacks: {
+				label: ( tooltipItem, data ) => {
+					const tooltipLabel = data.datasets[ tooltipItem.datasetIndex ].label;
+					const signalCountValue = data.datasets[ 0 ].data[ tooltipItem.index ];
+					const signalVolumeValue = data.datasets[ 1 ].data[ tooltipItem.index ];
+
+					const signalCountDataWithCommas = parseInt( signalCountValue ).toString().replace( /(\d)(?=(\d{3})+(?!\d))/g, '$1,' );
+
+					const signalVolumeDataWithCommas = parseInt( signalVolumeValue ).toString().replace( /(\d)(?=(\d{3})+(?!\d))/g, '$1,' );
+
+					if ( tooltipItem.datasetIndex === 0 ) {
+						return tooltipLabel + ': ' + signalCountDataWithCommas;
+					}
+					return tooltipLabel + ': ' + signalVolumeDataWithCommas;
+				}
+			}
+		},
 	};
 
 	/* Line chart options */
@@ -96,7 +155,7 @@ $(document).ready( function() {
 					},
 					gridLines: {
 						drawBorder: false
-					}
+					},
 				}
 			],
 			xAxes: [
@@ -105,11 +164,24 @@ $(document).ready( function() {
 						display: false
 					}
 				}
-			]
+			],
 		},
 		hover: {
 			mode: 'nearest',
-			intersect: false
+			intersect: false,
+		},
+		tooltips : {
+			callbacks: {
+				label: function ( tooltipItem, data ) {
+					const label = data.datasets[ tooltipItem.datasetIndex ].label + ': ';
+					const tooltipValue = data.datasets[ tooltipItem.datasetIndex ].data[ tooltipItem.index ];
+
+					if ( data.datasets[ tooltipItem.datasetIndex ].data.some( value => value > 10 ) ) {
+						return ( label + parseInt( tooltipValue ).toString().replace( /(\d)(?=(\d{3})+(?!\d))/g, '$1,' ) );
+					}
+					return label + parseFloat( tooltipValue ).toFixed( 4 );
+				}
+			}
 		}
 	};
 
@@ -118,27 +190,45 @@ $(document).ready( function() {
 		maintainAspectRatio: false,
 		legend: {
 			display: false
+		},
+		tooltips : {
+			callbacks: {
+				label: function ( tooltipItem, data ) {
+					const availableLabel = data.labels[ 0 ] + ': ';
+					const unavailableLabel = data.labels[ 1 ] + ': ';
+					const availableData = data.datasets[ 0 ].data[ 0 ].toString();
+					const unavailableData = data.datasets[ 0 ].data[ 1 ].toString();
+
+					const percentageAddedAvailable = availableLabel + parseFloat( availableData ).toFixed( 2 ) + '%';
+					const percentageAddedUnavailable = unavailableLabel + parseFloat( unavailableData ).toFixed( 2 ) + '%';
+
+					if ( tooltipItem.index === 0 ) {
+						return percentageAddedAvailable;
+					}
+					return percentageAddedUnavailable;
+				}
+			}
 		}
 	};
 
 	/* Demo data for each chart type */
 	/* Quote Vector data */
 	const dataChartQuoteVector = {
-		labels: ['Jun 10', '11', '12', '13', '14', '15', '16'],
+		labels: [ 'Jun 10', '11', '12', '13', '14', '15', '16', ],
 		datasets: [
 			{
 				label: 'Theoretical Net Gains',
 				borderWidth: 0,
 				backgroundColor: '#0DA0A2',
 				hoverBackgroundColor: '#26aaab',
-				data: [65, 59, 80, 81, 56, 55, 41]
+				data: [ 65, 59, 80, 81, 56, 55, 41, ],
 			}
-		]
+		],
 	};
 
 	/* Quote Fuse data */
 	const dataChartQuoteFuseLine = {
-		labels: ['Jun 10', '11', '12', '13', '14', '15', '16'],
+		labels: [ 'Jun 10', '11', '12', '13', '14', '15', '16', ],
 		datasets: [
 			{
 				label: '50%',
@@ -152,11 +242,9 @@ $(document).ready( function() {
 				pointHoverBorderColor: '#60b1b3',
 				fill: false,
 				lineTension: 0,
-				data: [24, 36, -26, -10, 28, 11, 12]
-			},
-			{
+				data: [ 24, 36, -26, -10, 28, 11, 12, ],
+			}, {
 				label: '55%',
-				// borderWidth: 0,
 				borderColor: '#FC7D8D',
 				hoverBorderColor: '#ef9ca5',
 				borderWidth: 2,
@@ -166,9 +254,8 @@ $(document).ready( function() {
 				pointHoverBorderColor: '#ef9ca5',
 				fill: false,
 				lineTension: 0,
-				data: [22, 34, -24, -8, 27, 10, 11]
-			},
-			{
+				data: [ 22, 34, -24, -8, 27, 10, 11, ],
+			}, {
 				label: '60%',
 				// borderWidth: 0,
 				borderColor: '#93CFDC',
@@ -180,9 +267,8 @@ $(document).ready( function() {
 				pointHoverBorderColor: '#b3d8e1',
 				fill: false,
 				lineTension: 0,
-				data: [20, 32, -22, 4, 24, 8, 8]
-			},
-			{
+				data: [ 20, 32, -22, 4, 24, 8, 8, ],
+			}, {
 				label: '65%',
 				// borderWidth: 0,
 				borderColor: '#EFB670',
@@ -194,9 +280,8 @@ $(document).ready( function() {
 				pointHoverBorderColor: '#ebc694',
 				fill: false,
 				lineTension: 0,
-				data: [18, 30, -20, 4, 22, 5, 7]
-			},
-			{
+				data: [ 18, 30, -20, 4, 22, 5, 7, ],
+			}, {
 				label: '70%',
 				// borderWidth: 0,
 				borderColor: '#d8d8d8',
@@ -208,51 +293,89 @@ $(document).ready( function() {
 				pointHoverBorderColor: '#e0e0e0',
 				fill: false,
 				lineTension: 0,
-				data: [16, 28, -18, 4, 21, 5, 6]
-			}
-		]
+				data: [ 16, 28, -18, 4, 21, 5, 6,
+				],
+			},
+		],
 	};
 
 	/* Quote Fuse Liquidity data */
 	const dataChartQuoteFuseDoughnut = {
-		labels: ['Available', 'Unavailable', '60%', '65%', '70%'],
+		labels: [ 'Available', 'Unavailable', '60%', '65%', '70%', ],
 		datasets: [
 			{
 				label: 'Volume Before Price Shift',
 				borderWidth: 0,
-				backgroundColor: ['#0DA0A2', '#83c4c6'],
-				data: [47.5, 52.5]
+				backgroundColor: [
+					'#0DA0A2', '#83c4c6',
+				],
+				data: [
+					47.5, 52.5,
+				],
 			}
+		],
+	};
+
+	/* Liquidity Lamp data */
+	const dataChartLiquidityStacked = {
+		labels: ['Jun 2-4', '5-7', '8', '9', '10', '12', '13', '14', '15', '16'],
+		datasets: [
+			{
+				label: 'Signal',
+				borderWidth: 0,
+				backgroundColor: '#0DA0A2',
+				hoverBackgroundColor: '#60b1b3',
+				data: [11, 13, 28, 23, 12, 14, 11, 8, 12, 24]
+			},
+			{
+				label: 'Volume',
+				borderWidth: 0,
+				backgroundColor: '#83c4c6',
+				hoverBackgroundColor: '#aad7d9',
+				data: [4, 8, 6, 3, 1, 8, 6, 2, 5, 2]
+			},
 		]
 	};
 
 	/* Create the Quote Vector bar chart */
-	var quoteVectorWrapper = document.getElementById('quoteVector');
-	if (quoteVectorWrapper) {
-		var quoteVectorChart = new Chart(quoteVectorWrapper, {
+	var quoteVectorWrapper = document.getElementById( 'quoteVector' );
+	if ( quoteVectorWrapper ) {
+		var quoteVectorChart = new Chart( quoteVectorWrapper, {
 			type: 'bar',
 			data: dataChartQuoteVector,
-			options: barChartOptions
-		});
+			options: barChartOptions,
+		} );
 	}
 
 	/* Create the Quote Fuse line chart */
-	var quoteFuseWrapper = document.getElementById('quoteFuse');
-	if (quoteFuseWrapper) {
-		var quoteFuseChart = new Chart(quoteFuseWrapper, {
+	var quoteFuseWrapper = document.getElementById( 'quoteFuse' );
+	if ( quoteFuseWrapper ) {
+		var quoteFuseChart = new Chart( quoteFuseWrapper, {
 			type: 'line',
 			data: dataChartQuoteFuseLine,
-			options: lineChartOptions
-		});
+			options: lineChartOptions,
+		} );
 	}
 
 	/* Create the Quote Fuse Liquidity doughnut chart */
-	var quoteFuseLiquidityWrapper = document.getElementById('quoteFuseLiquidity');
-	if (quoteFuseLiquidityWrapper) {
-		var quoteFuseLiquidityChart = new Chart(quoteFuseLiquidityWrapper, {
+	var quoteFuseLiquidityWrapper = document.getElementById( 'quoteFuseLiquidity' );
+	if ( quoteFuseLiquidityWrapper ) {
+		var quoteFuseLiquidityChart = new Chart( quoteFuseLiquidityWrapper, {
 			type: 'doughnut',
 			data: dataChartQuoteFuseDoughnut,
-			options: doughnutChartOptions
-		});
+			options: doughnutChartOptions,
+		} );
 	}
+
+	/* Create the Liquidity Lamp stacked bar chart */
+	var liquidityLampWrapper = document.getElementById( 'liquidityLamp' );
+	if ( liquidityLampWrapper ) {
+		var liquidityLampChart = new Chart( liquidityLampWrapper, {
+			type: 'bar',
+			data: dataChartLiquidityStacked,
+			options: stackedChartOptions,
+		} );
+	}
+
+
 });
