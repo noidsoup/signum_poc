@@ -56,22 +56,25 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-4 pt-8 pt-lg-0 pl-lg-8">
-									<p class="mb-0">Signum Insights: Get the daily insights you need to make data-driven decisions.</p>
-									<h5 class="mt-8">Categories</h5>
-									<ul class="list-unstyled">
-										<li><a href="#">Category</a></li>
-										<li><a href="#">Category</a></li>
-										<li><a href="#">Category</a></li>
-									</ul>
-									<h5 class="mt-8">Elsewhere</h5>
-									<code>Social links... where will we get those from? Footer?</code>
-								</div>
-							{{end}}
+
+						{{end}}
 						{{end}}
 					{{end}}
 				{{end}}
-			</div>
+				<div class="col-lg-4 pt-8 pt-lg-0 pl-lg-8">
+						<p class="mb-0">Signum Insights: Get the daily insights you need to make data-driven decisions.</p>
+						<h5 class="mt-8">Categories</h5>
+						<ul class="list-unstyled">
+							{{ range $index, $el := where  .Site.Pages "Type" "category" }}
+								{{if gt $index 0 }}
+									<li><a href="{{.URL}}">{{.Name}}</a></li>
+								{{end}}
+							{{end}}
+						</ul>
+						<h5 class="mt-8">Elsewhere</h5>
+						<code>Social links... where will we get those from? Footer?</code>
+					</div>
+				</div>
 		</div>
 	</div>
 </body>
