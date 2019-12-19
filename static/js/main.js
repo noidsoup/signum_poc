@@ -49,6 +49,20 @@ $( document ).ready( function () {
 	}
 
 	/***********************
+	 * Open/Close Chart Explorer overlays
+	 ***********************/
+	$('.overlay-close').on('click', function(e) {
+		e.preventDefault();
+		$(this).closest('.chart-card-overlay').hide();
+		$(this).closest('.tab-pane').find('.chart-card-overlay-open').show();
+	});
+	$('.chart-card-overlay-open').on('click', function(e) {
+		e.preventDefault();
+		$(this).hide();
+		$(this).closest('.tab-pane').find('.chart-card-overlay').show();
+	});
+
+	/***********************
 	 * Set up Chart.js charts
 	 * https://www.chartjs.org/
 	 ***********************/
