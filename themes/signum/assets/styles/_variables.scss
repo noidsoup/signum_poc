@@ -157,7 +157,9 @@ $btn-font-size-lg: 1.375rem;
 $input-font-family: $font-family-sans-serif;
 $input-border-radius: 0.125rem;
 $input-box-shadow: none;
-$input-border-width: 0;
+$input-color: $gray-900;
+$input-border-color: $gray-200;
+$input-focus-border-color: $primary;
 
 //
 // Cards
