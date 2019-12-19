@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-17T22:25:02.051Z"
+updated: "2019-12-19T16:11:32.639Z"
 createdAt: "2019-12-11T04:41:35.826Z"
 date: "2019-12-11T04:41:35.826Z"
 title: "Global Navbar"

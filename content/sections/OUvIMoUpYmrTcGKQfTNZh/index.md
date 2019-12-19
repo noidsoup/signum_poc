@@ -1,10 +1,11 @@
 ---
 headless: true
-updated: "2019-12-19T15:44:30.519Z"
+updated: "2019-12-19T15:50:15.071Z"
 createdAt: "2019-12-19T15:44:30.519Z"
 date: "2019-12-19T15:44:30.519Z"
 title: "Privacy Policy content"
 centerAlignText: true
+biggerParagraphText: true
 columns: "One"
 narrowColumn: true
 column1Content:

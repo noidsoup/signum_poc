@@ -1,13 +1,6 @@
 {{ define "main" }}
 
 <body class="home">
-	{{- /*
-	{{ range .Pages }}
-	<li>
-		<a href="{{.Permalink}}">{{.Title}}</a>
-	</li>
-	{{ end }}
-	*/ -}}
 
 	<div class="home-hero">
 		{{ $heroId := .Params.HeroHeading.id}}
@@ -16,7 +9,59 @@
 
 	{{ partial "content.html" . }}
 
-	<div class="home-insights">{{ partial "section.html" (dict "This" . "Site" $.Site "Id" .Params.blogHeading.id "White" true ) }}</div>
+	<div class="home-insights">
+		{{ partial "section.html" (dict "This" . "Site" $.Site "Id" .Params.blogHeading.id "White" true ) }}
+
+		<div class="container pt-8 pb-8 pb-lg-11">
+			<div class="insights card-deck">
+
+				<!-- Most recent post is bigger -->
+				<a href="/insights/welcome" class="insight-card card-lg card">
+					<div class="card-img-bg" style="background-image: url();">
+						<span class="shadow-none badge badge-pill badge-warning">CEO's Corner</span>
+					</div>
+					<div class="card-body">
+						<div class="card-title h5">Welcome to the launch of the new Signum website!</div>
+						<span class="arrow-link"><span class="call-to-action">Read More</span><i class="far fa-arrow-right"></i></span>
+					</div>
+				</a>
+
+				<!-- Next three posts use this styling -->
+				<a href="/insights/predictive-cost-savings-pt2" class="insight-card card">
+					<div class="card-img-bg" style="background-image: url();">
+						<span class="shadow-none badge badge-pill badge-warning">Signum Cents</span>
+					</div>
+					<div class="card-body">
+						<div class="card-title h5">Predictive cost savings – Part 2</div>
+						<span class="arrow-link"><span class="call-to-action">Read More</span><i class="far fa-arrow-right"></i></span>
+					</div>
+				</a>
+
+				<!-- Lastly, there's one TestimonialCard -->
+				<div class="testimonial-card card">
+					<div class="card-body">
+						<div class="testimonial-quote">
+							<blockquote>
+								<p>"Signum is a perfect complement to the signals we build in-house and the alternative data we buy from other vendors. Receiving accurate predictions with every market data tick opens up new possibilities for us."</p>
+								<footer class="blockquote-footer">Data buyer at global proprietary trading firm</footer>
+							</blockquote>
+						</div>
+						<div class="testimonial-cta">
+							<a class="btn btn-warning mt-lg-5 mb-3" href="/demo-signup">Demo data</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<p class="text-center mt-5 mb-0">
+				<a class="arrow-link text-white" href="/articles/latest">
+					<span class="call-to-action">All Insights</span>
+					<i class="far fa-arrow-right"></i>
+				</a>
+			</p>
+		</div>
+
+	</div>
 
 </body>
 {{ end }}

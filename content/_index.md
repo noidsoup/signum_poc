@@ -1,5 +1,5 @@
 ---
-updated: "2019-12-17T21:05:58.434Z"
+updated: "2019-12-19T15:52:43.697Z"
 createdAt: "2019-12-16T23:46:01.697Z"
 date: "2019-12-16T23:46:01.697Z"
 title: "Signum"
@@ -15,4 +15,7 @@ content:
 blogHeading:
   id: "5ZWY6xt1bbLDqB2Jt8vQlx"
   contentType: "section"
+blogTestimonial:
+  id: "3D0DBOV9hDFCn94X6S0VmF"
+  contentType: "testimonialCard"
 ---

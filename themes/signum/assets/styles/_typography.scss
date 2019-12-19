@@ -94,8 +94,9 @@ h2 {
 }
 
 .arrow-link {
-	transition: $transition-base;
-	color     : $sea;
+	transition     : $transition-base;
+	color          : $sea;
+	text-decoration: none !important;
 
 	.call-to-action {
 		font-size  : 0.8125rem;

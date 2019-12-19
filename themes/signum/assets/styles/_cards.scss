@@ -57,6 +57,12 @@
 		&:hover {
 			text-decoration: none;
 			color          : $gray-800;
+
+			.arrow-link {
+				i {
+					transform: translateX(.5rem);
+				}
+			}
 		}
 	}
 
@@ -126,4 +132,68 @@
 	}
 
 	// Chart card: See _charts.scss
+}
+
+.card-deck {
+	flex-wrap: wrap;
+
+	a.card {
+		min-height   : 30rem;
+		flex         : 0 0 calc(50% - 30px);
+		margin-bottom: 2.5rem;
+
+		@include media-breakpoint-down(md) {
+			flex: 0 0 calc(100% - 30px);
+		}
+
+		&:hover {
+			text-decoration: none;
+
+			.arrow-link {
+				i {
+					transform: translateX(.5rem);
+				}
+			}
+		}
+	}
+
+	a.card-lg {
+		min-height: 30rem;
+		flex      : 0 0 calc(100% - 30px);
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	.testimonial-card {
+		margin-bottom: 2.5rem;
+
+		.testimonial-quote {
+			border-left  : none !important;
+			padding-left : 0 !important;
+			padding-right: 0 !important;
+			margin-bottom: 2.5rem;
+		}
+
+		blockquote {
+			p {
+				color: $gray-800;
+			}
+		}
+
+		.testimonial-cta {
+			p {
+				color: $gray-700;
+			}
+		}
+
+		&.green-card {
+			background-color: $sea;
+		}
+	}
+
+	p span {
+		color: $white;
+	}
 }
