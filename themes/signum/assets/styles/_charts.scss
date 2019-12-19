@@ -211,121 +211,106 @@
 		}
 	}
 
-	.accordion {
+	.chart-collapse {
 		&:focus {
 			outline   : none;
 			box-shadow: none;
-
-			.chart-collapse {
-				outline   : none;
-				box-shadow: none;
-			}
 		}
 
-		.chart-collapse {
+		.chart-collapse-header {
+			width           : 100%;
+			padding         : 0;
+			background-color: $white;
+			border          : 1px solid $gray-100;
+			border-bottom   : none;
+
 			&:focus {
 				outline   : none;
 				box-shadow: none;
 			}
 
-			.chart-collapse-header {
-				width           : 100%;
-				padding         : 0;
-				background-color: $white;
-				border          : 1px solid $gray-100;
-				border-bottom   : none;
+			.chart-collapse-details {
+				width      : 100%;
+				display    : flex;
+				align-items: center;
 
-				&:focus {
-					outline   : none;
-					box-shadow: none;
-				}
+				> div {
+					flex      : 0 0 18%;
+					padding   : 0.5rem 1.25rem;
+					text-align: left;
+					color     : $gray-700;
 
-				.chart-collapse-details {
-					width      : 100%;
-					display    : flex;
-					align-items: center;
+					@include media-breakpoint-down(md) {
+						flex   : 0 0 20%;
+						padding: 0.5rem 0.25rem;
+					}
 
-					> div {
-						flex      : 0 0 18%;
-						padding   : 0.5rem 1.25rem;
-						text-align: left;
-						color     : $gray-700;
+					@include media-breakpoint-down(sm) {
+						font-size: 0.75rem;
+					}
 
-						@include media-breakpoint-down(md) {
-							flex   : 0 0 20%;
-							padding: 0.5rem 0.25rem;
-						}
+					&.chart-collapse-rank {
+						font-family: $font-family-serif;
+						font-size  : 3rem;
+						color      : $gray-900;
 
 						@include media-breakpoint-down(sm) {
-							font-size: 0.75rem;
-						}
-
-						&.chart-collapse-rank {
-							font-family: $font-family-serif;
-							font-size  : 3rem;
-							color      : $gray-900;
-
-							@include media-breakpoint-down(sm) {
-								font-size   : 1.5rem;
-								padding-left: 0.5rem;
-							}
-						}
-
-						&.chart-collapse-arrow {
-							flex         : 0 0 10%;
-							text-align   : right;
-							padding-right: 2rem;
-							position     : relative;
-
-							@include media-breakpoint-down(md) {
-								padding: 0;
-								flex   : 0;
-							}
-
-							i {
-								display   : inline-block;
-								color     : $gray-200;
-								transition: $transition-base;
-
-								@include media-breakpoint-down(md) {
-									position : absolute;
-									right    : 0.5rem;
-									top      : 0;
-									transform: translateY(-50%);
-								}
-							}
-						}
-					}
-				}
-
-				.progress {
-					border-radius   : 0;
-					height          : 0.5rem;
-					box-shadow      : none;
-					background-color: $gray-100;
-				}
-
-				&.arrow-flip {
-					.chart-collapse-details {
-						> div {
-							&.chart-collapse-arrow {
-								i {
-									transform: rotate(180deg);
-									color    : $gray-700;
-								}
-							}
+							font-size   : 1.5rem;
+							padding-left: 0.5rem;
 						}
 					}
 				}
 			}
 
-			.chart-collapse-content {
-				border    : 1px solid $gray-100;
-				border-top: none;
-				padding   : 1.25rem;
+			.progress {
+				border-radius   : 0;
+				height          : 0.5rem;
+				box-shadow      : none;
+				background-color: $gray-100;
 			}
 
+			.chart-collapse-arrow {
+				flex         : 0 0 10% !important;
+				text-align   : right !important;
+				padding-right: 2rem;
+				position     : relative;
+
+				@include media-breakpoint-down(md) {
+					padding: 0;
+					flex   : 0;
+				}
+
+				i {
+					display   : inline-block;
+					color     : $gray-700;
+					transition: $transition-base;
+					font-size : 1.5rem;
+
+					@include media-breakpoint-down(md) {
+						position : absolute;
+						right    : 0.5rem;
+						top      : 0;
+						transform: translateY(-50%);
+					}
+				}
+			}
+
+			&.collapsed {
+				.chart-collapse-arrow {
+					i {
+						transform: rotate(180deg);
+						color    : $gray-200;
+					}
+				}
+			}
 		}
+
+		.chart-collapse-content {
+			border    : 1px solid $gray-100;
+			border-top: none;
+			padding   : 1.25rem;
+		}
+
 	}
 
 	/* Special controls for Quote Fuse Liquidity donut chart */

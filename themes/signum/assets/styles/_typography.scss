@@ -41,6 +41,10 @@ p {
 
 a {
 	transition: $transition-base;
+
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 /* Fancy underlines */
