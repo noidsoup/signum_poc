@@ -1,5 +1,7 @@
 {{ define "main" }}
 {{ $url := printf "%s" .URL | absLangURL }}
+{{$currentInsightCategoryId := .Params.category.id}}
+{{$currentInsightTitle := .Title }}
 
 <body class="blog">
 	<div class="blog-single bg-white">
@@ -50,70 +52,26 @@
 			</div>
 			<div class="container-fluid">
 				<div class="carousel carousel-slider">
-					<div class="insight-card card">
-						<div class="card-img-bg" style="background-image: url();">
-							<span class="shadow-none badge badge-pill badge-warning">Signum Cents</span>
-						</div>
-						<div class="card-body">
-							<a class="card-title" href="/insights/predictive-cost-savings-pt2">Predictive cost savings – Part 2</a>
-							<a class="arrow-link" href="/insights/predictive-cost-savings-pt2">
-								<span class="call-to-action">Read More</span>
-								<i class="icon-arrow-right"></i>
-							</a>
-						</div>
-					</div>
 
-					<div class="insight-card card">
-						<div class="card-img-bg" style="background-image: url();">
-							<span class="shadow-none badge badge-pill badge-warning">Signum Cents</span>
-						</div>
-						<div class="card-body">
-							<a class="card-title" href="/insights/predictive-cost-savings-pt2">Predictive cost savings – Part 2</a>
-							<a class="arrow-link" href="/insights/predictive-cost-savings-pt2">
-								<span class="call-to-action">Read More</span>
-								<i class="icon-arrow-right"></i>
-							</a>
-						</div>
-					</div>
-
-					<div class="insight-card card">
-						<div class="card-img-bg" style="background-image: url();">
-							<span class="shadow-none badge badge-pill badge-warning">Signum Cents</span>
-						</div>
-						<div class="card-body">
-							<a class="card-title" href="/insights/predictive-cost-savings-pt2">Predictive cost savings – Part 2</a>
-							<a class="arrow-link" href="/insights/predictive-cost-savings-pt2">
-								<span class="call-to-action">Read More</span>
-								<i class="icon-arrow-right"></i>
-							</a>
-						</div>
-					</div>
-
-					<div class="insight-card card">
-						<div class="card-img-bg" style="background-image: url();">
-							<span class="shadow-none badge badge-pill badge-warning">Signum Cents</span>
-						</div>
-						<div class="card-body">
-							<a class="card-title" href="/insights/predictive-cost-savings-pt2">Predictive cost savings – Part 2</a>
-							<a class="arrow-link" href="/insights/predictive-cost-savings-pt2">
-								<span class="call-to-action">Read More</span>
-								<i class="icon-arrow-right"></i>
-							</a>
-						</div>
-					</div>
-
-					<div class="insight-card card">
-						<div class="card-img-bg" style="background-image: url();">
-							<span class="shadow-none badge badge-pill badge-warning">Signum Cents</span>
-						</div>
-						<div class="card-body">
-							<a class="card-title" href="/insights/predictive-cost-savings-pt2">Predictive cost savings – Part 2</a>
-							<a class="arrow-link" href="/insights/predictive-cost-savings-pt2">
-								<span class="call-to-action">Read More</span>
-								<i class="icon-arrow-right"></i>
-							</a>
-						</div>
-					</div>
+					{{ range first 5 (where (where .Site.Pages "Type" "insights")  "Params.category.id" "=" $currentInsightCategoryId) }}
+						{{ if ne .Title $currentInsightTitle }}
+							<div class="insight-card card">
+									<div class="card-img-bg" style="background-image: url({{.Params.image.url}});">
+										<span class="shadow-none badge badge-pill badge-warning">
+												{{ $categoryPath := printf "%s%s%s" "/category/" $currentInsightCategoryId ".md" }}
+												{{ with .Site.GetPage $categoryPath }}{{.Title}}{{ end }}
+										</span>
+									</div>
+									<div class="card-body">
+										<a class="card-title" href="{{.URL}}">{{.Title}}</a>
+										<a class="arrow-link" href="{{.URL}}">
+											<span class="call-to-action">Read More</span>
+											<i class="icon-arrow-right"></i>
+										</a>
+									</div>
+							</div>
+						{{end}}
+					{{end}}
 				</div>
 
 			</div>
