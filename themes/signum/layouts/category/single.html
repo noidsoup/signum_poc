@@ -20,55 +20,55 @@
 			{{ $categorySlug := index (last 1 (split (delimit (split .URL "/") "," "") ",")) 0 }}
 			{{ $category := where (where .Site.Pages "Type" "category") "Params.slug" "="  $categorySlug }}
 			{{with $category}}
-				{{range .}}
-					{{ $categoryId := .BaseFileName }}
-					{{ range $index, $el := where (where .Site.Pages "Type" "insights")  "Params.category.id" "=" $categoryId }}
-						{{ $categoryId := string .Params.category.id}}
-						{{ $name := .Title}}
-						{{ $slug := .Params.slug}}
-						{{ $description := .Params.description}}
-						{{ $img := .Params.image.url}}
+			{{range .}}
+			{{ $categoryId := .BaseFileName }}
+			{{ range $index, $el := where (where .Site.Pages "Type" "insights")  "Params.category.id" "=" $categoryId }}
+			{{ $categoryId := string .Params.category.id}}
+			{{ $name := .Title}}
+			{{ $slug := .Params.slug}}
+			{{ $description := .Params.description}}
+			{{ $img := .Params.image.url}}
 
 
-						{{if eq $index 0}}
-						<div class="blog-feature pb-8 pb-lg-11 row">
-							<div class="col-lg-8">
-								<a href="/insights/{{$slug}}" class="blog-feature-image rounded" style="background-image: url({{$img}})"></a>
-							</div>
-							<div class="col-lg-4">
-								<h3>{{$name}}</h3>
-								<p>{{$description}}</p>
+			{{if eq $index 0}}
+			<div class="blog-feature pb-8 pb-lg-11 row">
+				<div class="col-lg-8">
+					<a href="/insights/{{$slug}}" class="blog-feature-image rounded" style="background-image: url({{$img}})"></a>
+				</div>
+				<div class="col-lg-4">
+					<h3>{{$name}}</h3>
+					<p>{{$description}}</p>
+					{{ partial "author.html" (dict "This" . "Site" $.Site "Id" .Params.author.id) }}
+					<div class="blog-list-date">{{ .PublishDate.Format "Jan 2" }}</div>
+				</div>
+			</div>
+			{{else}}
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="blog-list">
+
+							<div class="blog-list-item">
+								<a href="/insights/{{$slug}}" class="blog-list-item-image rounded" style="background-image: url({{$img}})"></a>
+								<h3><a href="/insights/{{$slug}}">{{$name}}</a></h3>
+								<p>{{ $description }}</p>
 								{{ partial "author.html" (dict "This" . "Site" $.Site "Id" .Params.author.id) }}
+								<div class="blog-list-date">{{ .PublishDate.Format "Jan 2" }}</div>
 							</div>
 						</div>
-						{{else}}
-						<div class="row">
-							<div class="col-lg-8">
-								<div class="blog-list">
+					</div>
 
-									<div class="blog-list-item">
-										<a href="/insights/{{$slug}}" class="blog-list-item-image rounded"
-											style="background-image: url({{$img}})"></a>
-										<h3><a href="/insights/{{$slug}}">{{$name}}</a></h3>
-										<p>{{ $description }}</p>
-										{{ partial "author.html" (dict "This" . "Site" $.Site "Id" .Params.author.id) }}
-										<div class="blog-list-date">{{ .PublishDate.Format "January 2, 2006" }}</div>
-									</div>
-								</div>
-							</div>
-
-						{{end}}
-						{{end}}
 					{{end}}
-				{{end}}
-				<div class="col-lg-4 pt-8 pt-lg-0 pl-lg-8">
+					{{end}}
+					{{end}}
+					{{end}}
+					<div class="col-lg-4 pt-8 pt-lg-0 pl-lg-8">
 						<p class="mb-0">Signum Insights: Get the daily insights you need to make data-driven decisions.</p>
 						<h5 class="mt-8">Categories</h5>
 						<ul class="list-unstyled">
 							{{ range $index, $el := where  .Site.Pages "Type" "category" }}
-								{{if gt $index 0 }}
-									<li><a href="{{.URL}}">{{.Name}}</a></li>
-								{{end}}
+							{{if gt $index 0 }}
+							<li><a href="{{.URL}}">{{.Name}}</a></li>
+							{{end}}
 							{{end}}
 						</ul>
 						<h5 class="mt-8">Elsewhere</h5>
