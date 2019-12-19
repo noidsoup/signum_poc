@@ -1,3 +1,4 @@
+{{- $Menu := .Menu -}}
 {{ $headless := .Site.GetPage "menus"  }}
 {{ $resource := printf "%s%s" .Id "/*" }}
 {{ with $headless.Resources.Match $resource }}
@@ -5,7 +6,7 @@
     <div class="col-lg-3 col-6">
         <h3>{{.Title}}</h3>
         <p>{{.Params.Subtitle}}</p>
-        {{ partial "rich-text.html" (dict "This" .Params.content "Site" $.Site) }}
+        {{ partial "rich-text.html" (dict "This" .Params.content "Site" $.Site "Menu" $Menu) }}
 {{/*          <h5>Company</h5>
         <ul class="list-unstyled">
           <li><a href="https://www.exegy.com">About us</a></li>

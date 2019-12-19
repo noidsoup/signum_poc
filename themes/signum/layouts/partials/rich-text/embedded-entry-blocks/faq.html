@@ -1,6 +1,6 @@
 {{ $headless := .Site.GetPage "faqs"  }}
 {{ $resource := printf "%s%s" .Entry.id "/*" }}
-{{ if .Menu }}
+{{ if eq .Menu "Header" }}
 	{{ with $headless.Resources.Match $resource }}
 		{{ range . }}
 			{{ $anchorLink := .Params.question | urlize }}
