@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-19T19:25:56.802Z"
+updated: "2019-12-19T23:16:46.859Z"
 createdAt: "2019-12-04T17:38:22.691Z"
 date: "2019-12-04T17:38:22.691Z"
 title: "Homepage Chart Explorer"
@@ -35,7 +35,9 @@ tab1Content:
         nodeType: "text"
     nodeType: "paragraph"
 tab1Content_plaintext: "Market Makers Stop reacting; start predicting.  $2.2 billion in annual revenue gains."
-tab1ChartType: "Quote Vector"
+tab1ChartCard:
+  id: "5KxISPfFsZsJn4WT0ye7HI"
+  contentType: "chartCard"
 tab1Overlay:
   - data: {}
     content:
@@ -94,7 +96,9 @@ tab2Content:
         nodeType: "text"
     nodeType: "paragraph"
 tab2Content_plaintext: "Agency Brokers Sweeping is dumb; execute smarter.  69.7%  intraday flow predicted."
-tab2ChartType: "Quote Fuse Liquidity"
+tab2ChartCard:
+  id: "1LDhNdeK4yD103lk2P143M"
+  contentType: "chartCard"
 tab2Overlay:
   - data: {}
     content:
@@ -142,7 +146,9 @@ tab3Content:
         nodeType: "text"
     nodeType: "paragraph"
 tab3Content_plaintext: "Algo Traders Shine a light on hidden orders.  2.5 million hidden orders flagged."
-tab3ChartType: "Liquidity Lamp"
+tab3ChartCard:
+  id: "2FECnS22VVCpP2C8oRPEFR"
+  contentType: "chartCard"
 tab3Overlay:
   - data: {}
     content:

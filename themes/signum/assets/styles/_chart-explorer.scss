@@ -37,6 +37,7 @@
 				border-bottom   : none;
 				background-color: $cream !important;
 				margin-bottom   : 0;
+				color           : $gray-700;
 
 				&.active {
 					z-index         : 2;
@@ -161,5 +162,33 @@
 
 	.chart-card {
 		text-align: left;
+
+		.chart-card {
+			box-shadow: none;
+		}
+	}
+
+	.testimonial-card {
+		.testimonial-card {
+			background-color: transparent;
+			color           : $gray-900;
+			box-shadow      : none;
+
+			.card-body {
+				padding: 0;
+			}
+
+			p {
+				color: $gray-900;
+
+				small {
+					color: $gray-700;
+				}
+			}
+
+			.blockquote-footer {
+				color: $gray-700;
+			}
+		}
 	}
 }

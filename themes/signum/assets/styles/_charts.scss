@@ -171,6 +171,12 @@
 		}
 	}
 
+	.chart-card-overlay-open {
+		font-size: 0.875rem;
+		color    : $gray-900;
+		display  : block;
+	}
+
 	.chart-card-overlay-close {
 		i {
 			font-size: 1.5rem;

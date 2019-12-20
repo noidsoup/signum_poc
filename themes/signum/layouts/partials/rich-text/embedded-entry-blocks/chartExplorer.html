@@ -2,72 +2,86 @@
 {{ $resource := printf "%s%s" .Entry.id "/*" }}
 
 {{ with $headless.Resources.Match $resource }}
-	{{ range . }}
-		<div class="chart-explorer container">
-			<ul class="nav nav-tabs pt-8 px-6 align-items-end row">
 
-				<!-- Tab 1 -->
-				{{ with .Params.tab1Content }}
-				<li class="col-md-4 col-12 nav-item">
-					<a class="nav-link active">
-						{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
-						<i class="far fa-arrow-down"></i>
-					</a>
-				</li>
-				{{ end }}
-				{{ with .Params.tab2Content }}
-				<li class="col-md-4 col-12 nav-item">
-					<a class="nav-link">
-						{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
-						<i class="far fa-arrow-down"></i>
-					</a>
-				</li>
-				{{ end }}
-				{{ with .Params.tab3Content }}
-				<li class="col-md-4 col-12 nav-item">
-					<a class="nav-link">
-						{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
-						<i class="far fa-arrow-down"></i>
-					</a>
-				</li>
-				{{ end }}
-			</ul>
-			<div class="chart-card testimonial-card card">
-				<div class="card-body">
-					<div class="chart-card-overlay"><a class="chart-card-overlay-close"><i class="far fa-times"></i></a>
-						<h2>Grab a bigger slice of the spread!</h2>
-						<p class="lead">Signum's accurate prediction of next quote price direction - Quote Vector - allows market makers to consistently reap handsome returns. How handsome? Millions of dollars per day and over two billion dollars per year are
-							achievable in the US equities market.</p><button type="button" class="btn btn-warning">See the data <i class="far fa-arrow-right"></i></button>
+{{ range . }}
+<div class="chart-explorer container">
+	<ul class="nav nav-tabs pt-8 px-lg-6 align-items-end row">
+
+		<!-- Tab 1 -->
+		{{ with .Params.tab1Content }}
+		<li class="col-md-4 col-12 nav-item">
+			<a class="nav-link active" href="#tab-1" data-toggle="tab">
+				{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+				<i class="far fa-arrow-down"></i>
+			</a>
+		</li>
+		{{ end }}
+		{{ with .Params.tab2Content }}
+		<li class="col-md-4 col-12 nav-item">
+			<a class="nav-link" href="#tab-2" data-toggle="tab">
+				{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+				<i class="far fa-arrow-down"></i>
+			</a>
+		</li>
+		{{ end }}
+		{{ with .Params.tab3Content }}
+		<li class="col-md-4 col-12 nav-item">
+			<a class="nav-link" href="#tab-3" data-toggle="tab">
+				{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+				<i class="far fa-arrow-down"></i>
+			</a>
+		</li>
+		{{ end }}
+	</ul>
+
+	<div class="chart-card testimonial-card card">
+		<div class="card-body">
+			<div class="tab-content">
+				<div id="tab-1" class="tab-pane show active">
+					<a class="chart-card-overlay-open" href="#" style="display:none;">About this data</a>
+					<div class="chart-card-overlay">
+						<a class="chart-card-overlay-close overlay-close"><i class="far fa-times"></i></a>
+						{{ with .Params.tab1Overlay }}
+							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+						{{ end }}
+						<button type="button" class="btn btn-warning overlay-close">See the data <i class="far fa-arrow-right"></i></button>
 					</div>
-					<div class="card-title h5">Net Price Improvement for Market Makers</div>
-					<div class="chart-wrapper">
-						<div class="chartjs-size-monitor">
-							<div class="chartjs-size-monitor-expand">
-								<div class=""></div>
-							</div>
-							<div class="chartjs-size-monitor-shrink">
-								<div class=""></div>
-							</div>
-						</div>
-						<canvas height="760" width="2060" class="chartjs-render-monitor" style="display: block; height: 380px; width: 1030px;"></canvas>
-					</div>
-					<ul class="chart-legend">
-						<li><span class="bg-green"></span> Theoretical Net Gains (at 50% Threshold)</li>
-					</ul>
-					<hr class="testimonial-hr">
-					<div class="row">
-						<div class="testimonial-cta mb-4 mb-lg-0 col-lg-4">
-							<a class="btn btn-primary btn-lg mb-3" href="/demo-signup">Demo data</a>
-						</div>
-						<div class="testimonial-quote col">
-							<blockquote>
-								<p>"Signum is unique and it's a game-changer. Nobody else is delivering these types of predictions in real-time with this level of accuracy."</p>
-								<footer class="blockquote-footer">Managing director at global bank</footer>
-							</blockquote>
-						</div>
-					</div>
+					{{ partial "rich-text/embedded-entry-blocks/chartCard.html" (dict "This" . "Site" $.Site "Id" .Params.tab1ChartCard.id) }}
 				</div>
+
+				<div id="tab-2" class="tab-pane">
+					<a class="chart-card-overlay-open" href="#" style="display:none;">About this data</a>
+					<div class="chart-card-overlay">
+						<a class="chart-card-overlay-close overlay-close"><i class="far fa-times"></i></a>
+						{{ with .Params.tab2Overlay }}
+							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+						{{ end }}
+						<button type="button" class="btn btn-warning overlay-close">See the data <i class="far fa-arrow-right"></i></button>
+					</div>
+					{{ partial "rich-text/embedded-entry-blocks/chartCard.html" (dict "This" . "Site" $.Site "Id" .Params.tab2ChartCard.id) }}
+				</div>
+
+				<div id="tab-3" class="tab-pane">
+					<a class="chart-card-overlay-open" href="#" style="display:none;">About this data</a>
+					<div class="chart-card-overlay">
+						<a class="chart-card-overlay-close overlay-close"><i class="far fa-times"></i></a>
+						{{ with .Params.tab3Overlay }}
+							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+						{{ end }}
+						<button type="button" class="btn btn-warning overlay-close">See the data <i class="far fa-arrow-right"></i></button>
+					</div>
+					{{ partial "rich-text/embedded-entry-blocks/chartCard.html" (dict "This" . "Site" $.Site "Id" .Params.tab3ChartCard.id) }}
+				</div>
+
+				<hr class="testimonial-hr">
+				{{ partial "rich-text/embedded-entry-blocks/testimonialCard.html" (dict "This" . "Site" $.Site "Id" .Params.testimonialCard.id) }}
+
 			</div>
 		</div>
-	{{ end }}
+
+
+	</div>
+
+</div>
+{{ end }}
 {{ end }}

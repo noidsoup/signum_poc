@@ -261,6 +261,16 @@
 			background-repeat  : no-repeat;
 		}
 
+		h3 {
+			a {
+				color: $gray-900;
+
+				&:hover {
+					color: $primary;
+				}
+			}
+		}
+
 		p {
 			font-size: 1.125rem;
 		}
@@ -363,5 +373,11 @@
 		.blog-author-bio-link {
 			display: none;
 		}
+	}
+
+	.blog-list-date {
+		margin-bottom: 0;
+		font-size    : 0.875rem;
+		line-height  : 1.3;
 	}
 }
