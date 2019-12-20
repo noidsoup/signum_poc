@@ -1,3 +1,6 @@
+/* let changeThreshold;
+let threshold = 30;
+ */
 $( document ).ready( function () {
 
 	/***********************
@@ -106,6 +109,32 @@ $( document ).ready( function () {
 		},
 	};
 
+	/* Doughnut chart options */
+	const doughnutChartOptions = {
+		maintainAspectRatio: false,
+		legend: {
+			display: false
+		},
+		tooltips : {
+			callbacks: {
+				label: function ( tooltipItem, data ) {
+					const availableLabel = data.labels[ 0 ] + ': ';
+					const unavailableLabel = data.labels[ 1 ] + ': ';
+					const availableData = data.datasets[ 0 ].data[ 0 ].toString();
+					const unavailableData = data.datasets[ 0 ].data[ 1 ].toString();
+
+					const percentageAddedAvailable = availableLabel + parseFloat( availableData ).toFixed( 2 ) + '%';
+					const percentageAddedUnavailable = unavailableLabel + parseFloat( unavailableData ).toFixed( 2 ) + '%';
+
+					if ( tooltipItem.index === 0 ) {
+						return percentageAddedAvailable;
+					}
+					return percentageAddedUnavailable;
+				}
+			}
+		}
+	};
+
 	/* Stacked bar chart options */
 	const stackedChartOptions = {
 		maintainAspectRatio: false,
@@ -201,31 +230,7 @@ $( document ).ready( function () {
 
 
 
-	/* Doughnut chart options */
-	const doughnutChartOptions = {
-		maintainAspectRatio: false,
-		legend: {
-			display: false
-		},
-		tooltips : {
-			callbacks: {
-				label: function ( tooltipItem, data ) {
-					const availableLabel = data.labels[ 0 ] + ': ';
-					const unavailableLabel = data.labels[ 1 ] + ': ';
-					const availableData = data.datasets[ 0 ].data[ 0 ].toString();
-					const unavailableData = data.datasets[ 0 ].data[ 1 ].toString();
 
-					const percentageAddedAvailable = availableLabel + parseFloat( availableData ).toFixed( 2 ) + '%';
-					const percentageAddedUnavailable = unavailableLabel + parseFloat( unavailableData ).toFixed( 2 ) + '%';
-
-					if ( tooltipItem.index === 0 ) {
-						return percentageAddedAvailable;
-					}
-					return percentageAddedUnavailable;
-				}
-			}
-		}
-	};
 
 	/* Quote Fuse data */
 	const dataChartQuoteFuseLine = {
@@ -301,7 +306,7 @@ $( document ).ready( function () {
 	};
 
 	/* Quote Fuse Liquidity data */
-	const dataChartQuoteFuseDoughnut = {
+/* 	const dataChartQuoteFuseDoughnut = {
 		labels: [ 'Available', 'Unavailable', '60%', '65%', '70%', ],
 		datasets: [
 			{
@@ -315,7 +320,7 @@ $( document ).ready( function () {
 				],
 			}
 		],
-	};
+	}; */
 
 	/* Liquidity Lamp data */
 	const dataChartLiquidityStacked = {
@@ -339,7 +344,7 @@ $( document ).ready( function () {
 	};
 
 	/* Create the Quote Vector bar chart */
-	const fetchQuoteVectorPurse = () =>
+	const fetchQuoteVectorData = (el) =>
 	fetch(
 		`https://www.googleapis.com/storage/v1/b/signum-public-website/o/Quote_Vector_Purse.csv`,
 		{
@@ -377,12 +382,11 @@ $( document ).ready( function () {
 						]
 					};
 
-					var quoteVectorChart = new Chart(quoteVectorWrapper, {
+					var quoteVectorChart = new Chart(el, {
 						type: 'bar',
 						data: quoteVectorData,
 						options: barChartOptions
 					});
-
 				});
 			});
 		});
@@ -390,7 +394,7 @@ $( document ).ready( function () {
 
 	var quoteVectorWrapper = document.getElementById('quoteVector');
 	if (quoteVectorWrapper) {
-		fetchQuoteVectorPurse();
+		fetchQuoteVectorData(quoteVectorWrapper);
 	}
 
 	/* Create the Quote Fuse line chart */
@@ -404,19 +408,87 @@ $( document ).ready( function () {
 	}
 
 	/* Create the Quote Fuse Liquidity doughnut chart */
-	var quoteFuseLiquidityChart = (el) => {
-		new Chart( el, {
-			type: 'doughnut',
-			data: dataChartQuoteFuseDoughnut,
-			options: doughnutChartOptions,
-		} );
-	}
+	const fetchQuoteFuseLiquidityData = (el) =>
+	fetch(
+		`https://www.googleapis.com/storage/v1/b/signum-public-website/o/Quote_Fuse_Liquidity.csv`,
+		{
+			method: 'GET'
+		}
+	).then(response => {
+		response.json().then(promise => {
+			fetch(promise.mediaLink).then(resolved => {
+				resolved.text().then(csv => {
+
+					const response = window.Papa.parse(csv, { skipEmptyLines: true, header: true })
+
+					const filteredByMarket =
+						response.data.filter(function(field) {
+							return field.Market === 'SP500';
+						})
+
+					const selectedDate =
+						moment(
+							filteredByMarket
+								.map(array => {
+									return moment(new Date(array.Date)).format('YYYY-MM-DD');
+								})
+								.sort()
+								.slice(-1)[0]
+						).format('M/D/YYYY');
+
+					const filteredByDate =
+						filteredByMarket.filter(filtered => filtered.Date === selectedDate);
+
+					threshold = 30;
+
+					const data = filteredByDate.map(obj => obj[`${threshold}.00%`] || obj[`${threshold}%`]);
+
+					const fiftyMilliseconds =
+						filteredByDate.map(obj => {
+							return obj['Short Fuse Liquidity (50 Msec)'];
+						});
+
+					const dataChartQuoteFuseDoughnut = {
+						labels: ['Signaled Liquidity', 'Not Signaled Liquidity'],
+						datasets: [
+							{
+								label: fiftyMilliseconds[0],
+								borderWidth: 0,
+								backgroundColor: [
+									'#0DA0A2',
+									'#60b1b3',
+									'#83c4c6',
+									'#aad7d9',
+									'#d4ebeb'
+								],
+								data: [
+									parseFloat(data[0]).toFixed(2),
+									(100 - parseFloat(data[0])).toFixed(2)
+								]
+							}
+						]
+					};
+
+					let quoteFuseLiquidityChart = new Chart( el, {
+						type: 'doughnut',
+						data: dataChartQuoteFuseDoughnut,
+						options: doughnutChartOptions,
+					} );
+				});
+			});
+		});
+	});
 
 	var quoteFuseLiquidityWrapper = document.getElementById( 'quoteFuseLiquidity' );
 	if ( quoteFuseLiquidityWrapper ) {
-		quoteFuseLiquidityChart(quoteFuseLiquidityWrapper);
+		console.log('creating chart');
+		fetchQuoteFuseLiquidityData(quoteFuseLiquidityWrapper);
 	}
 
+/* 	changeThreshold = (val) => {
+		threshold = val;
+	}
+ */
 	/* Create the Liquidity Lamp stacked bar chart */
 	var liquidityLampWrapper = document.getElementById( 'liquidityLamp' );
 	if ( liquidityLampWrapper ) {
@@ -426,8 +498,6 @@ $( document ).ready( function () {
 			options: stackedChartOptions,
 		} );
 	}
-
-
 
 
 });
