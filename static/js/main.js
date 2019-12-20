@@ -1,5 +1,4 @@
 $(document).ready( function() {
-
 	/***********************
 	 * Smooth scroll on a new page
 	 * http://stackoverflow.com/questions/9652944/jquery-scroll-to-id-from-different-page
@@ -65,7 +64,12 @@ $(document).ready( function() {
 			yAxes: [
 				{
 					ticks: {
-						beginAtZero: true
+						beginAtZero: true,
+						callback: value => {
+							return (
+								'$' + value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+							);
+						}
 					},
 					gridLines: {
 						drawBorder: false
@@ -113,6 +117,8 @@ $(document).ready( function() {
 		}
 	};
 
+
+
 	/* Doughnut chart options */
 	const doughnutChartOptions = {
 		maintainAspectRatio: false,
@@ -121,20 +127,6 @@ $(document).ready( function() {
 		}
 	};
 
-	/* Demo data for each chart type */
-	/* Quote Vector data */
-	const dataChartQuoteVector = {
-		labels: ['Jun 10', '11', '12', '13', '14', '15', '16'],
-		datasets: [
-			{
-				label: 'Theoretical Net Gains',
-				borderWidth: 0,
-				backgroundColor: '#0DA0A2',
-				hoverBackgroundColor: '#26aaab',
-				data: [65, 59, 80, 81, 56, 55, 41]
-			}
-		]
-	};
 
 	/* Quote Fuse data */
 	const dataChartQuoteFuseLine = {
@@ -229,11 +221,57 @@ $(document).ready( function() {
 	/* Create the Quote Vector bar chart */
 	var quoteVectorWrapper = document.getElementById('quoteVector');
 	if (quoteVectorWrapper) {
-		var quoteVectorChart = new Chart(quoteVectorWrapper, {
-			type: 'bar',
-			data: dataChartQuoteVector,
-			options: barChartOptions
+		const fetchQuoteVectorPurse = () =>
+		fetch(
+			`https://www.googleapis.com/storage/v1/b/signum-public-website/o/Quote_Vector_Purse.csv`,
+			{
+				method: 'GET'
+			}
+		).then(response => {
+			response.json().then(promise => {
+				fetch(promise.mediaLink).then(resolved => {
+					resolved.text().then(csv => {
+
+						const response = window.Papa.parse(csv, { skipEmptyLines: true, header: true });
+
+						const dates =
+							response.data.map(({ Date }) => {
+								return moment(Date).format('MMM DD');
+							});
+
+						const formattedData =
+							response.data.map(obj => {
+								const number = obj['50% Net_Total'].replace(/\$|,/g, '');
+								return number;
+							});
+
+						/* Quote Vector bar chart data */
+						const quoteVectorData = {
+							labels: dates.length > 9 ? dates.slice(-10) : dates,
+							datasets: [
+								{
+									label: 'Theoretical Net Gains',
+									borderWidth: 0,
+									backgroundColor: '#0DA0A2',
+									hoverBackgroundColor: '#26aaab',
+									data: formattedData.length > 9 ? formattedData.slice(-10) : formattedData,
+								}
+							]
+						};
+
+						var quoteVectorChart = new Chart(quoteVectorWrapper, {
+							type: 'bar',
+							data: quoteVectorData,
+							options: barChartOptions
+						});
+
+					});
+				});
+			});
 		});
+
+		fetchQuoteVectorPurse();
+
 	}
 
 	/* Create the Quote Fuse line chart */
