@@ -6,11 +6,12 @@
 {{ range . }}
 <div class="chart-explorer container">
 	<ul class="nav nav-tabs pt-8 px-lg-6 align-items-end row">
-
+			{{/*  {{.Params.tab1chartcard.id}}  */}}
 		<!-- Tab 1 -->
 		{{ with .Params.tab1Content }}
 		<li class="col-md-4 col-12 nav-item">
 			<a class="nav-link active" href="#tab-1" data-toggle="tab">
+
 				{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
 				<i class="far fa-arrow-down"></i>
 			</a>

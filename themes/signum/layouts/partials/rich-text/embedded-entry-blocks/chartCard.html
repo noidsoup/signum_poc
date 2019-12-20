@@ -1,5 +1,5 @@
 {{ $headless := .Site.GetPage "chartCards"  }}
-{{ $resource := printf "%s%s" .Entry.id "/*" }}
+{{ $resource := printf "%s%s" .Id "/*" }}
 
 {{ with $headless.Resources.Match $resource }}
 	{{ range . }}

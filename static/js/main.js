@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-$(document).ready( function() {
-=======
 $( document ).ready( function () {
 
->>>>>>> 9c75f198214c00f53a145754c189be849d0e7b9c
 	/***********************
 	 * Smooth scroll on a new page
 	 * http://stackoverflow.com/questions/9652944/jquery-scroll-to-id-from-different-page
@@ -231,24 +227,6 @@ $( document ).ready( function () {
 		}
 	};
 
-<<<<<<< HEAD
-=======
-	/* Demo data for each chart type */
-	/* Quote Vector data */
-	const dataChartQuoteVector = {
-		labels: [ 'Jun 10', '11', '12', '13', '14', '15', '16', ],
-		datasets: [
-			{
-				label: 'Theoretical Net Gains',
-				borderWidth: 0,
-				backgroundColor: '#0DA0A2',
-				hoverBackgroundColor: '#26aaab',
-				data: [ 65, 59, 80, 81, 56, 55, 41, ],
-			}
-		],
-	};
->>>>>>> 9c75f198214c00f53a145754c189be849d0e7b9c
-
 	/* Quote Fuse data */
 	const dataChartQuoteFuseLine = {
 		labels: [ 'Jun 10', '11', '12', '13', '14', '15', '16', ],
@@ -361,69 +339,58 @@ $( document ).ready( function () {
 	};
 
 	/* Create the Quote Vector bar chart */
-<<<<<<< HEAD
-	var quoteVectorWrapper = document.getElementById('quoteVector');
-	if (quoteVectorWrapper) {
-		const fetchQuoteVectorPurse = () =>
-		fetch(
-			`https://www.googleapis.com/storage/v1/b/signum-public-website/o/Quote_Vector_Purse.csv`,
-			{
-				method: 'GET'
-			}
-		).then(response => {
-			response.json().then(promise => {
-				fetch(promise.mediaLink).then(resolved => {
-					resolved.text().then(csv => {
+	const fetchQuoteVectorPurse = () =>
+	fetch(
+		`https://www.googleapis.com/storage/v1/b/signum-public-website/o/Quote_Vector_Purse.csv`,
+		{
+			method: 'GET'
+		}
+	).then(response => {
+		response.json().then(promise => {
+			fetch(promise.mediaLink).then(resolved => {
+				resolved.text().then(csv => {
 
-						const response = window.Papa.parse(csv, { skipEmptyLines: true, header: true });
+					const response = window.Papa.parse(csv, { skipEmptyLines: true, header: true });
 
-						const dates =
-							response.data.map(({ Date }) => {
-								return moment(Date).format('MMM DD');
-							});
-
-						const formattedData =
-							response.data.map(obj => {
-								const number = obj['50% Net_Total'].replace(/\$|,/g, '');
-								return number;
-							});
-
-						/* Quote Vector bar chart data */
-						const quoteVectorData = {
-							labels: dates.length > 9 ? dates.slice(-10) : dates,
-							datasets: [
-								{
-									label: 'Theoretical Net Gains',
-									borderWidth: 0,
-									backgroundColor: '#0DA0A2',
-									hoverBackgroundColor: '#26aaab',
-									data: formattedData.length > 9 ? formattedData.slice(-10) : formattedData,
-								}
-							]
-						};
-
-						var quoteVectorChart = new Chart(quoteVectorWrapper, {
-							type: 'bar',
-							data: quoteVectorData,
-							options: barChartOptions
+					const dates =
+						response.data.map(({ Date }) => {
+							return moment(Date).format('MMM DD');
 						});
 
+					const formattedData =
+						response.data.map(obj => {
+							const number = obj['50% Net_Total'].replace(/\$|,/g, '');
+							return number;
+						});
+
+					/* Quote Vector bar chart data */
+					const quoteVectorData = {
+						labels: dates.length > 9 ? dates.slice(-10) : dates,
+						datasets: [
+							{
+								label: 'Theoretical Net Gains',
+								borderWidth: 0,
+								backgroundColor: '#0DA0A2',
+								hoverBackgroundColor: '#26aaab',
+								data: formattedData.length > 9 ? formattedData.slice(-10) : formattedData,
+							}
+						]
+					};
+
+					var quoteVectorChart = new Chart(quoteVectorWrapper, {
+						type: 'bar',
+						data: quoteVectorData,
+						options: barChartOptions
 					});
+
 				});
 			});
 		});
+	});
 
+	var quoteVectorWrapper = document.getElementById('quoteVector');
+	if (quoteVectorWrapper) {
 		fetchQuoteVectorPurse();
-
-=======
-	var quoteVectorWrapper = document.getElementById( 'quoteVector' );
-	if ( quoteVectorWrapper ) {
-		var quoteVectorChart = new Chart( quoteVectorWrapper, {
-			type: 'bar',
-			data: dataChartQuoteVector,
-			options: barChartOptions,
-		} );
->>>>>>> 9c75f198214c00f53a145754c189be849d0e7b9c
 	}
 
 	/* Create the Quote Fuse line chart */
@@ -437,15 +404,23 @@ $( document ).ready( function () {
 	}
 
 	/* Create the Quote Fuse Liquidity doughnut chart */
+	var quoteFuseLiquidityChart = () => new Chart( quoteFuseLiquidityWrapper, {
+		type: 'doughnut',
+		data: dataChartQuoteFuseDoughnut,
+		options: doughnutChartOptions,
+	} );
+
 	var quoteFuseLiquidityWrapper = document.getElementById( 'quoteFuseLiquidity' );
 	if ( quoteFuseLiquidityWrapper ) {
-		var quoteFuseLiquidityChart = new Chart( quoteFuseLiquidityWrapper, {
-			type: 'doughnut',
-			data: dataChartQuoteFuseDoughnut,
-			options: doughnutChartOptions,
-		} );
+		quoteFuseLiquidityChart();
 	}
 
+/* 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+		e.target // newly activated tab
+		e.relatedTarget // previous active tab
+		console.log(e.target);
+	})
+ */
 	/* Create the Liquidity Lamp stacked bar chart */
 	var liquidityLampWrapper = document.getElementById( 'liquidityLamp' );
 	if ( liquidityLampWrapper ) {
