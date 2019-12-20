@@ -404,23 +404,19 @@ $( document ).ready( function () {
 	}
 
 	/* Create the Quote Fuse Liquidity doughnut chart */
-	var quoteFuseLiquidityChart = () => new Chart( quoteFuseLiquidityWrapper, {
-		type: 'doughnut',
-		data: dataChartQuoteFuseDoughnut,
-		options: doughnutChartOptions,
-	} );
+	var quoteFuseLiquidityChart = (el) => {
+		new Chart( el, {
+			type: 'doughnut',
+			data: dataChartQuoteFuseDoughnut,
+			options: doughnutChartOptions,
+		} );
+	}
 
 	var quoteFuseLiquidityWrapper = document.getElementById( 'quoteFuseLiquidity' );
 	if ( quoteFuseLiquidityWrapper ) {
-		quoteFuseLiquidityChart();
+		quoteFuseLiquidityChart(quoteFuseLiquidityWrapper);
 	}
 
-/* 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-		e.target // newly activated tab
-		e.relatedTarget // previous active tab
-		console.log(e.target);
-	})
- */
 	/* Create the Liquidity Lamp stacked bar chart */
 	var liquidityLampWrapper = document.getElementById( 'liquidityLamp' );
 	if ( liquidityLampWrapper ) {
@@ -430,6 +426,8 @@ $( document ).ready( function () {
 			options: stackedChartOptions,
 		} );
 	}
+
+
 
 
 });
