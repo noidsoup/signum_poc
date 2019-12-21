@@ -1,7 +1,6 @@
-/* let changeThreshold;
-let threshold = 30;
- */
-$( document ).ready( function () {
+/* Bar chart variables */
+let changeThreshold;
+threshold = 30;
 
 	/***********************
 	 * Smooth scroll on a new page
@@ -24,6 +23,8 @@ $( document ).ready( function () {
 		   location.hash = target;
 		});
 	} */
+	$( document ).ready( function () {
+
 
 	$( '.scrollTo' ).click( function ( e ) {
 		$( 'html, body' ).animate( {
@@ -343,7 +344,9 @@ $( document ).ready( function () {
 		]
 	};
 
-	/* Create the Quote Vector bar chart */
+	/*
+	Create the Quote Vector bar chart
+	*/
 	const fetchQuoteVectorData = (el) =>
 	fetch(
 		`https://www.googleapis.com/storage/v1/b/signum-public-website/o/Quote_Vector_Purse.csv`,
@@ -368,7 +371,7 @@ $( document ).ready( function () {
 							return number;
 						});
 
-					/* Quote Vector bar chart data */
+					/* Quote Vector bar chart data options */
 					const quoteVectorData = {
 						labels: dates.length > 9 ? dates.slice(-10) : dates,
 						datasets: [
@@ -407,73 +410,92 @@ $( document ).ready( function () {
 		} );
 	}
 
-	/* Create the Quote Fuse Liquidity doughnut chart */
+	/*
+	Create the Quote Fuse Liquidity doughnut chart
+	*/
+
+	// Forms the Quote Vector data
+	const formQuoteFuseDoughnutData = (response) => {
+		const filteredByMarket =
+		response.data.filter(function(field) {
+			return field.Market === 'SP500';
+		})
+
+		const selectedDate =
+			moment(
+				filteredByMarket
+					.map(array => {
+						return moment(new Date(array.Date)).format('YYYY-MM-DD');
+					})
+					.sort()
+					.slice(-1)[0]
+			).format('M/D/YYYY');
+
+			const filteredByDate =
+				filteredByMarket.filter(filtered => filtered.Date === selectedDate);
+
+			const data = filteredByDate.map(obj => obj[`${threshold}.00%`] || obj[`${threshold}%`]);
+
+			const fiftyMilliseconds =
+				filteredByDate.map(obj => {
+					return obj['Short Fuse Liquidity (50 Msec)'];
+				});
+
+			// Quote Vector data options
+			const dataChartQuoteFuseDoughnut = {
+				labels: ['Signaled Liquidity', 'Not Signaled Liquidity'],
+				datasets: [
+					{
+						label: fiftyMilliseconds[0],
+						borderWidth: 0,
+						backgroundColor: [
+							'#0DA0A2',
+							'#60b1b3',
+							'#83c4c6',
+							'#aad7d9',
+							'#d4ebeb'
+						],
+						data: [
+							parseFloat(data[0]).toFixed(2),
+							(100 - parseFloat(data[0])).toFixed(2)
+						]
+					}
+				]
+			};
+
+			return dataChartQuoteFuseDoughnut;
+	}
+
+	let quoteFuseLiquidityChart
+	let quoteFuseLiquidityResponse;
+	setSignaledLiquidityLabels = (chart) => {
+		document.getElementById('intraday-volume').innerHTML = chart.data.datasets[0].label
+		document.getElementById('signaled-liquidity').innerHTML = chart.data.datasets[0].data[0] + '%';
+		document.getElementById('not-signaled-liquidity').innerHTML = chart.data.datasets[0].data[1] + '%';
+	};
+
 	const fetchQuoteFuseLiquidityData = (el) =>
 	fetch(
 		`https://www.googleapis.com/storage/v1/b/signum-public-website/o/Quote_Fuse_Liquidity.csv`,
 		{
 			method: 'GET'
 		}
-	).then(response => {
-		response.json().then(promise => {
+	).then(res => {
+		res.json().then(promise => {
 			fetch(promise.mediaLink).then(resolved => {
 				resolved.text().then(csv => {
 
-					const response = window.Papa.parse(csv, { skipEmptyLines: true, header: true })
+					quoteFuseLiquidityResponse = window.Papa.parse(csv, { skipEmptyLines: true, header: true })
+					const data = formQuoteFuseDoughnutData(quoteFuseLiquidityResponse);
 
-					const filteredByMarket =
-						response.data.filter(function(field) {
-							return field.Market === 'SP500';
-						})
-
-					const selectedDate =
-						moment(
-							filteredByMarket
-								.map(array => {
-									return moment(new Date(array.Date)).format('YYYY-MM-DD');
-								})
-								.sort()
-								.slice(-1)[0]
-						).format('M/D/YYYY');
-
-					const filteredByDate =
-						filteredByMarket.filter(filtered => filtered.Date === selectedDate);
-
-					threshold = 30;
-
-					const data = filteredByDate.map(obj => obj[`${threshold}.00%`] || obj[`${threshold}%`]);
-
-					const fiftyMilliseconds =
-						filteredByDate.map(obj => {
-							return obj['Short Fuse Liquidity (50 Msec)'];
-						});
-
-					const dataChartQuoteFuseDoughnut = {
-						labels: ['Signaled Liquidity', 'Not Signaled Liquidity'],
-						datasets: [
-							{
-								label: fiftyMilliseconds[0],
-								borderWidth: 0,
-								backgroundColor: [
-									'#0DA0A2',
-									'#60b1b3',
-									'#83c4c6',
-									'#aad7d9',
-									'#d4ebeb'
-								],
-								data: [
-									parseFloat(data[0]).toFixed(2),
-									(100 - parseFloat(data[0])).toFixed(2)
-								]
-							}
-						]
-					};
-
-					let quoteFuseLiquidityChart = new Chart( el, {
+					quoteFuseLiquidityChart = new Chart( el, {
 						type: 'doughnut',
-						data: dataChartQuoteFuseDoughnut,
+						data: data,
 						options: doughnutChartOptions,
 					} );
+
+					setSignaledLiquidityLabels(quoteFuseLiquidityChart);
+
 				});
 			});
 		});
@@ -485,10 +507,15 @@ $( document ).ready( function () {
 		fetchQuoteFuseLiquidityData(quoteFuseLiquidityWrapper);
 	}
 
-/* 	changeThreshold = (val) => {
+	// Quote Fuse Bar chart threshold selector
+	changeThreshold = (val) => {
 		threshold = val;
+		quoteFuseLiquidityChart.data = formQuoteFuseDoughnutData(quoteFuseLiquidityResponse);
+
+		setSignaledLiquidityLabels(quoteFuseLiquidityChart);
+		quoteFuseLiquidityChart.update();
 	}
- */
+
 	/* Create the Liquidity Lamp stacked bar chart */
 	var liquidityLampWrapper = document.getElementById( 'liquidityLamp' );
 	if ( liquidityLampWrapper ) {
