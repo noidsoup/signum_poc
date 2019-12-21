@@ -14,7 +14,24 @@
 		<div class="container pt-8 pb-8 pb-lg-11">
 			<div class="insights card-deck">
 				{{range $index, $el := where .Site.Pages "Type" "insights"}}
-					{{if eq $index 1}}
+
+					{{if and (gt $index 0) (lt $index 3) }}
+						<!-- Next three posts use this styling -->
+						<a href="{{.URL}}" class="insight-card card">
+							<div class="card-img-bg" style="background-image: url({{.Params.image.url}});">
+								{{ with .Site.GetPage .Params.category.id }}
+									<span style="background-color:{{.Params.Color}}" class="shadow-none badge badge-pill">{{.Title}}</span>
+								{{ end }}
+							</div>
+							<div class="card-body">
+								<div class="card-title h5">{{.Title}}</div>
+								<span class="arrow-link"><span class="call-to-action">Read More</span><i class="far fa-arrow-right"></i></span>
+							</div>
+						</a>
+					{{end}}
+
+
+					{{if eq $index 3}}
 						<!-- Most recent post is bigger -->
 						<a href="{{.URL}}" class="insight-card card-lg card">
 							<div class="card-img-bg" style="background-image: url({{.Params.image.url}});">
@@ -28,7 +45,8 @@
 							</div>
 						</a>
 					{{end}}
-					{{if and (gt $index 1) (lt $index 5) }}
+
+					{{if and (gt $index 3) (lt $index 5) }}
 						<!-- Next three posts use this styling -->
 						<a href="{{.URL}}" class="insight-card card">
 							<div class="card-img-bg" style="background-image: url({{.Params.image.url}});">
@@ -51,7 +69,7 @@
 				{{ $testimonialCards := .Site.GetPage "testimonialCards"  }}
 				{{ with first 1 $testimonialCards.Resources  }}
 					{{ range . }}
-						<div class="testimonial-card card">
+						<div class="testimonial-card green-card card">
 								<div class="card-body">
 									<div class="testimonial-quote">
 										<blockquote>
