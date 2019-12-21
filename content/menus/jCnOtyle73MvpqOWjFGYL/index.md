@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-18T22:41:21.451Z"
+updated: "2019-12-21T22:05:47.172Z"
 createdAt: "2019-12-16T22:52:42.150Z"
 date: "2019-12-16T22:52:42.150Z"
 title: "Insights"
@@ -35,12 +35,17 @@ content:
         value: "Recent"
         nodeType: "text"
     nodeType: "heading-5"
+  - data:
+      id: "1pqR9qeq0rLbHzGGz0zh0Z"
+      contentType: "recentPosts"
+    content: []
+    nodeType: "embedded-entry-block"
   - data: {}
     content:
       - data: {}
         marks: []
-        value: "@nick! Uh-oh, what do we do here?"
+        value: ""
         nodeType: "text"
     nodeType: "paragraph"
-content_plaintext: "By Category Recent @nick! Uh-oh, what do we do here?"
+content_plaintext: "By Category Recent "
 ---

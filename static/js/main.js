@@ -20,52 +20,51 @@
 		});
 	} */
 
-	/* Bar chart variables */
-	let changeThreshold;
-	threshold = 30;
+
 
 	$( document ).ready( function () {
 
+		$( '.scrollTo' ).click( function ( e ) {
+			$( 'html, body' ).animate( {
+				scrollTop: $( e.currentTarget.hash ).offset().top
+			}, 800 );
+			location.hash = e.currentTarget.hash;
+			return false;
+		} );
 
-	$( '.scrollTo' ).click( function ( e ) {
-		$( 'html, body' ).animate( {
-			scrollTop: $( e.currentTarget.hash ).offset().top
-		}, 800 );
-		location.hash = e.currentTarget.hash;
-		return false;
-	} );
+		/***********************
+		 * Slick Slider
+		 * https://kenwheeler.github.io/slick/
+		 ***********************/
+		$( '.carousel-slider' ).slick( {
+			prevArrow: '<button type="button" class="control-arrow control-prev"></button>',
+			nextArrow: '<button type="button" class="control-arrow control-next"></button>',
+			slidesToShow: 3
+		} );
 
-	/***********************
-	 * Slick Slider
-	 * https://kenwheeler.github.io/slick/
-	 ***********************/
-	$( '.carousel-slider' ).slick( {
-		prevArrow: '<button type="button" class="control-arrow control-prev"></button>',
-		nextArrow: '<button type="button" class="control-arrow control-next"></button>',
-		slidesToShow: 3
-	} );
+		/***********************
+		 * Open a FAQ when you jump to it
+		 ***********************/
+		var hash = location.hash;
+		if ( hash ) {
+			$( hash ).find( '.faq-answer' ).collapse( 'show' );
+		}
 
-	/***********************
-	 * Open a FAQ when you jump to it
-	 ***********************/
-	var hash = location.hash;
-	if ( hash ) {
-		$( hash ).find( '.faq-answer' ).collapse( 'show' );
-	}
+		/***********************
+		 * Open/Close Chart Explorer overlays
+		 ***********************/
+		$('.overlay-close').on('click', function(e) {
+			e.preventDefault();
+			$(this).closest('.chart-card-overlay').hide();
+			$(this).closest('.tab-pane').find('.chart-card-overlay-open').show();
+		});
+		$('.chart-card-overlay-open').on('click', function(e) {
+			e.preventDefault();
+			$(this).hide();
+			$(this).closest('.tab-pane').find('.chart-card-overlay').show();
+		});
+});
 
-	/***********************
-	 * Open/Close Chart Explorer overlays
-	 ***********************/
-	$('.overlay-close').on('click', function(e) {
-		e.preventDefault();
-		$(this).closest('.chart-card-overlay').hide();
-		$(this).closest('.tab-pane').find('.chart-card-overlay-open').show();
-	});
-	$('.chart-card-overlay-open').on('click', function(e) {
-		e.preventDefault();
-		$(this).hide();
-		$(this).closest('.tab-pane').find('.chart-card-overlay').show();
-	});
 
 	/***********************
 	 * Set up Chart.js charts
@@ -230,10 +229,6 @@
 		}
 	};
 
-
-
-
-
 	/* Quote Fuse data */
 	const dataChartQuoteFuseLine = {
 		labels: [ 'Jun 10', '11', '12', '13', '14', '15', '16', ],
@@ -331,6 +326,13 @@
 	/*
 	Create the Quote Vector bar chart
 	*/
+
+	// Bar chart variables
+	let threshold = 30;
+	let changeThreshold;
+	let quoteFuseLiquidityChart;
+	let quoteFuseLiquidityResponse;
+
 	const fetchQuoteVectorData = (el) =>
 	fetch(
 		`https://www.googleapis.com/storage/v1/b/signum-public-website/o/Quote_Vector_Purse.csv`,
@@ -402,7 +404,7 @@
 	const formQuoteFuseDoughnutData = (response) => {
 		const filteredByMarket =
 		response.data.filter(function(field) {
-			return field.Market === 'SP500';
+			return field.Market === 'SP500'; // this metric is hardcoded in the original app
 		})
 
 		const selectedDate =
@@ -449,9 +451,6 @@
 
 			return dataChartQuoteFuseDoughnut;
 	}
-
-	let quoteFuseLiquidityChart;
-	let quoteFuseLiquidityResponse;
 
 	setSignaledLiquidityLabels = (chart) => {
 		document.getElementById('intraday-volume').innerHTML = chart.data.datasets[0].label;
@@ -502,8 +501,106 @@
 	}
 
 	/* Create the Liquidity Lamp stacked bar chart */
+  const sortLampRanking = name =>
+    data.sort((a, b) => {
+      if (name.includes('rank')) {
+        return a[name] - b[name];
+      } else if (name.includes('ticker')) {
+        if (a[name] < b[name]) {
+          return -1;
+        }
+        if (a[name] > b[name]) {
+          return 1;
+        }
+        return 0;
+      }
+      return b[name] - a[name];
+    });
+
+  const fetchLiquidityLampRankings = day => {
+    fetch(
+      `https://www.googleapis.com/storage/v1/b/signum-public-website/o/Liquidity_Lamp_Rankings_${day}.csv`,
+      {
+        method: 'GET'
+      }
+    ).then(response => {
+      !response.ok
+        ? fetchLiquidityLampRankings(
+            moment(day)
+              .subtract(1, 'd')
+              .format('YYYY-MM-DD')
+          )
+        : response.json().then(promise => {
+            fetch(promise.mediaLink).then(resolved => {
+              resolved.text().then(csv => {
+
+								const response = window.Papa.parse(csv, { skipEmptyLines: true, header: true })
+
+								const data =
+									response.data.filter(
+										({ category }) => category === 'total_ro_ex_volume_ETF' // this metric is hardcoded in the original app
+									);
+
+								const sort = name =>
+									data.sort((a, b) => {
+										if (name.includes('rank')) {
+											return a[name] - b[name];
+										} else if (name.includes('ticker')) {
+											if (a[name] < b[name]) {
+												return -1;
+											}
+											if (a[name] > b[name]) {
+												return 1;
+											}
+											return 0;
+										}
+										return b[name] - a[name];
+									});
+
+									// name is initially 'CR' in the app, and gets set whenever you click on a "lamp heading" to sort the rows
+									const name = "CR";
+
+									sort(name).map(array => {
+										// this is where you would need to append form each row. And Each row would need to display a different chart.
+										console.log('array', array);
+									})
+
+              });
+            });
+          });
+    });
+  };
+
+	// used only for the liquidityLampDate?!
+/*   const fetchLiquidityLampHistory = day => {
+    fetch(
+      `https://www.googleapis.com/storage/v1/b/signum-public-website/o/Liquidity_Lamp_History_${day}.csv`,
+      {
+        method: 'GET'
+      }
+    ).then(response => {
+      !response.ok
+        ? fetchLiquidityLampHistory(
+            moment(day)
+              .subtract(1, 'd')
+              .format('YYYY-MM-DD')
+          )
+        : response.json().then(promise => {
+            fetch(promise.mediaLink).then(resolved => {
+              resolved.text().then(csv => {
+								const response = window.Papa.parse(csv, { skipEmptyLines: true, header: true })
+								console.log(response);
+              });
+            });
+          });
+    });
+  }; */
+
 	var liquidityLampWrapper = document.getElementById( 'liquidityLamp' );
 	if ( liquidityLampWrapper ) {
+
+		fetchLiquidityLampRankings(moment().format('YYYY-MM-DD'));
+
 		var liquidityLampChart = new Chart( liquidityLampWrapper, {
 			type: 'bar',
 			data: dataChartLiquidityStacked,
@@ -511,4 +608,3 @@
 		} );
 	}
 
-});
