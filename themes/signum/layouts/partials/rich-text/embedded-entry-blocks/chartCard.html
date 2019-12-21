@@ -48,39 +48,39 @@
 							<p><strong>Accuracy Thresholds</strong></p>
 							<form class="threshold-radios">
 								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-30" class="custom-control-input" checked="" {{/*  onclick="changeThreshold(30)"  */}}>
+									<input name="threshold-group" type="radio" id="threshold-30" class="custom-control-input" checked="" onclick="changeThreshold(30)">
 									<label title="" type="checkbox" for="threshold-30" class="custom-control-label">30%</label>
 								</div>
 								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-35" class="custom-control-input" >
+									<input name="threshold-group" type="radio" id="threshold-35" class="custom-control-input" onclick="changeThreshold(35)">
 									<label title="" type="checkbox" for="threshold-35" class="custom-control-label">35%</label>
 								</div>
 								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-40" class="custom-control-input">
+									<input name="threshold-group" type="radio" id="threshold-40" class="custom-control-input" onclick="changeThreshold(40)">
 									<label title="" type="checkbox" for="threshold-40" class="custom-control-label">40%</label>
 								</div>
 								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-45" class="custom-control-input">
+									<input name="threshold-group" type="radio" id="threshold-45" class="custom-control-input" onclick="changeThreshold(45)">
 									<label title="" type="checkbox" for="threshold-45" class="custom-control-label">45%</label>
 								</div>
 								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-50" class="custom-control-input">
+									<input name="threshold-group" type="radio" id="threshold-50" class="custom-control-input" onclick="changeThreshold(50)">
 									<label title="" type="checkbox" for="threshold-50" class="custom-control-label">50%</label>
 								</div>
 								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-55" class="custom-control-input">
+									<input name="threshold-group" type="radio" id="threshold-55" class="custom-control-input" onclick="changeThreshold(55)">
 									<label title="" type="checkbox" for="threshold-55" class="custom-control-label">55%</label>
 								</div>
 								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-60" class="custom-control-input">
+									<input name="threshold-group" type="radio" id="threshold-60" class="custom-control-input" onclick="changeThreshold(60)">
 									<label title="" type="checkbox" for="threshold-60" class="custom-control-label">60%</label>
 								</div>
 								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-65" class="custom-control-input">
+									<input name="threshold-group" type="radio" id="threshold-65" class="custom-control-input" onclick="changeThreshold(65)">
 									<label title="" type="checkbox" for="threshold-65" class="custom-control-label">65%</label>
 								</div>
 								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-70" class="custom-control-input">
+									<input name="threshold-group" type="radio" id="threshold-70" class="custom-control-input" onclick="changeThreshold(70)">
 									<label title="" type="checkbox" for="threshold-70" class="custom-control-label">70%</label>
 								</div>
 							</form>
@@ -92,10 +92,10 @@
 								</div>
 							</div>
 							<div class="col-lg-5 pl-lg-8 pt-lg-8">
-								<p><strong>49.3% of intraday volume </strong>is traded in the 50 millisecond prelude to a new quote price</p>
+								<p><strong id="intraday-volume"></strong> <strong>of intraday volume</strong> is traded in the 50 millisecond prelude to a new quote price</p>
 								<ul class="chart-legend vertical">
-									<li><span class="bg-green"></span> <strong>56.90%</strong> Signaled Liquidity</li>
-									<li><span class="bg-green-60"></span> <strong>43.10%</strong> Not Signaled Liquidity</li>
+									<li><span class="bg-green"></span> <strong id="signaled-liquidity"></strong> Signaled Liquidity</li>
+									<li><span class="bg-green-60"></span> <strong id="not-signaled-liquidity"></strong> Not Signaled Liquidity</li>
 								</ul>
 							</div>
 						</div>
