@@ -103,15 +103,16 @@ h2 {
 	text-decoration: none !important;
 
 	.call-to-action {
-		font-size  : 0.8125rem;
-		font-weight: 600;
+		font-size  : 0.9375rem;
+		font-weight: 500;
 	}
 
 	i {
-		font-size  : 0.75rem;
+		font-size  : 0.875rem;
 		display    : inline-block;
-		margin-left: 0.25rem;
+		margin-left: 0.5rem;
 		position   : relative;
+		font-weight: bold !important;
 		//top        : -1px;
 		transition : $transition-base;
 	}

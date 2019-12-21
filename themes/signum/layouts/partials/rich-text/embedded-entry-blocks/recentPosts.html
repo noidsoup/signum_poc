@@ -1,0 +1,16 @@
+{{ $headless := .Site.GetPage "recentPosts"  }}
+{{ $resource := printf "%s%s" .Entry.id "/*" }}
+
+{{ with $headless.Resources.Match $resource }}
+	{{ range . }}
+
+		{{ $count := .Params.postCount }}
+		{{range $index, $el := where .Site.Pages "Type" "insights"}}
+			{{if and (gt $index 0) (le $index $count) }}
+				<p><a href="{{.URL}}">{{.Title}}</a></p>
+			{{ end }}
+		{{ end }}
+
+		<p><a href="{{ .Params.allPostsLink}}">All recent articles</a></p>
+	{{ end }}
+{{ end }}

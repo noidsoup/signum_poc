@@ -165,6 +165,10 @@
 
 		.chart-card {
 			box-shadow: none;
+
+			.card-body {
+				padding: 0;
+			}
 		}
 	}
 
