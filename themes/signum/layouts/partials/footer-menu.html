@@ -1,26 +1,13 @@
-{{- $Menu := .Menu -}}
+{{ $Menu := .Menu }}
 {{ $headless := .Site.GetPage "menus"  }}
 {{ $resource := printf "%s%s" .Id "/*" }}
 {{ with $headless.Resources.Match $resource }}
-	{{ range . }}
-    <div class="col-lg-3 col-6">
-        <h3>{{.Title}}</h3>
-        <p>{{.Params.Subtitle}}</p>
-        {{ partial "rich-text.html" (dict "This" .Params.content "Site" $.Site "Menu" $Menu) }}
-{{/*          <h5>Company</h5>
-        <ul class="list-unstyled">
-          <li><a href="https://www.exegy.com">About us</a></li>
-          <li><a href="https://www.exegy.com">Leadership</a></li>
-          <li><a href="https://www.exegy.com">Contact us</a></li>
-        </ul>
-        <h5>Office</h5>
-        <ul class="list-unstyled">
-          <li>St. Louis: <a href="tel:13142183600" class="text-nowrap">+1.314.218.3600</a></li>
-          <li>London: <a href="tel:4402038905757" class="text-nowrap">+44.(0).20.3890.5757</a></li>
-          <li>New York: <a href="tel:16468762555" class="text-nowrap">+1.646.876.2555</a></li>
-          <li>Hong Kong: <a href="tel:13142183600" class="text-nowrap">+1.314.218.3600</a></li>
-        </ul>  */}}
-      </div>
-	{{ end }}
-{{ end }}
+{{ range . }}
+<div class="col-lg-3 col-6">
+	<h3>{{.Title}}</h3>
+	<p>{{.Params.Subtitle}}</p>
 
+	{{ partial "rich-text.html" (dict "This" .Params.content "Site" $.Site "Menu" $Menu) }}
+</div>
+{{ end }}
+{{ end }}

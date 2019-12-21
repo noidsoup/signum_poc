@@ -89,3 +89,8 @@ repeatableTypes:
     directory: /content/menus/
     fileExtension: md
     isHeadless: true
+
+  - id: recentPosts
+    directory: /content/recentPosts/
+    fileExtension: md
+    isHeadless: true
