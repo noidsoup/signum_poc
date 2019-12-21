@@ -1,7 +1,3 @@
-/* Bar chart variables */
-let changeThreshold;
-threshold = 30;
-
 	/***********************
 	 * Smooth scroll on a new page
 	 * http://stackoverflow.com/questions/9652944/jquery-scroll-to-id-from-different-page
@@ -23,6 +19,11 @@ threshold = 30;
 		   location.hash = target;
 		});
 	} */
+
+	/* Bar chart variables */
+	let changeThreshold;
+	threshold = 30;
+
 	$( document ).ready( function () {
 
 
@@ -306,23 +307,6 @@ threshold = 30;
 		],
 	};
 
-	/* Quote Fuse Liquidity data */
-/* 	const dataChartQuoteFuseDoughnut = {
-		labels: [ 'Available', 'Unavailable', '60%', '65%', '70%', ],
-		datasets: [
-			{
-				label: 'Volume Before Price Shift',
-				borderWidth: 0,
-				backgroundColor: [
-					'#0DA0A2', '#83c4c6',
-				],
-				data: [
-					47.5, 52.5,
-				],
-			}
-		],
-	}; */
-
 	/* Liquidity Lamp data */
 	const dataChartLiquidityStacked = {
 		labels: ['Jun 2-4', '5-7', '8', '9', '10', '12', '13', '14', '15', '16'],
@@ -466,10 +450,11 @@ threshold = 30;
 			return dataChartQuoteFuseDoughnut;
 	}
 
-	let quoteFuseLiquidityChart
+	let quoteFuseLiquidityChart;
 	let quoteFuseLiquidityResponse;
+
 	setSignaledLiquidityLabels = (chart) => {
-		document.getElementById('intraday-volume').innerHTML = chart.data.datasets[0].label
+		document.getElementById('intraday-volume').innerHTML = chart.data.datasets[0].label;
 		document.getElementById('signaled-liquidity').innerHTML = chart.data.datasets[0].data[0] + '%';
 		document.getElementById('not-signaled-liquidity').innerHTML = chart.data.datasets[0].data[1] + '%';
 	};
@@ -483,9 +468,9 @@ threshold = 30;
 	).then(res => {
 		res.json().then(promise => {
 			fetch(promise.mediaLink).then(resolved => {
-				resolved.text().then(csv => {
+				resolved.text().then(response => {
 
-					quoteFuseLiquidityResponse = window.Papa.parse(csv, { skipEmptyLines: true, header: true })
+					quoteFuseLiquidityResponse = window.Papa.parse(response, { skipEmptyLines: true, header: true })
 					const data = formQuoteFuseDoughnutData(quoteFuseLiquidityResponse);
 
 					quoteFuseLiquidityChart = new Chart( el, {
@@ -501,9 +486,9 @@ threshold = 30;
 		});
 	});
 
+	// Quote Fuse Bar chart threshold selector
 	var quoteFuseLiquidityWrapper = document.getElementById( 'quoteFuseLiquidity' );
 	if ( quoteFuseLiquidityWrapper ) {
-		console.log('creating chart');
 		fetchQuoteFuseLiquidityData(quoteFuseLiquidityWrapper);
 	}
 
@@ -525,6 +510,5 @@ threshold = 30;
 			options: stackedChartOptions,
 		} );
 	}
-
 
 });
