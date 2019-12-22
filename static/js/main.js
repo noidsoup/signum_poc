@@ -142,6 +142,7 @@
 		legend: {
 			display: false
 		},
+		responsive: true,
 		scales: {
 			yAxes: [
 				{
@@ -303,7 +304,7 @@
 	};
 
 	/* Liquidity Lamp data */
-	const dataChartLiquidityStacked = {
+/* 	const dataChartLiquidityStacked = {
 		labels: ['Jun 2-4', '5-7', '8', '9', '10', '12', '13', '14', '15', '16'],
 		datasets: [
 			{
@@ -322,7 +323,7 @@
 			},
 		]
 	};
-
+ */
 	/*
 	Create the Quote Vector bar chart
 	*/
@@ -500,40 +501,119 @@
 		quoteFuseLiquidityChart.update();
 	}
 
-	/* Create the Liquidity Lamp stacked bar chart */
-  const sortLampRanking = name =>
-    data.sort((a, b) => {
-      if (name.includes('rank')) {
-        return a[name] - b[name];
-      } else if (name.includes('ticker')) {
-        if (a[name] < b[name]) {
-          return -1;
-        }
-        if (a[name] > b[name]) {
-          return 1;
-        }
-        return 0;
-      }
-      return b[name] - a[name];
-    });
+	/* create lamp chart */
 
-  const fetchLiquidityLampRankings = day => {
+	const createElement = (type, classes = [], text = "", attributes = [], id = "") => {
+		const el = document.createElement(type);
+		el.id = id;
+		el.innerText = text;
+
+		classes.forEach((string) => {
+			el.classList.add(string);
+		})
+
+		if (attributes.length) {
+			attributes.forEach((att) => {
+				el.setAttribute(att.field, att.value);
+			})
+		}
+
+		return el;
+	}
+
+	// Create row element
+	const createRow = (item, index, id) => {
+
+		const button = createElement("button", ["chart-collapse-header", "collapsed"], "", [
+			{field: "data-toggle", value: "collapse"},
+			{field: "data-target", value: `#item-${id}-${index}` },
+		]);
+
+		// create details
+		const detailsContainerDiv = createElement("div", ["chart-collapse-details"]);
+		const rankDetailDiv = createElement("div", ["chart-collapse-rank"], (item.rank));
+		const tickerDetailDiv = createElement("div", ["chart-collapse-detail"], (item.ticker));
+
+		valueDetailText = (parseInt(item.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'));
+		const valueDetailDiv = createElement("div", ["chart-collapse-detail"], valueDetailText);
+
+		volumeText = (item['Volume while lit'] || "").toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,').split('.')[0];
+		const volumeDetailDiv = createElement("div", ["chart-collapse-detail"], volumeText);
+
+		const concentrationDetailDiv = createElement("div", ["chart-collapse-detail"], parseInt(item.CR));
+
+		// create collapse arrow for details
+		const collapseArrowDiv = createElement("div", ["chart-collapse-arrow"]);
+		const collapseArrowIcon = createElement("i", ["far", "fa-angle-up"]);
+		collapseArrowDiv.appendChild(collapseArrowIcon);
+
+		// appending the details to the chart-collapse-details div
+		detailsContainerDiv.appendChild(rankDetailDiv);
+		detailsContainerDiv.appendChild(tickerDetailDiv);
+		detailsContainerDiv.appendChild(valueDetailDiv);
+		detailsContainerDiv.appendChild(volumeDetailDiv);
+		detailsContainerDiv.appendChild(concentrationDetailDiv);
+		detailsContainerDiv.appendChild(collapseArrowDiv);
+
+		const progressDiv = createElement("div", ["progress"]);
+		const progress1BarDiv = createElement("div", ["progress-bar", "bg-primary"], "", [
+			{ field: "role", value: "progressbar"},
+			{ field: "aria-valuenow", value: item.value * 0.00011 },
+			{ field: "aria-valuemin", value: 0 },
+			{ field: "aria-valuemax", value: 100 },
+			{ field: "style", value: `width: ${item.value * 0.00011}%` },
+		]);
+
+		const progress2BarDiv = createElement("div", ["bg-green-60", "progress-bar"], "", [
+			{ field: "role", value: "progressbar"},
+			{ field: "aria-valuenow", value: item['Volume while lit'] - item.value * 0.00011  },
+			{ field: "aria-valuemin", value: 0 },
+			{ field: "aria-valuemax", value: 100 },
+			{ field: "style", value: `width: ${(item['Volume while lit'] - item.value) * 0.00011}%` },
+		]);
+
+		progressDiv.appendChild(progress1BarDiv);
+		progressDiv.appendChild(progress2BarDiv);
+
+		const chartCollapseContentWrapper = createElement("div", ["chart-collapse-content", "collapse"], "", false, (`item-${id}-${index}`) );
+		const chartCollapseContentDiv = createElement("div");
+		const chartWrapper = createElement("div", ["chart-wrapper"], "", [
+			{ field: "style", value: "height:280px; width:900px" },
+		]);
+
+		const chartCanvas = createElement("canvas", [], "", [], `chart-${id}-${index}`);
+		chartWrapper.appendChild(chartCanvas);
+
+		chartCollapseContentWrapper.appendChild(chartCollapseContentDiv);
+		chartCollapseContentDiv.appendChild(chartWrapper);
+
+		// append elements to button
+		button.appendChild(detailsContainerDiv);
+		button.appendChild(progressDiv);
+		button.appendChild(chartCollapseContentWrapper);
+
+		document.getElementById(id).appendChild(button);
+	};
+
+  const fetchLiquidityLampRankings = (day, charts, lampHistory) => {
+
     fetch(
       `https://www.googleapis.com/storage/v1/b/signum-public-website/o/Liquidity_Lamp_Rankings_${day}.csv`,
       {
         method: 'GET'
       }
-    ).then(response => {
+    ).then((response) => {
       !response.ok
         ? fetchLiquidityLampRankings(
             moment(day)
               .subtract(1, 'd')
-              .format('YYYY-MM-DD')
+							.format('YYYY-MM-DD'),
+							charts,
+							lampHistory,
           )
-        : response.json().then(promise => {
+        : response.json().then((promise) => {
             fetch(promise.mediaLink).then(resolved => {
-              resolved.text().then(csv => {
-
+              resolved.text().then((csv) => {
 								const response = window.Papa.parse(csv, { skipEmptyLines: true, header: true })
 
 								const data =
@@ -557,22 +637,37 @@
 										return b[name] - a[name];
 									});
 
-									// name is initially 'CR' in the app, and gets set whenever you click on a "lamp heading" to sort the rows
-									const name = "CR";
+									$.each(charts, ( i, chart ) => {
 
-									sort(name).map(array => {
-										// this is where you would need to append form each row. And Each row would need to display a different chart.
-										console.log('array', array);
-									})
+										// conditionally sorting the data via the sort by ratio option on contentful
+										const sortbyration = $( chart ).hasClass( "sortbyratio" );
+										let name;
+										if (sortbyration) {
+											name = "CR";
+										} else {
+											name = "rank";
+										}
 
+										const sortedArray = sort(name).map(array => {
+											return array;
+										})
+
+										sortedArray.forEach((item, index) => {
+											createRow(item, index, chart.id);
+											const chartCanvas = document.getElementById( `chart-${chart.id}-${index}` );
+											//console.log(lampHistory);
+											createLampChart(chartCanvas, lampHistory, item.ticker);
+										})
+
+
+									});
               });
             });
           });
     });
   };
 
-	// used only for the liquidityLampDate?!
-/*   const fetchLiquidityLampHistory = day => {
+  const fetchLiquidityLampHistory = (day,) => {
     fetch(
       `https://www.googleapis.com/storage/v1/b/signum-public-website/o/Liquidity_Lamp_History_${day}.csv`,
       {
@@ -588,23 +683,103 @@
         : response.json().then(promise => {
             fetch(promise.mediaLink).then(resolved => {
               resolved.text().then(csv => {
-								const response = window.Papa.parse(csv, { skipEmptyLines: true, header: true })
-								console.log(response);
+								liquidityLampHistoryResponse = window.Papa.parse(csv, { skipEmptyLines: true, header: true });
               });
             });
           });
     });
-  }; */
+	};
 
-	var liquidityLampWrapper = document.getElementById( 'liquidityLamp' );
-	if ( liquidityLampWrapper ) {
+	/* Create the Liquidity Lamp stacked bar chart */
+	const createLampChart = (chart, lampHistory, ticker) => {
+		//console.log(lampHistory);
+		const liquidityLampDate =
+			moment(
+				lampHistory.data
+					.map(array => {
+						return moment(array.date).format('YYYY-MM-DD');
+					})
+					.sort()
+					.slice(-1)[0]
+			).format('MMM DD, YYYY');
 
-		fetchLiquidityLampRankings(moment().format('YYYY-MM-DD'));
+		const filtered = name =>
+    	lampHistory.data
+				.filter(data => data.ticker === name)
+				.sort((a, b) => moment(a.date) - moment(b.date));
 
-		var liquidityLampChart = new Chart( liquidityLampWrapper, {
+		const dates =
+			filtered(ticker).map(array => {
+				return moment(array.date).format('MMM DD');
+			});
+
+		const volume =
+			filtered(ticker).map(array => {
+				return parseInt(array['Volume while Lit']);
+			});
+
+		const signal =
+			filtered(ticker).map(array => {
+				return parseInt(array['total_ro_ex_volume']);
+			});
+
+		const dateIndex =
+			dates.indexOf(moment(new Date(liquidityLampDate)).format('MMM DD'));
+
+		const dataChartLiquidityStacked = {
+			labels:
+				dateIndex > 9
+					? dates.slice(dateIndex + 1 - 10, dateIndex + 1)
+					: dates.slice(dateIndex - dateIndex, dateIndex + 1),
+			datasets: [
+				{
+					label: 'Signal Count',
+					borderWidth: 0,
+					backgroundColor: '#0DA0A2',
+					hoverBackgroundColor: '#60b1b3',
+					data: dateIndex > 9 ? signal.slice(-10) : signal
+				},
+				{
+					label: 'Signal Volume',
+					borderWidth: 0,
+					backgroundColor: '#83c4c6',
+					hoverBackgroundColor: '#aad7d9',
+					data: dateIndex > 9 ? volume.slice(-10) : volume
+				}
+			]
+		};
+
+		new Chart( chart, {
 			type: 'bar',
 			data: dataChartLiquidityStacked,
 			options: stackedChartOptions,
 		} );
+	}
+
+	var lampCharts = $('*[id^="liquidityLamp-"]');
+
+	//var liquidityLampWrapper = document.getElementById( 'liquidityLamp' );
+	if ( lampCharts.length ) {
+		const currentDay = moment().format('YYYY-MM-DD');
+		const yesterday = moment(currentDay)
+			.subtract(1, 'd')
+			.format('YYYY-MM-DD')
+		const fetchLiquidityLampHistory = () => fetch(
+      `https://www.googleapis.com/storage/v1/b/signum-public-website/o/Liquidity_Lamp_History_${yesterday}.csv`,
+      {
+        method: 'GET'
+      }
+    ).then(response => {
+				response.json().then(promise => {
+							fetch(promise.mediaLink).then(resolved => {
+								resolved.text().then(csv => {
+									const liquidityLampHistoryResponse = window.Papa.parse(csv, { skipEmptyLines: true, header: true });
+									fetchLiquidityLampRankings(currentDay, lampCharts, liquidityLampHistoryResponse);
+								});
+							});
+						});
+		});
+
+		fetchLiquidityLampHistory();
 	}
 
