@@ -15,43 +15,43 @@
 	<div class="bg-white py-8 py-lg-11">
 		<div class="container">
 			{{ range first 1 .Pages }}
-				{{ $categoryId := string .Params.category.id}}
-				{{ $name := .Title}}
-				{{ $slug := .Params.slug}}
-				{{ $description := .Params.description}}
-				{{ $img := .Params.image.url}}
+			{{ $categoryId := string .Params.category.id}}
+			{{ $name := .Title}}
+			{{ $slug := .Params.slug}}
+			{{ $description := .Params.description}}
+			{{ $img := .Params.image.url}}
 
 
-				<div class="blog-feature pb-8 pb-lg-11 row">
-					<div class="col-lg-8">
-						<a href="/insights/{{$slug}}" class="blog-feature-image rounded" style="background-image: url({{$img}})"></a>
-					</div>
-					<div class="col-lg-4">
-						<h3>{{$name}}</h3>
-						<p>{{$description}}</p>
-						{{ partial "author.html" (dict "This" . "Site" $.Site "Id" .Params.author.id) }}
-						<div class="blog-list-date">{{ .PublishDate.Format "Jan 2" }}</div>
-					</div>
+			<div class="blog-feature pb-8 pb-lg-11 row">
+				<div class="col-lg-8">
+					<a href="/insights/{{$slug}}" class="blog-feature-image rounded" style="background-image: url({{$img}})"></a>
 				</div>
+				<div class="col-lg-4">
+					<h3><a href="/insights/{{$slug}}">{{$name}}</a></h3>
+					<p>{{$description}}</p>
+					{{ partial "author.html" (dict "This" . "Site" $.Site "Id" .Params.author.id) }}
+					<div class="blog-list-date">{{ .PublishDate.Format "Jan 2" }}</div>
+				</div>
+			</div>
 			{{ end }}
-			
+
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="blog-list">
 						{{ range after 1 .Pages }}
-							{{ $categoryId := string .Params.category.id}}
-							{{ $name := .Title}}
-							{{ $slug := .Params.slug}}
-							{{ $description := .Params.description}}
-							{{ $img := .Params.image.url}}
+						{{ $categoryId := string .Params.category.id}}
+						{{ $name := .Title}}
+						{{ $slug := .Params.slug}}
+						{{ $description := .Params.description}}
+						{{ $img := .Params.image.url}}
 
-							<div class="blog-list-item">
-								<a href="/insights/{{$slug}}" class="blog-list-item-image rounded" style="background-image: url({{$img}})"></a>
-								<h3><a href="/insights/{{$slug}}">{{$name}}</a></h3>
-								<p>{{ $description }}</p>
-								{{ partial "author.html" (dict "This" . "Site" $.Site "Id" .Params.author.id) }}
-								<div class="blog-list-date">{{ .PublishDate.Format "Jan 2" }}</div>
-							</div>
+						<div class="blog-list-item">
+							<a href="/insights/{{$slug}}" class="blog-list-item-image rounded" style="background-image: url({{$img}})"></a>
+							<h3><a href="/insights/{{$slug}}">{{$name}}</a></h3>
+							<p>{{ $description }}</p>
+							{{ partial "author.html" (dict "This" . "Site" $.Site "Id" .Params.author.id) }}
+							<div class="blog-list-date">{{ .PublishDate.Format "Jan 2" }}</div>
+						</div>
 						{{ end }}
 					</div>
 				</div>

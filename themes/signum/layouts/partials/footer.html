@@ -15,20 +15,21 @@
 	</div>
 	<div class="footer-baseline row">
 		<div class="col-xl-8">
-			<ul class="list-inline">
-				<li class="list-inline-item">{{.Params.Colophon}}</li>
-				{{range .Params.colophonMenu}}
-					<code>show the menu!</code>
-				{{end}}
-			</ul>
+			<p>{{.Params.Colophon}}</p>
+			{{ $menus := .Site.GetPage "menus"  }}
+			{{ $menu := printf "%s%s" .Params.colophonMenu.id "/*" }}
+			{{ with $menus.Resources.Match $menu }}
+				{{ range . }}
+					{{ partial "rich-text.html" (dict "This" .Params.content "Site" $.Site) }}
+				{{ end }}
+			{{ end }}
 		</div>
 		<div class="col">
-			<ul class="list-inline footer-baseline-social">
-				<li class="list-inline-item"><a href="https://www.facebook.com/ExegyMarketData"><img src="/facebook.svg"></a></li>
-				<li class="list-inline-item"><a href="https://twitter.com/exegymarketdata?lang=en"><img src="/twitter.svg"></a></li>
-				<li class="list-inline-item"><a href="https://www.linkedin.com/company/exegy"><img src="/linkedin.svg"></a></li>
-				<li class="list-inline-item"><a href="https://medium.com"><img src="/medium.svg"></a></li>
-			</ul>
+			<div class="footer-baseline-social">
+				{{range .Params.Icons}}
+					{{ partial "rich-text/embedded-entry-blocks/icon.html" (dict "This" . "Site" $.Site "Id" .id ) }}
+				{{end}}
+			</div>
 		</div>
 	</div>
 </div>

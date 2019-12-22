@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-16T23:13:16.885Z"
+updated: "2019-12-21T23:12:49.976Z"
 createdAt: "2019-12-16T23:07:39.999Z"
 date: "2019-12-16T23:07:39.999Z"
 title: "Colophon menu"
@@ -12,11 +12,11 @@ content:
         value: ""
         nodeType: "text"
       - data:
-          uri: "#"
+          uri: "/terms-of-service"
         content:
           - data: {}
             marks: []
-            value: "Terms of use"
+            value: "Terms of service"
             nodeType: "text"
         nodeType: "hyperlink"
       - data: {}
@@ -31,7 +31,7 @@ content:
         value: ""
         nodeType: "text"
       - data:
-          uri: "#"
+          uri: "/privacy-policy"
         content:
           - data: {}
             marks: []
@@ -43,24 +43,5 @@ content:
         value: ""
         nodeType: "text"
     nodeType: "paragraph"
-  - data: {}
-    content:
-      - data: {}
-        marks: []
-        value: ""
-        nodeType: "text"
-      - data:
-          uri: "#"
-        content:
-          - data: {}
-            marks: []
-            value: "Global privacy compliance"
-            nodeType: "text"
-        nodeType: "hyperlink"
-      - data: {}
-        marks: []
-        value: ""
-        nodeType: "text"
-    nodeType: "paragraph"
-content_plaintext: "Terms of use Privacy policy Global privacy compliance"
+content_plaintext: "Terms of service Privacy policy"
 ---

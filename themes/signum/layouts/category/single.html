@@ -36,7 +36,7 @@
 					<a href="/insights/{{$slug}}" class="blog-feature-image rounded" style="background-image: url({{$img}})"></a>
 				</div>
 				<div class="col-lg-4">
-					<h3>{{$name}}</h3>
+					<h3><a href="/insights/{{$slug}}">{{$name}}</a></h3>
 					<p>{{$description}}</p>
 					{{ partial "author.html" (dict "This" . "Site" $.Site "Id" .Params.author.id) }}
 					<div class="blog-list-date">{{ .PublishDate.Format "Jan 2" }}</div>

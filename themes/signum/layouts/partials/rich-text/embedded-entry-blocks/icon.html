@@ -1,0 +1,7 @@
+{{ $headless := .Site.GetPage "icons"  }}
+{{ $resource := printf "%s%s" .Id "/*" }}
+{{ with $headless.Resources.Match $resource }}
+	{{ range . }}
+		<a href="{{ .Params.Link }}" target="_blank"><i class="{{ .Params.fontAwesomeClasses }}"></i><span class="sr-only">{{.Title}}</span></a>
+	{{ end }}
+{{ end }}

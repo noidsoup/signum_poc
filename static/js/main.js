@@ -22,49 +22,69 @@
 
 
 
-	$( document ).ready( function () {
+$( document ).ready( function () {
 
-		$( '.scrollTo' ).click( function ( e ) {
-			$( 'html, body' ).animate( {
-				scrollTop: $( e.currentTarget.hash ).offset().top
-			}, 800 );
-			location.hash = e.currentTarget.hash;
-			return false;
-		} );
+	$( '.scrollTo' ).click( function ( e ) {
+		$( 'html, body' ).animate( {
+			scrollTop: $( e.currentTarget.hash ).offset().top
+		}, 800 );
+		location.hash = e.currentTarget.hash;
+		return false;
+	} );
 
-		/***********************
-		 * Slick Slider
-		 * https://kenwheeler.github.io/slick/
-		 ***********************/
-		$( '.carousel-slider' ).slick( {
-			prevArrow: '<button type="button" class="control-arrow control-prev"></button>',
-			nextArrow: '<button type="button" class="control-arrow control-next"></button>',
-			slidesToShow: 3
-		} );
+	/***********************
+	 * Slick Slider
+	 * https://kenwheeler.github.io/slick/
+	 ***********************/
+	$( '.carousel-slider' ).slick( {
+		prevArrow: '<button type="button" class="control-arrow control-prev"></button>',
+		nextArrow: '<button type="button" class="control-arrow control-next"></button>',
+		slidesToShow: 3
+	} );
 
-		/***********************
-		 * Open a FAQ when you jump to it
-		 ***********************/
-		var hash = location.hash;
-		if ( hash ) {
-			$( hash ).find( '.faq-answer' ).collapse( 'show' );
-		}
+	/***********************
+	 * Open a FAQ when you jump to it
+	 ***********************/
+	var hash = location.hash;
+	if ( hash ) {
+		$( hash ).find( '.faq-answer' ).collapse( 'show' );
+	}
 
-		/***********************
-		 * Open/Close Chart Explorer overlays
-		 ***********************/
-		$('.overlay-close').on('click', function(e) {
-			e.preventDefault();
-			$(this).closest('.chart-card-overlay').hide();
-			$(this).closest('.tab-pane').find('.chart-card-overlay-open').show();
-		});
-		$('.chart-card-overlay-open').on('click', function(e) {
-			e.preventDefault();
-			$(this).hide();
-			$(this).closest('.tab-pane').find('.chart-card-overlay').show();
-		});
-});
+	/***********************
+	 * Open a FAQ when you jump to it
+	 ***********************/
+	var hash = location.hash;
+	if ( hash ) {
+		$( hash ).find( '.faq-answer' ).collapse( 'show' );
+		$('html, body').animate({scrollTop: '-=40px'}, 800);
+	}
 
+	/***********************
+	 * Fix FAQ links in footer
+	 ***********************/
+	$('.footer .faq-question').on('click', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		var href = $(this).attr('href');
+		console.log(href);
+	});
+
+
+	/***********************
+	 * Open/Close Chart Explorer overlays
+	 ***********************/
+	$('.overlay-close').on('click', function(e) {
+		e.preventDefault();
+		$(this).closest('.chart-card-overlay').hide();
+		$(this).closest('.tab-pane').find('.chart-card-overlay-open').show();
+	});
+	$('.chart-card-overlay-open').on('click', function(e) {
+		e.preventDefault();
+		$(this).hide();
+		$(this).closest('.tab-pane').find('.chart-card-overlay').show();
+	});
+
+})
 
 	/***********************
 	 * Set up Chart.js charts
@@ -782,4 +802,3 @@
 
 		fetchLiquidityLampHistory();
 	}
-
