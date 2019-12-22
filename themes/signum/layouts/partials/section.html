@@ -11,22 +11,22 @@
 				<div class="justify-content-md-center row {{if .Params.centerAlignText}}text-center{{ end }}">
 					{{ with .Params.column1Content }}
 						<div class="col {{if $narrowColumn}}col-lg-8{{ end }}">
-							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+							{{- partial "rich-text.html" (dict "This" . "Site" $.Site) -}}
 						</div>
 					{{ end }}
 					{{ with .Params.column2Content }}
 						<div class="col">
-							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+							{{- partial "rich-text.html" (dict "This" . "Site" $.Site) -}}
 						</div>
 					{{ end }}
 					{{ with .Params.column3Content }}
 						<div class="col">
-							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+							{{- partial "rich-text.html" (dict "This" . "Site" $.Site) -}}
 						</div>
 					{{ end }}
 					{{ with .Params.column4Content }}
 						<div class="col">
-							{{ partial "rich-text.html" (dict "This" . "Site" $.Site) }}
+							{{- partial "rich-text.html" (dict "This" . "Site" $.Site) -}}
 						</div>
 					{{ end }}
 				</div>
