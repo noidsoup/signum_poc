@@ -116,7 +116,12 @@
 					font-size  : 0.9375rem;
 					font-family: $font-family-base;
 					color      : $gray-700;
+				}
 
+				&:hover {
+					h3 {
+						color: $primary;
+					}
 				}
 			}
 		}

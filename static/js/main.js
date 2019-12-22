@@ -51,7 +51,19 @@
 	var hash = location.hash;
 	if ( hash ) {
 		$( hash ).find( '.faq-answer' ).collapse( 'show' );
+		$('html, body').animate({scrollTop: '-=40px'}, 800);
 	}
+
+	/***********************
+	 * Fix FAQ links in footer
+	 ***********************/
+	$('.footer .faq-question').on('click', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		var href = $(this).attr('href');
+		console.log(href);
+	});
+
 
 	/***********************
 	 * Open/Close Chart Explorer overlays
