@@ -13,7 +13,7 @@
     {{- $partialCheck := print "themes/signum/layouts/partials/" $partial -}}
     {{- if fileExists $partialCheck -}}
         <!-- call partial if it exists -->
-        {{ partial $partial (dict "This" . "Site" $Site "Menu" $Menu) | safeHTML }}
+        {{- partial $partial (dict "This" . "Site" $Site "Menu" $Menu) | safeHTML -}}
     {{- else -}}
         <!-- call the node-not-found partial if it doesn't exist -->
         {{- partial "rich-text/node-not-found" (dict "Template" .nodeType "Directory" "standard-blocks") -}}

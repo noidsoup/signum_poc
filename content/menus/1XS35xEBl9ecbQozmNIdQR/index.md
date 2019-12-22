@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-22T00:14:21.508Z"
+updated: "2019-12-22T00:15:30.640Z"
 createdAt: "2019-12-16T22:44:22.170Z"
 date: "2019-12-16T22:44:22.170Z"
 title: "About"
@@ -84,7 +84,7 @@ content:
         value: "St. Louis: "
         nodeType: "text"
       - data:
-          uri: "https://google.com"
+          uri: "tel:13142183600"
         content:
           - data: {}
             marks: []
