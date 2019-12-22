@@ -72,8 +72,8 @@
 			}
 
 			.blog-meta {
-				> a,
-				> span {
+				> span,
+				> a {
 					color    : $gray-700;
 					font-size: 0.9375rem;
 
@@ -336,6 +336,14 @@
 
 	h3 {
 		font-size: 1.875rem;
+
+		a {
+			color: $gray-900;
+
+			&:hover {
+				color: $primary;
+			}
+		}
 	}
 
 	p {
