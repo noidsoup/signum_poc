@@ -57,3 +57,7 @@ If you'd rather show insights only from the same category, replace this (in `the
 ```
 {{ range first 5 (where (where .Site.Pages "Type" "insights")  "Params.category.id" "=" $currentInsightCategoryId) }}
 ```
+
+## Warning: Avoid trailing whitespace in files
+Some text editors add a trailing newline to the end of files, and unfortunately this causes issues with text formatting in Hugo:
+https://github.com/gohugoio/hugo/issues/1753

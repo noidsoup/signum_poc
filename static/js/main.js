@@ -82,6 +82,11 @@ $( document ).ready( function () {
 		$(this).hide();
 		$(this).closest('.tab-pane').find('.chart-card-overlay').show();
 	});
+
+	$("col").each(function () {
+        var $this = $(this);
+        $this.html($this.html().replace(/&nbsp;/g, ''));
+    });
 })
 
 	/***********************
