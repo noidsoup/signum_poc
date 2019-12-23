@@ -72,14 +72,16 @@
 							{{end}}
 						</ul>
 						<h5 class="mt-8">Elsewhere</h5>
-						{{ $navbar := .Site.GetPage "footer"  }}
-						{{ with $navbar.Resources }}
-							{{ range . }}
-								{{range .Params.Icons}}
-									{{ partial "rich-text/embedded-entry-blocks/icon.html" (dict "This" . "Site" $.Site "Id" .id ) }}
+						<div class="blog-elsewhere">
+							{{ $navbar := .Site.GetPage "footer"  }}
+							{{ with $navbar.Resources }}
+								{{ range . }}
+									{{range .Params.Icons}}
+										{{ partial "rich-text/embedded-entry-blocks/icon.html" (dict "This" . "Site" $.Site "Id" .id ) }}
+									{{end}}
 								{{end}}
 							{{end}}
-						{{end}}
+						</div>	
 					</div>
 				</div>
 		</div>

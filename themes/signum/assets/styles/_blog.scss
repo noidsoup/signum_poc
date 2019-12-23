@@ -402,3 +402,15 @@
 		color        : $gray-800;
 	}
 }
+
+.blog-elsewhere {
+	a {
+		color       : $gray-700;
+		font-size   : 1.25rem;
+		margin-right: 0.5rem;
+
+		&:hover {
+			color: $primary;
+		}
+	}
+}
