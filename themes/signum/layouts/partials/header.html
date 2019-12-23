@@ -1,33 +1,34 @@
 {{ $navbar := .Site.GetPage "navbar"  }}
 {{ with $navbar.Resources }}
-	{{ range . }}
-	<div class="header-div">
-		<div class="header container">
-			<nav class="navbar navbar-expand-lg navbar-light">
-				<a href="/" class="navbar-brand">
-					<img src="{{.Params.logo.url}}">
-				</a>
-				<button aria-controls="basic-navbar-nav" type="button" aria-label="Toggle navigation" class="navbar-toggler">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="navbar-collapse collapse" id="basic-navbar-nav">
-					<div class="navbar-nav">
-						{{ $menus := .Site.GetPage "menus"  }}
-						{{range .Params.menus}}
-							{{ $resource := printf "%s%s" .id "/*" }}
-							{{ with $menus.Resources.Match $resource }}
-								{{ range . }}
-									{{ partial "header-menu.html" . }}
-								{{ end }}
-							{{ end }}
-						{{end}}
+{{ range . }}
+<div class="header-div">
+	<div class="header container">
 
-						{{ partial "rich-text/embedded-entry-blocks/button.html" (dict "This" . "Site" $.Site "Id" .Params.button.id) }}
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<a href="/" class="navbar-brand">
+				<img src="{{.Params.logo.url}}">
+			</a>
+			<button aria-controls="basic-navbar-nav" type="button" aria-label="Toggle navigation" class="navbar-toggler" data-toggle="collapse" data-target="#basic-navbar-nav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse collapse" id="basic-navbar-nav">
+				<div class="navbar-nav">
+					{{ $menus := .Site.GetPage "menus"  }}
+					{{range .Params.menus}}
+					{{ $resource := printf "%s%s" .id "/*" }}
+					{{ with $menus.Resources.Match $resource }}
+					{{ range . }}
+					{{ partial "header-menu.html" . }}
+					{{ end }}
+					{{ end }}
+					{{end}}
 
-					</div>
+					{{ partial "rich-text/embedded-entry-blocks/button.html" (dict "This" . "Site" $.Site "Id" .Params.button.id) }}
+
 				</div>
-			</nav>
-		</div>
+			</div>
+		</nav>
 	</div>
-	{{ end }}
+</div>
+{{ end }}
 {{ end }}
