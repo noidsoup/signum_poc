@@ -86,6 +86,8 @@ u {
 h1,
 h2 {
 	u {
+		font-weight: inherit;
+
 		&::before {
 			height: 1.25rem !important;
 			bottom: 0.25rem !important;
