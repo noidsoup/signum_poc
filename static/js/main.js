@@ -780,25 +780,31 @@ $( document ).ready( function () {
 
 	//var liquidityLampWrapper = document.getElementById( 'liquidityLamp' );
 	if ( lampCharts.length ) {
-		const currentDay = moment().format('YYYY-MM-DD');
-		const yesterday = moment(currentDay)
-			.subtract(1, 'd')
-			.format('YYYY-MM-DD')
-		const fetchLiquidityLampHistory = () => fetch(
-      `https://www.googleapis.com/storage/v1/b/signum-public-website/o/Liquidity_Lamp_History_${yesterday}.csv`,
-      {
-        method: 'GET'
-      }
-    ).then(response => {
-				response.json().then(promise => {
+		const fetchLiquidityLampHistory = day => {
+			fetch(
+				`https://www.googleapis.com/storage/v1/b/signum-public-website/o/Liquidity_Lamp_History_${day}.csv`,
+				{
+					method: 'GET'
+				}
+			).then(response => {
+				!response.ok
+					? fetchLiquidityLampHistory(
+							moment(day)
+								.subtract(1, 'd')
+								.format('YYYY-MM-DD')
+						)
+					: response.json().then(promise => {
 							fetch(promise.mediaLink).then(resolved => {
 								resolved.text().then(csv => {
 									const liquidityLampHistoryResponse = window.Papa.parse(csv, { skipEmptyLines: true, header: true });
-									fetchLiquidityLampRankings(currentDay, lampCharts, liquidityLampHistoryResponse);
+									console.log('seriously?',liquidityLampHistoryResponse);
+									fetchLiquidityLampRankings(day, lampCharts, liquidityLampHistoryResponse);
 								});
 							});
 						});
-		});
+			});
+		};
 
-		fetchLiquidityLampHistory();
+		const currentDay = moment().format('YYYY-MM-DD');
+		fetchLiquidityLampHistory(currentDay);
 	}
