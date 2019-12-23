@@ -331,28 +331,7 @@ $( document ).ready( function () {
 			},
 		],
 	};
-
-	/* Liquidity Lamp data */
-/* 	const dataChartLiquidityStacked = {
-		labels: ['Jun 2-4', '5-7', '8', '9', '10', '12', '13', '14', '15', '16'],
-		datasets: [
-			{
-				label: 'Signal',
-				borderWidth: 0,
-				backgroundColor: '#0DA0A2',
-				hoverBackgroundColor: '#60b1b3',
-				data: [11, 13, 28, 23, 12, 14, 11, 8, 12, 24]
-			},
-			{
-				label: 'Volume',
-				borderWidth: 0,
-				backgroundColor: '#83c4c6',
-				hoverBackgroundColor: '#aad7d9',
-				data: [4, 8, 6, 3, 1, 8, 6, 2, 5, 2]
-			},
-		]
-	};
- */
+	
 	/*
 	Create the Quote Vector bar chart
 	*/
@@ -616,6 +595,14 @@ $( document ).ready( function () {
 		chartCollapseContentWrapper.appendChild(chartCollapseContentDiv);
 		chartCollapseContentDiv.appendChild(chartWrapper);
 
+		// create legend
+		const chartLegend = createElement("ul", ["chart-legend"], '');
+		//const chartLegend = '<ul class="chart-legend"><li><span class="bg-primary"></span> Signal Count</li><li><span class="bg-green-60"></span> Signal Volume</li></ul>';
+
+		chartCollapseContentDiv.appendChild(chartLegend);
+		chartLegend.insertAdjacentHTML('beforeend', '<li><span class="bg-primary"></span> Signal Count</li>');
+		chartLegend.insertAdjacentHTML('beforeend', '<li><span class="bg-green-60"></span> Signal Volume</li>');
+
 		// append elements to button
 		button.appendChild(detailsContainerDiv);
 		button.appendChild(progressDiv);
@@ -673,8 +660,10 @@ $( document ).ready( function () {
 										let name;
 										if (sortbyration) {
 											name = "CR";
+											$(chart).closest('.card-body').find('.chart-collapse-filters #filter-ratio').addClass('active');
 										} else {
 											name = "rank";
+											$(chart).closest('.card-body').find('.chart-collapse-filters #filter-rank').addClass('active');
 										}
 
 										const sortedArray = sort(name).map(array => {

@@ -3,148 +3,148 @@
 {{$chartId := .Id }}
 
 {{ with $headless.Resources.Match $resource }}
-	{{ range . }}
+{{ range . }}
 
-		<!-- Quote Vector -->
-		{{ if eq .Params.chartType "Quote Vector"}}
-			<div class="chart-card px-lg-8 card">
-				<div class="card-body">
-					<div class="card-title h5">Net Price Improvement for Market Makers</div>
-					<div class="chart-wrapper">
-						<canvas id="quoteVector" width="400" height="400"></canvas>
+<!-- Quote Vector -->
+{{ if eq .Params.chartType "Quote Vector"}}
+<div class="chart-card px-lg-8 card">
+	<div class="card-body">
+		<div class="card-title h5">Net Price Improvement for Market Makers</div>
+		<div class="chart-wrapper">
+			<canvas id="quoteVector" width="400" height="400"></canvas>
+		</div>
+		<ul class="chart-legend">
+			<li><span class="bg-green"></span> Theoretical Net Gains (at 50% Threshold)</li>
+		</ul>
+	</div>
+</div>
+{{ end }}
+
+<!-- Quote Fuse -->
+{{ if eq .Params.chartType "Quote Fuse"}}
+<div class="chart-card px-lg-8 card">
+	<div class="card-body">
+		<div class="chart-wrapper">
+			<canvas id="quoteFuse" width="400" height="400"></canvas>
+		</div>
+		<ul class="chart-legend">
+			<li>Accuracy Thresholds</li>
+			<li><span class="bg-green"></span> 30%</li>
+			<li><span class="bg-pink"></span> 40%</li>
+			<li><span class="bg-blue"></span> 50%</li>
+			<li><span class="bg-yellow"></span> 60%</li>
+			<li><span class="bg-gray"></span> 70%</li>
+		</ul>
+	</div>
+</div>
+{{ end }}
+
+<!-- Quote Fuse Liquidity -->
+{{ if eq .Params.chartType "Quote Fuse Liquidity"}}
+<div class="chart-card quote-fuse-chart px-lg-8 card">
+	<div class="card-body">
+		<h3>Intraday Liquidity Forecasted by Quote Fuse</h3>
+		<div class="row">
+			<div class="col-lg-3">
+				<p><strong>Accuracy Thresholds</strong></p>
+				<form class="threshold-radios">
+					<div class="custom-control custom-radio">
+						<input name="threshold-group" type="radio" id="threshold-30" class="custom-control-input" checked="" onclick="changeThreshold(30)">
+						<label title="" type="checkbox" for="threshold-30" class="custom-control-label">30%</label>
 					</div>
-					<ul class="chart-legend">
-						<li><span class="bg-green"></span> Theoretical Net Gains (at 50% Threshold)</li>
+					<div class="custom-control custom-radio">
+						<input name="threshold-group" type="radio" id="threshold-35" class="custom-control-input" onclick="changeThreshold(35)">
+						<label title="" type="checkbox" for="threshold-35" class="custom-control-label">35%</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input name="threshold-group" type="radio" id="threshold-40" class="custom-control-input" onclick="changeThreshold(40)">
+						<label title="" type="checkbox" for="threshold-40" class="custom-control-label">40%</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input name="threshold-group" type="radio" id="threshold-45" class="custom-control-input" onclick="changeThreshold(45)">
+						<label title="" type="checkbox" for="threshold-45" class="custom-control-label">45%</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input name="threshold-group" type="radio" id="threshold-50" class="custom-control-input" onclick="changeThreshold(50)">
+						<label title="" type="checkbox" for="threshold-50" class="custom-control-label">50%</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input name="threshold-group" type="radio" id="threshold-55" class="custom-control-input" onclick="changeThreshold(55)">
+						<label title="" type="checkbox" for="threshold-55" class="custom-control-label">55%</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input name="threshold-group" type="radio" id="threshold-60" class="custom-control-input" onclick="changeThreshold(60)">
+						<label title="" type="checkbox" for="threshold-60" class="custom-control-label">60%</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input name="threshold-group" type="radio" id="threshold-65" class="custom-control-input" onclick="changeThreshold(65)">
+						<label title="" type="checkbox" for="threshold-65" class="custom-control-label">65%</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input name="threshold-group" type="radio" id="threshold-70" class="custom-control-input" onclick="changeThreshold(70)">
+						<label title="" type="checkbox" for="threshold-70" class="custom-control-label">70%</label>
+					</div>
+				</form>
+			</div>
+			<div class="row col-lg-9">
+				<div class="col-lg-7">
+					<div class="chart-wrapper" style="height:350px; width:350px">
+						<canvas id="quoteFuseLiquidity" width="400" height="400"></canvas>
+					</div>
+				</div>
+				<div class="col-lg-5 pl-lg-8 pt-lg-8">
+					<p><strong id="intraday-volume"></strong> <strong>of intraday volume</strong> is traded in the 50 millisecond prelude to a new quote price</p>
+					<ul class="chart-legend vertical">
+						<li><span class="bg-green"></span> <strong id="signaled-liquidity"></strong> Signaled Liquidity</li>
+						<li><span class="bg-green-60"></span> <strong id="not-signaled-liquidity"></strong> Not Signaled Liquidity</li>
 					</ul>
 				</div>
 			</div>
-		{{ end }}
+		</div>
+	</div>
+</div>
+{{ end }}
 
-		<!-- Quote Fuse -->
-		{{ if eq .Params.chartType "Quote Fuse"}}
-			<div class="chart-card px-lg-8 card">
-				<div class="card-body">
-					<div class="chart-wrapper">
-						<canvas id="quoteFuse" width="400" height="400"></canvas>
-					</div>
-					<ul class="chart-legend">
-						<li>Accuracy Thresholds</li>
-						<li><span class="bg-green"></span> 30%</li>
-						<li><span class="bg-pink"></span> 40%</li>
-						<li><span class="bg-blue"></span> 50%</li>
-						<li><span class="bg-yellow"></span> 60%</li>
-						<li><span class="bg-gray"></span> 70%</li>
-					</ul>
-				</div>
-			</div>
-		{{ end }}
+<!-- Liquidity Lamp -->
+{{ if eq .Params.chartType "Liquidity Lamp"}}
+<div class="liquidity-lamp-chart chart-card px-lg-8 card">
+	<div class="card-body">
+		<h3>Top Ten Reserve Order Executions for Dec 18, 2019</h3>
 
-		<!-- Quote Fuse Liquidity -->
-		{{ if eq .Params.chartType "Quote Fuse Liquidity"}}
-			<div class="chart-card quote-fuse-chart px-lg-8 card">
-				<div class="card-body">
-					<h3>Intraday Liquidity Forecasted by Quote Fuse</h3>
-					<div class="row">
-						<div class="col-lg-3">
-							<p><strong>Accuracy Thresholds</strong></p>
-							<form class="threshold-radios">
-								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-30" class="custom-control-input" checked="" onclick="changeThreshold(30)">
-									<label title="" type="checkbox" for="threshold-30" class="custom-control-label">30%</label>
-								</div>
-								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-35" class="custom-control-input" onclick="changeThreshold(35)">
-									<label title="" type="checkbox" for="threshold-35" class="custom-control-label">35%</label>
-								</div>
-								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-40" class="custom-control-input" onclick="changeThreshold(40)">
-									<label title="" type="checkbox" for="threshold-40" class="custom-control-label">40%</label>
-								</div>
-								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-45" class="custom-control-input" onclick="changeThreshold(45)">
-									<label title="" type="checkbox" for="threshold-45" class="custom-control-label">45%</label>
-								</div>
-								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-50" class="custom-control-input" onclick="changeThreshold(50)">
-									<label title="" type="checkbox" for="threshold-50" class="custom-control-label">50%</label>
-								</div>
-								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-55" class="custom-control-input" onclick="changeThreshold(55)">
-									<label title="" type="checkbox" for="threshold-55" class="custom-control-label">55%</label>
-								</div>
-								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-60" class="custom-control-input" onclick="changeThreshold(60)">
-									<label title="" type="checkbox" for="threshold-60" class="custom-control-label">60%</label>
-								</div>
-								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-65" class="custom-control-input" onclick="changeThreshold(65)">
-									<label title="" type="checkbox" for="threshold-65" class="custom-control-label">65%</label>
-								</div>
-								<div class="custom-control custom-radio">
-									<input name="threshold-group" type="radio" id="threshold-70" class="custom-control-input" onclick="changeThreshold(70)">
-									<label title="" type="checkbox" for="threshold-70" class="custom-control-label">70%</label>
-								</div>
-							</form>
-						</div>
-						<div class="row col-lg-9">
-							<div class="col-lg-7">
-								<div class="chart-wrapper" style="height:350px; width:350px">
-									<canvas id="quoteFuseLiquidity" width="400" height="400"></canvas>
-								</div>
-							</div>
-							<div class="col-lg-5 pl-lg-8 pt-lg-8">
-								<p><strong id="intraday-volume"></strong> <strong>of intraday volume</strong> is traded in the 50 millisecond prelude to a new quote price</p>
-								<ul class="chart-legend vertical">
-									<li><span class="bg-green"></span> <strong id="signaled-liquidity"></strong> Signaled Liquidity</li>
-									<li><span class="bg-green-60"></span> <strong id="not-signaled-liquidity"></strong> Not Signaled Liquidity</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		{{ end }}
+		<div class="chart-collapse-filters">
+			<span id="filter-rank" class="filter-wrapper">
+				<a>Rank<i class="sorting-icon far fa-angle-down"></i></a>
+			</span>
+			<span class="filter-wrapper">
+				<a>Symbol<i class="sorting-icon far fa-angle-down"></i></a>
+			</span>
+			<span class="filter-wrapper">
+				<a><span class="d-none d-xl-inline">Signal </span>Count<i class="sorting-icon far fa-angle-down"></i></a>
+				<span class="help-icon-wrapper">
+					<i class="help-icon text-green fas fa-question-circle"></i>
+					<span class="help-icon-tooltip">Signal count represents the total volume of hidden reserve orders for the reported period.</span>
+				</span>
+			</span>
+			<span class="filter-wrapper">
+				<a><span class="d-none d-xl-inline">Signal </span>Volume<i class="sorting-icon far fa-angle-down"></i></a>
+				<span class="help-icon-wrapper">
+					<i class="help-icon text-green-80 fas fa-question-circle"></i>
+					<span class="help-icon-tooltip">Volume count represents the total volume of visible orders for the reported period.</span>
+				</span>
+			</span>
+			<span id="filter-ratio" class="filter-wrapper">
+				<a><span class="d-none d-xl-inline">Concentration </span>Ratio<i class="sorting-icon far fa-angle-down"></i></a>
+				<span class="help-icon-wrapper">
+					<i class="help-icon text-green-80 fas fa-question-circle"></i>
+					<span class="help-icon-tooltip">Concentration ratio quantifies the relative number of executions while Liquidity Lamp is lit versus when it is not.</span>
+				</span>
+			</span>
+		</div>
+		<div id="liquidityLamp-{{$chartId}}" class="chart-collapse {{if .Params.sortbyratio}}sortbyratio{{end}}">
+		</div>
+	</div>
+</div>
+{{ end }}
 
-		<!-- Liquidity Lamp -->
-		{{ if eq .Params.chartType "Liquidity Lamp"}}
-			<div class="chart-card px-lg-8 card">
-				<div class="card-body">
-					<h3>Top Ten Reserve Order Executions for Dec 18, 2019</h3>
-
-					<div class="chart-collapse-filters">
-						<span class="filter-wrapper active">
-							<a>Rank<i class="sorting-icon far fa-angle-down"></i></a>
-						</span>
-						<span class="filter-wrapper">
-							<a>Symbol<i class="sorting-icon far fa-angle-down"></i></a>
-						</span>
-						<span class="filter-wrapper">
-							<a><span class="d-none d-xl-inline">Signal </span>Count<i class="sorting-icon far fa-angle-down"></i></a>
-							<span class="help-icon-wrapper">
-								<i class="help-icon text-green fas fa-question-circle"></i>
-								<span class="help-icon-tooltip">Signal count represents the total volume of hidden reserve orders for the reported period.</span>
-							</span>
-						</span>
-						<span class="filter-wrapper">
-							<a><span class="d-none d-xl-inline">Signal </span>Volume<i class="sorting-icon far fa-angle-down"></i></a>
-							<span class="help-icon-wrapper">
-								<i class="help-icon text-green-80 fas fa-question-circle"></i>
-								<span class="help-icon-tooltip">Volume count represents the total volume of visible orders for the reported period.</span>
-							</span>
-						</span>
-						<span class="filter-wrapper">
-							<a><span class="d-none d-xl-inline">Concentration </span>Ratio<i class="sorting-icon far fa-angle-down"></i></a>
-							<span class="help-icon-wrapper">
-								<i class="help-icon text-green-80 fas fa-question-circle"></i>
-								<span class="help-icon-tooltip">Concentration ratio quantifies the relative number of executions while Liquidity Lamp is lit versus when it is not.</span>
-							</span>
-						</span>
-					</div>
-					<div id="liquidityLamp-{{$chartId}}" class="chart-collapse {{if .Params.sortbyratio}}sortbyratio{{end}}">
-					</div>
-				</div>
-			</div>
-		{{ end }}
-
-	{{ end }}
+{{ end }}
 {{ end }}

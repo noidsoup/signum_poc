@@ -31,6 +31,7 @@
 		@extend .list-inline;
 		margin-top   : 1.5rem;
 		margin-bottom: 0;
+		text-align   : left;
 
 		li {
 			@extend .list-inline-item;
@@ -106,6 +107,9 @@
 			}
 
 			a {
+				// Temporary, since these can't be sorted right now
+				pointer-events: none;
+
 				&:hover {
 					text-decoration: none;
 					color          : $primary;
