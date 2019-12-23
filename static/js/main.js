@@ -53,11 +53,20 @@ $( document ).ready( function () {
 	/***********************
 	 * Open a FAQ when you jump to it
 	 ***********************/
+	const checkHash = () => {
+		var hash = location.hash;
+		if ( hash ) {
+			$( hash ).find( '.faq-answer' ).collapse( 'show' );
+			$('html, body').animate({scrollTop: '-=40px'}, 800);
+		}
+	}
+
 	var hash = location.hash;
 	if ( hash ) {
-		$( hash ).find( '.faq-answer' ).collapse( 'show' );
-		$('html, body').animate({scrollTop: '-=40px'}, 800);
+		checkHash();
 	}
+
+	window.onhashchange = checkHash;
 
 	/***********************
 	 * Fix FAQ links in footer
@@ -66,7 +75,7 @@ $( document ).ready( function () {
 		e.preventDefault();
 		e.stopPropagation();
 		var href = $(this).attr('href');
-		console.log(href);
+
 	});
 
 
@@ -675,7 +684,7 @@ $( document ).ready( function () {
 										sortedArray.forEach((item, index) => {
 											createRow(item, index, chart.id);
 											const chartCanvas = document.getElementById( `chart-${chart.id}-${index}` );
-											//console.log(lampHistory);
+
 											createLampChart(chartCanvas, lampHistory, item.ticker);
 										})
 
@@ -712,7 +721,6 @@ $( document ).ready( function () {
 
 	/* Create the Liquidity Lamp stacked bar chart */
 	const createLampChart = (chart, lampHistory, ticker) => {
-		//console.log(lampHistory);
 		const liquidityLampDate =
 			moment(
 				lampHistory.data
@@ -780,25 +788,30 @@ $( document ).ready( function () {
 
 	//var liquidityLampWrapper = document.getElementById( 'liquidityLamp' );
 	if ( lampCharts.length ) {
-		const currentDay = moment().format('YYYY-MM-DD');
-		const yesterday = moment(currentDay)
-			.subtract(1, 'd')
-			.format('YYYY-MM-DD')
-		const fetchLiquidityLampHistory = () => fetch(
-      `https://www.googleapis.com/storage/v1/b/signum-public-website/o/Liquidity_Lamp_History_${yesterday}.csv`,
-      {
-        method: 'GET'
-      }
-    ).then(response => {
-				response.json().then(promise => {
+		const fetchLiquidityLampHistory = day => {
+			fetch(
+				`https://www.googleapis.com/storage/v1/b/signum-public-website/o/Liquidity_Lamp_History_${day}.csv`,
+				{
+					method: 'GET'
+				}
+			).then(response => {
+				!response.ok
+					? fetchLiquidityLampHistory(
+							moment(day)
+								.subtract(1, 'd')
+								.format('YYYY-MM-DD')
+						)
+					: response.json().then(promise => {
 							fetch(promise.mediaLink).then(resolved => {
 								resolved.text().then(csv => {
 									const liquidityLampHistoryResponse = window.Papa.parse(csv, { skipEmptyLines: true, header: true });
-									fetchLiquidityLampRankings(currentDay, lampCharts, liquidityLampHistoryResponse);
+									fetchLiquidityLampRankings(day, lampCharts, liquidityLampHistoryResponse);
 								});
 							});
 						});
-		});
+			});
+		};
 
-		fetchLiquidityLampHistory();
+		const currentDay = moment().format('YYYY-MM-DD');
+		fetchLiquidityLampHistory(currentDay);
 	}

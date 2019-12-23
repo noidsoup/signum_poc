@@ -72,7 +72,14 @@
 							{{end}}
 						</ul>
 						<h5 class="mt-8">Elsewhere</h5>
-						<code>Social links... where will we get those from? Footer?</code>
+						{{ $navbar := .Site.GetPage "footer"  }}
+						{{ with $navbar.Resources }}
+							{{ range . }}
+								{{range .Params.Icons}}
+									{{ partial "rich-text/embedded-entry-blocks/icon.html" (dict "This" . "Site" $.Site "Id" .id ) }}
+								{{end}}
+							{{end}}
+						{{end}}
 					</div>
 				</div>
 		</div>
