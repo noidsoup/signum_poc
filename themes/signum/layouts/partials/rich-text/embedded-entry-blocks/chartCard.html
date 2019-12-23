@@ -86,18 +86,20 @@
 					</div>
 				</form>
 			</div>
-			<div class="row col-lg-9">
-				<div class="col-lg-7">
-					<div class="chart-wrapper" style="height:350px; width:350px">
-						<canvas id="quoteFuseLiquidity" width="400" height="400"></canvas>
+			<div class="col-lg-9">
+				<div class="row">
+					<div class="col-lg-7">
+						<div class="chart-wrapper" style="height:350px; width:100%">
+							<canvas id="quoteFuseLiquidity" width="400" height="400"></canvas>
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-5 pl-lg-8 pt-lg-8">
-					<p><strong id="intraday-volume"></strong> <strong>of intraday volume</strong> is traded in the 50 millisecond prelude to a new quote price</p>
-					<ul class="chart-legend vertical">
-						<li><span class="bg-green"></span> <strong id="signaled-liquidity"></strong> Signaled Liquidity</li>
-						<li><span class="bg-green-60"></span> <strong id="not-signaled-liquidity"></strong> Not Signaled Liquidity</li>
-					</ul>
+					<div class="col-lg-5 pl-lg-8 pt-lg-8">
+						<p><strong id="intraday-volume"></strong> <strong>of intraday volume</strong> is traded in the 50 millisecond prelude to a new quote price</p>
+						<ul class="chart-legend vertical">
+							<li><span class="bg-green"></span> <strong id="signaled-liquidity"></strong> Signaled Liquidity</li>
+							<li><span class="bg-green-60"></span> <strong id="not-signaled-liquidity"></strong> Not Signaled Liquidity</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
