@@ -8,6 +8,7 @@
 	<meta property="og:title" content="{{.Params.title}}">
 	<meta property="og:description" content="{{.Params.description}}">
 	<meta property="og:image" content="{{.Params.image.url}}">
+
 	{{ $url := printf "%s" .URL | absLangURL }}
 	<meta property="og:url" content="{{ $url }}">
 	<meta name="twitter:card" content="summary_large_image">

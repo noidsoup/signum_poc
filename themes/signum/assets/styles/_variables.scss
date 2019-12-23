@@ -100,6 +100,17 @@ $body-color: $gray-700;
 //
 // Typography
 // ==================================================
+
+@font-face {
+	font-family: "Abril Fatface";
+	src: url("/fonts/AbrilFatface-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url("/fonts/Roboto-Regular.ttf") format("truetype");
+}
+
 $font-family-sans-serif: "Roboto", sans-serif;
 $font-family-serif: "Abril Fatface", serif;
 

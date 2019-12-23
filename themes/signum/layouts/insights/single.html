@@ -53,14 +53,14 @@
 			<div class="container-fluid">
 				<div class="carousel carousel-slider">
 
-					{{ range first 5 (where (where .Site.Pages "Type" "insights")  "Params.category.id" "=" $currentInsightCategoryId) }}
-						{{ if ne .Title $currentInsightTitle }}
+					{{ range first 5 (where .Site.Pages "Type" "insights") }}
+
+						{{ if and (ne .Title $currentInsightTitle) (ne .Title "Insights") }}
 							<div class="insight-card card">
 									<div class="card-img-bg" style="background-image: url({{.Params.image.url}});">
-										<span class="shadow-none badge badge-pill badge-warning">
-												{{ $categoryPath := printf "%s%s%s" "/category/" $currentInsightCategoryId ".md" }}
-												{{ with .Site.GetPage $categoryPath }}{{.Title}}{{ end }}
-										</span>
+										{{if .Params.category.id}}
+											{{ partial "categoryPill.html" (dict "This" . "Site" $.Site "Id" .Params.category.id) }}
+										{{end}}
 									</div>
 									<div class="card-body">
 										<a class="card-title" href="{{.URL}}">{{.Title}}</a>
