@@ -200,8 +200,12 @@ $( document ).ready( function () {
 		scales: {
 			yAxes: [
 				{
+					scaleLabel: {
+						display: true,
+						labelString: "Accuracy"
+					},
 					ticks: {
-						beginAtZero: true
+						beginAtZero: false
 					},
 					gridLines: {
 						drawBorder: false
@@ -210,6 +214,10 @@ $( document ).ready( function () {
 			],
 			xAxes: [
 				{
+					scaleLabel: {
+						display: true,
+						labelString: "Date"
+					},
 					gridLines: {
 						display: false
 					}
@@ -237,10 +245,10 @@ $( document ).ready( function () {
 
 	/* Quote Fuse data */
 	const dataChartQuoteFuseLine = {
-		labels: [ 'Jun 10', '11', '12', '13', '14', '15', '16', ],
+		labels: [ 'Sep 17', 'Sep 18', 'Sep 19', 'Sep 20', 'Sep 21', 'Oct 15', 'Oct 16', 'Oct 17' ],
 		datasets: [
 			{
-				label: '50%',
+				label: '30%',
 				// borderWidth: 0,
 				borderColor: '#0DA0A2',
 				hoverBorderColor: '#60b1b3',
@@ -251,9 +259,9 @@ $( document ).ready( function () {
 				pointHoverBorderColor: '#60b1b3',
 				fill: false,
 				lineTension: 0,
-				data: [ 24, 36, -26, -10, 28, 11, 12, ],
+				data: [ 0.4395, 0.4486, 0.4377, 0.4372, 0.4408, 0.4441, 0.4480, 0.4428 ],
 			}, {
-				label: '55%',
+				label: '40%',
 				borderColor: '#FC7D8D',
 				hoverBorderColor: '#ef9ca5',
 				borderWidth: 2,
@@ -263,9 +271,9 @@ $( document ).ready( function () {
 				pointHoverBorderColor: '#ef9ca5',
 				fill: false,
 				lineTension: 0,
-				data: [ 22, 34, -24, -8, 27, 10, 11, ],
+				data: [ 0.5255, 0.5387, 0.5237, 0.5207, 0.5271, 0.5323, 0.5370, 0.5303 ],
 			}, {
-				label: '60%',
+				label: '50%',
 				// borderWidth: 0,
 				borderColor: '#93CFDC',
 				hoverBorderColor: '#b3d8e1',
@@ -276,9 +284,9 @@ $( document ).ready( function () {
 				pointHoverBorderColor: '#b3d8e1',
 				fill: false,
 				lineTension: 0,
-				data: [ 20, 32, -22, 4, 24, 8, 8, ],
+				data: [ 0.5988, 0.6170, 0.6011, 0.5943, 0.6011, 0.5946, 0.6121, 0.6010 ],
 			}, {
-				label: '65%',
+				label: '60%',
 				// borderWidth: 0,
 				borderColor: '#EFB670',
 				hoverBorderColor: '#ebc694',
@@ -289,7 +297,7 @@ $( document ).ready( function () {
 				pointHoverBorderColor: '#ebc694',
 				fill: false,
 				lineTension: 0,
-				data: [ 18, 30, -20, 4, 22, 5, 7, ],
+				data: [ 0.6614, 0.6866, 0.6616, 0.6605, 0.6666, 0.6164, 0.6748, 0.6520 ],
 			}, {
 				label: '70%',
 				// borderWidth: 0,
@@ -302,8 +310,7 @@ $( document ).ready( function () {
 				pointHoverBorderColor: '#e0e0e0',
 				fill: false,
 				lineTension: 0,
-				data: [ 16, 28, -18, 4, 21, 5, 6,
-				],
+				data: [ 0.7145, 0.7479, 0.7178, 0.7240, 0.7286, 0.6506, 0.7219, 0.6651 ],
 			},
 		],
 	};
