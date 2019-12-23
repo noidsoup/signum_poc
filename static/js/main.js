@@ -15,7 +15,21 @@ $( document ).ready( function () {
 	$( '.carousel-slider' ).slick( {
 		prevArrow: '<button type="button" class="control-arrow control-prev"></button>',
 		nextArrow: '<button type="button" class="control-arrow control-next"></button>',
-		slidesToShow: 3
+		slidesToShow: 3,
+		responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 2
+				}
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 1
+				}
+			}
+		]
 	} );
 
 	/***********************

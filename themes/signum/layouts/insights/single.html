@@ -54,22 +54,22 @@
 
 					{{ range first 5 (where .Site.Pages "Type" "insights") }}
 
-						{{ if and (ne .Title $currentInsightTitle) (ne .Title "Insights") }}
-							<div class="insight-card card">
-									<div class="card-img-bg" style="background-image: url({{.Params.image.url}});">
-										{{if .Params.category.id}}
-											{{ partial "categoryPill.html" (dict "This" . "Site" $.Site "Id" .Params.category.id) }}
-										{{end}}
-									</div>
-									<div class="card-body">
-										<a class="card-title" href="{{.URL}}">{{.Title}}</a>
-										<a class="arrow-link" href="{{.URL}}">
-											<span class="call-to-action">Read More</span>
-											<i class="icon-arrow-right"></i>
-										</a>
-									</div>
-							</div>
-						{{end}}
+					{{ if and (ne .Title $currentInsightTitle) (ne .Title "Insights") }}
+					<div class="insight-card card">
+						<div class="card-img-bg" style="background-image: url({{.Params.image.url}});">
+							{{if .Params.category.id}}
+							{{ partial "categoryPill.html" (dict "This" . "Site" $.Site "Id" .Params.category.id) }}
+							{{end}}
+						</div>
+						<div class="card-body">
+							<a class="card-title" href="{{.URL}}">{{.Title}}</a>
+							<a class="arrow-link" href="{{.URL}}">
+								<span class="call-to-action">Read More</span>
+								<i class="far fa-arrow-right"></i>
+							</a>
+						</div>
+					</div>
+					{{end}}
 					{{end}}
 				</div>
 
