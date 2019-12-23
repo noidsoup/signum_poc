@@ -36,5 +36,10 @@ The "contentful-settings.yaml" file controls what content to pull from your cont
 
 Netlify offers an easy process to host hugo sites. Extensive documentation can be found [here](https://gohugo.io/hosting-and-deployment/hosting-on-netlify/)
 
-Using Netlify offers the benefit of a contentful Netlify plugin, allowing you to update the site on the contentful side by clicking a "build website" on any of your published content types.
+Using Netlify offers the benefit of a [contentful Netlify plugin](https://www.contentful.com/developers/docs/extensibility/apps/netlify), allowing you to update the site on the contentful side by clicking a "build website" button on any of your published content types.
 
+## Notes about the charts
+
+Quote fuse liquidity doughnut chart: In the original app this chart had a "market" variable hardcoded as "SP500", and it used this variable to filter data received from the Quote_Fuse_Liquidity.csv by stock market index. We have also hardcoded this string in the "formQuoteFuseDoughnutData" function of main.js.
+
+Quote Fuse line chart: In the original app this chart was not depending on an API call to receive its data. We have copied the hardcoded "dataChartQuoteFuseLine" object and are using it to populate the line chart.
