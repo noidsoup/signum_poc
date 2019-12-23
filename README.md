@@ -43,3 +43,17 @@ Using Netlify offers the benefit of a [contentful Netlify plugin](https://www.co
 Quote fuse liquidity doughnut chart: In the original app this chart had a "market" variable hardcoded as "SP500", and it used this variable to filter data received from the Quote_Fuse_Liquidity.csv by stock market index. We have also hardcoded this string in the "formQuoteFuseDoughnutData" function of main.js.
 
 Quote Fuse line chart: In the original app this chart was not depending on an API call to receive its data. We have copied the hardcoded "dataChartQuoteFuseLine" object and are using it to populate the line chart.
+
+## Notes about the Insight posts
+There's no pagination function at the moment; the main Insight page and category pages will just grow as long as their content. That may need to be revisited in the future.
+
+Currently, the "You might also like these insights" carousel at the end of a single Insight article page shows the 5 most recent posts (excluding the one you're on).
+
+If you'd rather show insights only from the same category, replace this (in `themes/signum/layouts/insights/single.html`):
+```
+{{ range first 5 (where .Site.Pages "Type" "insights") }}
+```
+...with this:
+```
+{{ range first 5 (where (where .Site.Pages "Type" "insights")  "Params.category.id" "=" $currentInsightCategoryId) }}
+```

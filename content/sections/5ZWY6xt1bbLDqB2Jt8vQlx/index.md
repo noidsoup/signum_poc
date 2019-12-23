@@ -1,6 +1,6 @@
 ---
 headless: true
-updated: "2019-12-19T16:11:14.357Z"
+updated: "2019-12-23T19:54:09.802Z"
 createdAt: "2019-12-16T23:45:50.257Z"
 date: "2019-12-16T23:45:50.257Z"
 title: "Inside the Quote"

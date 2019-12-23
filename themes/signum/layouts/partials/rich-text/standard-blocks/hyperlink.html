@@ -1,12 +1,12 @@
 {{- $Site := .Site -}}
-{{ $linkText := partial "rich-text/node-checker.html" (dict "This" .This "Site" $Site) }}
+{{- $linkText := partial "rich-text/node-checker.html" (dict "This" .This "Site" $Site) -}}
 {{ if in .This.data.uri "tel:" }}
-  {{ $phone := strings.TrimLeft "tel:" .This.data.uri }}
-  <a href="tel:{{ $phone }}"> {{ $linkText }} </a>
+{{- $phone := strings.TrimLeft "tel:" .This.data.uri -}}
+<a href="tel:{{ $phone }}">{{- $linkText -}}</a>
 {{else if in .This.data.uri "mailto:"}}
-	{{ $email := strings.TrimLeft "mailto:" .This.data.uri }}
-	<a href="mailto:{{ $email }}"> {{ $linkText }} </a>
+{{- $email := strings.TrimLeft "mailto:" .This.data.uri -}}
+<a href="mailto:{{ $email }}">{{- $linkText -}}</a>
 {{ else }}
-  {{ $url := .This.data.uri }}
-  <a href="{{ $url }}"> {{ $linkText }} </a>
+{{- $url := .This.data.uri -}}
+<a href="{{ $url }}">{{- $linkText -}}</a>
 {{ end }}
