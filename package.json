@@ -21,7 +21,7 @@
     "autoprefixer": "^9.7.3",
     "bootstrap": "^4.4.1",
     "contentful-hugo": "^1.5.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "papaparse": "^5.1.1",
     "popper.js": "^1.16.0",
     "postcss-cli": "^6.1.3",
